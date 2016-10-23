@@ -5,11 +5,11 @@ public class GestiNotesGraphique {
     public static void main(String[] args) {
         Etablissement.addGroupe();
         for (int i = 0; i < 8; i++) {
-            Etablissement.getTabGroupe().get(0).addEleve(
+            Etablissement.getLastGroupe().addEleve(
                     new Eleve(Etablissement.noms[i],
                             Etablissement.prenoms[i],
                             Etablissement.dates[i],
-                            Etablissement.listeCours));
+                            Etablissement.listeEvaluations, true));
         }
         PrincipaleFrame frame = new PrincipaleFrame(); 			 // Creation objet Frame
         frame.setVisible(true);                					 // Visibilite

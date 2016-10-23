@@ -23,11 +23,12 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
 
     //Constructeurs
     public PrincipaleFrame() {
-        setTitle("GestiNotes");    		       		// Titre
+        setTitle("GestiNotes_02");    		       		// Titre
+        setIconImage(new LogoRosemont().logo);
         setSize(255, 350); 								// Dimensions
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);					// Fenetre centree
-        setResizable(false);
+        setResizable(true);
 
         simplePanel = new JPanel(); 					//Cree le panneau
 
@@ -73,7 +74,7 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
                 String date = JOptionPane.showInputDialog(null, "Entrer la date de naissance de l'eleve (JJ-MM-AAAA):", titre, JOptionPane.QUESTION_MESSAGE);
                 Eleve eleve = new Eleve(nom, prenom, date);
 
-                Etablissement.getTabGroupe().get(Etablissement.getTabGroupe().size()-1).addEleve(eleve);
+                Etablissement.addEleve(eleve);
 
                 int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous enregistrer un autre élève?",
                         titre, JOptionPane.YES_NO_OPTION);
