@@ -14,7 +14,8 @@ public final class Etablissement {
     static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "Karato", "K'amon"};
     static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "Ash", "ToutTemps"};
     static String[] dates = {"01-01-0001", "21-05-1982", "30-04-1213", "21-11-1395", "04-02-0999", "31-12-2012", "16-06-0654", "09-07-6000"};
-    static Evaluation[] listeCours = {new Evaluation("Science", .2), new Evaluation("Math", .2), new Evaluation("Français", .3), new Evaluation("Informatique", .3)};
+    static Evaluation[] listeEvaluations = {new Evaluation("Science", .2), new Evaluation("Math", .2),
+        new Evaluation("Français", .3), new Evaluation("Informatique", .3)};
 
 //Constructeur
     public static void Etablissement() {
@@ -73,6 +74,12 @@ public final class Etablissement {
             }
         }
         return eleve;
+    }
+    
+    public static double randomNote(){
+        Random ran = new Random();
+        float num= ran.nextFloat() * 100;
+        return (double)num;
     }
 
 }
