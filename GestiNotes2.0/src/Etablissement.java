@@ -35,6 +35,9 @@ public final class Etablissement {
     public static void setTabGroupe(ArrayList<Groupe> aTabGroupe) {
         tabGroupe = aTabGroupe;
     }
+    public static Groupe getLastGroupe() {
+        return getTabGroupe().get(getTabGroupe().size()-1);
+    }
 
 //Autres Méthodes
     public static Groupe addGroupe() {
@@ -54,6 +57,11 @@ public final class Etablissement {
         Groupe groupe = addGroupe();
         groupe.addEleve(eleve);
         return groupe;
+    }
+    
+    public static void addEleve(Eleve eleve){
+        Groupe groupe = getLastGroupe();
+        groupe.addEleve(eleve);
     }
     
     public static Eleve searchEleve(String code){
