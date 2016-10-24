@@ -1,4 +1,6 @@
-
+/*
+* @author Patrick Domingues
+*/
 //Classe de démarrage
 public class GestiNotesGraphique {
 
