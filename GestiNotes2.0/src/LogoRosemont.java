@@ -10,7 +10,7 @@ import java.awt.image.*;
 import javax.swing.*;
 
 /**
- *
+ * 23/10/2016
  * @author raphael
  */
 public class LogoRosemont {
