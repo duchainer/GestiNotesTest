@@ -4,31 +4,49 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.awt.Image;
+
 
 /**
  * 28/09/2016
  *
- * @author Patrick Domingues 28/9/2016
+ * @author Patrick Domingues 28/9/2016 et Raphael Duchaine 26/10/2016
  */
 public class PrincipaleFrame extends JFrame implements ActionListener {
 
     //Attributs
-    //Etablissement etablissement = new Etablissement();
+    
     //Attributs graphiques
     JPanel simplePanel;
     JRadioButton radio1, radio2;
     ButtonGroup group;
+        
+
+    
     ArrayList<JButton> boutons = new ArrayList<JButton>();
     ArrayList<JTextField> champs = new ArrayList<JTextField>();
-
+    
+    Image logo =new LogoRosemont().logo;
+    Icon iconLogo = (Icon) logo;
+    
     //Constructeurs
     public PrincipaleFrame() {
         setTitle("GestiNotes_02");    		       		// Titre
-        setIconImage(new LogoRosemont().logo);
+        setIconImage(logo);
         setSize(255, 350); 								// Dimensions
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);					// Fenetre centree
         setResizable(true);
+
+            //Look And Feel
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+//            System.out.println(UIManager.getLookAndFeel());
+//            System.out.println(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            System.err.println("Erreur de Look and feel");
+        }
 
         simplePanel = new JPanel(); 					//Cree le panneau
 
