@@ -27,7 +27,7 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
     ArrayList<JTextField> champs = new ArrayList<JTextField>();
     
     Image logo =new LogoRosemont().logo;
-    Icon iconLogo = (Icon) logo;
+
     
     //Constructeurs
     public PrincipaleFrame() {
