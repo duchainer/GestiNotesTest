@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 28/09/2016
  *
- * @author raphael
+ * @author Raphael
  */
 class Eleve {
 //variables
