@@ -21,6 +21,13 @@ public final class Etablissement {
     public static void Etablissement() {
 
     }
+    
+    public static void initialise() {
+        addGroupe();
+        for (int i = 0; i < noms.length; i++) {
+            getLastGroupe().addEleve(new Eleve(noms[i], prenoms[i], dates[i], listeEvaluations, true));
+        }
+    }
 
 //Accesseur-Mutateurs(GET-SET)
     public static String getNomEcole() {
@@ -53,13 +60,13 @@ public final class Etablissement {
         getTabGroupe().add(groupe);
         return groupe;
     }
-
+    //Ajoute un groupe avec un eleve
     public static Groupe addGroupe(Eleve eleve) {
-        Groupe groupe = addGroupe();
+        Groupe groupe = Etablissement.addGroupe();
         groupe.addEleve(eleve);
         return groupe;
     }
-    
+    //Ajout un eleve dans le dernier
     public static void addEleve(Eleve eleve){
         Groupe groupe = getLastGroupe();
         groupe.addEleve(eleve);
