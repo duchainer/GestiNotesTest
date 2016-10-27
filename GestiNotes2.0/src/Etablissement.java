@@ -71,7 +71,7 @@ public final class Etablissement {
         Groupe groupe = getLastGroupe();
         groupe.addEleve(eleve);
     }
-    
+    //Cherche un eleve dans tous les groupes avec son code permanent
     public static Eleve searchEleve(String code){
         Eleve eleve = null;
         for(Groupe g:getTabGroupe()){
