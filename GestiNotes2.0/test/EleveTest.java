@@ -120,55 +120,55 @@ public class EleveTest {
     }
 
     /**
-     * Test of getNbrCours method, of class Eleve.
+     * Test of getNbrEvaluation method, of class Eleve.
      */
     @Test
-    public void testGetNbrCours() {
-        System.out.println("getNbrCours");
+    public void testGetNbrEvaluation() {
+        System.out.println("getNbrEvaluation");
         Eleve instance = new Eleve();
         int expResult = 0;
-        int result = instance.getNbrCours();
+        int result = instance.getNbrEvaluations();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getTabCours method, of class Eleve.
+     * Test of getTabEvaluation method, of class Eleve.
      */
     @Test
-    public void testGetTabCours() {
-        System.out.println("getTabCours");
+    public void testGetTabEvaluation() {
+        System.out.println("getTabEvaluation");
         Eleve instance = new Eleve();
         ArrayList<Evaluation> expResult = null;
-        ArrayList<Evaluation> result = instance.getTabCours();
+        ArrayList<Evaluation> result = instance.getTabEvaluation();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setTabCours method, of class Eleve.
+     * Test of setTabEvaluation method, of class Eleve.
      
     @Test
-    public void testSetTabCours() {
-        System.out.println("setTabCours");
+    public void testSetTabEvaluation() {
+        System.out.println("setTabEvaluation");
         ArrayList<Evaluation> cours = null;
         Eleve instance = new Eleve();
-        instance.setTabCours(cours);
+        instance.setTabEvaluation(cours);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of addCours method, of class Eleve.
+     * Test of addEvaluation method, of class Eleve.
      */
     @Test
-    public void testAddCours() {
-        System.out.println("addCours");
+    public void testAddEvaluation() {
+        System.out.println("addEvaluation");
         Evaluation cours = null;
         Eleve instance = new Eleve();
-        instance.addCours(cours);
+        instance.addEvaluation(cours);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
