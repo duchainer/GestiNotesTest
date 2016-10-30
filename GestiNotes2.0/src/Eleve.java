@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 28/09/2016
  *
- * @author raphael
+ * @author Raphael
  */
 class Eleve {
 //variables
@@ -74,21 +74,17 @@ class Eleve {
         return Evaluations;
     }
 
-    public void setTabCours(ArrayList<Evaluation> cours) {
-        this.Evaluations = cours;
-    }
-
     public void addCours(Evaluation cours) {
         this.Evaluations.add(cours);
     }
 
 //Autres méthodes
     public String codePermanent() {
-        //DUchaine Raphael 29-04-1998 DR1998
+        //ex : Duchaine Raphael 29-04-1998  donne  DR1998
         return getNom().substring(0, 1) + getPrenom().substring(0, 1) + getDateNaissance().substring(6, 10);
     }
 
-    double calculerNoteFinale() {
+    public double calculerNoteFinale() {
         double somme = 0;
         for (int i = 0; i < Evaluations.size(); i++) {
             Evaluation my_cours = Evaluations.get(i);
