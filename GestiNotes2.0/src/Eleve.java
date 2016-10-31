@@ -10,7 +10,7 @@ class Eleve {
 //variables
 
     private String nom, prenom, dateNaissance;
-    private ArrayList<Evaluation> Evaluations = new ArrayList<Evaluation>();
+    private ArrayList<Evaluation> evaluations = new ArrayList<Evaluation>();
 
 //Constructeur
     Eleve() {
@@ -23,19 +23,17 @@ class Eleve {
         setDateNaissance(dateNaissance);
     }
 
-    Eleve(String nom, String prenom, String date, Evaluation[] listeEvaluation) {
-        this(nom, prenom, date);
-        for (int i = 0; i < listeEvaluation.length; i++) {
-            Evaluations.add(listeEvaluation[i]);
-        }
-    }
 
-    Eleve(String nom, String prenom, String date, Evaluation[] listeEvaluation, boolean random) {
-        this(nom,prenom,date,listeEvaluation);
-        //Si l'on veut générer une note "au hasard"
-        if (random) {
-            for (int i = 0; i < listeEvaluation.length; i++) {
-                Evaluations.get(i).setNote((double)100-getNom().length()*2);
+    Eleve(String nom, String prenom, String date, boolean initialise) {
+        this(nom,prenom,date);
+        addEvaluation(new Evaluation("Science", .2));
+        addEvaluation(new Evaluation("Math", .2));
+        addEvaluation(new Evaluation("Français", .3));
+        addEvaluation(new Evaluation("Informatique", .3));
+        //Si l'on veut générer une note au hasard
+        if (initialise) {
+            for (int i = 0; i < evaluations.size(); i++) {
+                evaluations.get(i).setNote(Etablissement.randomNote());
             }
         }
 
@@ -66,16 +64,16 @@ class Eleve {
         this.dateNaissance = dateNaissance;
     }
 
-    public int getNbrCours() {
-        return Etablissement.listeEvaluations.length;
+    public int getNbrEvaluations() {
+        return evaluations.size();
     }
 
-    public ArrayList<Evaluation> getTabCours() {
-        return Evaluations;
+    public ArrayList<Evaluation> getTabEvaluation() {
+        return evaluations;
     }
 
-    public void addCours(Evaluation cours) {
-        this.Evaluations.add(cours);
+    public void addEvaluation(Evaluation cours) {
+        this.evaluations.add(cours);
     }
 
 //Autres méthodes
@@ -86,9 +84,9 @@ class Eleve {
 
     public double calculerNoteFinale() {
         double somme = 0;
-        for (int i = 0; i < Evaluations.size(); i++) {
-            Evaluation my_cours = Evaluations.get(i);
-            somme += (my_cours.getNote() * my_cours.getValeurCours());
+        for (int i = 0; i < evaluations.size(); i++) {
+            Evaluation my_cours = evaluations.get(i);
+            somme += (my_cours.getNote() * my_cours.getValeurEvaluation());
         }
         return somme;
     }
