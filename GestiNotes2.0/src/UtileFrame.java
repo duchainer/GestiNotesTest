@@ -1,4 +1,3 @@
-
 /**
  * Crée 2016-10-31,08:11:51
  *
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 
 public class UtileFrame extends JFrame implements ActionListener {
     //variables
-
     JPanel simplePanel;
     ArrayList<JButton> boutons;
     ArrayList<JTextField> champs;
@@ -25,9 +23,9 @@ public class UtileFrame extends JFrame implements ActionListener {
         add(simplePanel);
         boutons = new ArrayList<JButton>();
         champs = new ArrayList<JTextField>();
-        setLocationRelativeTo(null);                        // Fenetre centree
+        setLocationRelativeTo(null);            // Fenetre centree
     }
-    
+
     //Autres Méthodes
     public void addBouton(String label) {
         JButton bouton = new JButton(label);    //Cree le bouton
