@@ -7,46 +7,39 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 
-
 /**
  * 28/09/2016
  *
  * @author Patrick Domingues 28/9/2016 et Raphael Duchaine 26/10/2016
  */
-public class PrincipaleFrame extends JFrame implements ActionListener {
+public class PrincipaleFrame extends UtileFrame {
 
     //Attributs
-    
     //Attributs graphiques
-    JPanel simplePanel;
+    //VENANT DE UTILEFRAME:
+    //JPanel simplePanel;  
+    //ArrayList<JButton> boutons = new ArrayList<JButton>();
+    //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     JRadioButton radio1, radio2;
     ButtonGroup group;
-        
 
-    
-    ArrayList<JButton> boutons = new ArrayList<JButton>();
-    ArrayList<JTextField> champs = new ArrayList<JTextField>();
-    
-    Image logo =new LogoRosemont().logo;
+    Image logo = new LogoRosemont().logo;
 
-    
     //Constructeurs
     public PrincipaleFrame() {
-        setTitle("GestiNotes_02");    		       		// Titre
+        super("GestiNotes_02", 255, 350); // Titre, Dimensions x, y
         setIconImage(logo);
         setSize(800, 500); 								// Dimensions
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);					// Fenetre centree
+
         setResizable(true);
 
-            //Look And Feel
+        //Look And Feel natif
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-//            System.out.println(UIManager.getLookAndFeel());
-//            System.out.println(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            System.err.println("Erreur de Look and feel");
+            System.err.println("Erreur de Look and feel: " + e.toString());
         }
 
         simplePanel = new JPanel(); 					//Cree le panneau
@@ -89,12 +82,10 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
                     + "Moyenne : " + Statistique.calculerMoyenne(groupe) + "\n"
                     + "Variance: " + Statistique.calculerVariance(groupe) + "\n"
                     + "Ecart-Type: " + Statistique.calculerEcartType(groupe) + "\n" /*+"Nombre d'élèves: "+groupe.getTabEleve().size()*/);
-//                System.err.println(" sdfsdfsdf");
-JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        //System.out.println("QuelqueCHose"+Etablissement.tabGroupe.get(i).listeEleve());
     }
 
     public void listerEleve() throws HeadlessException {
@@ -109,6 +100,7 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         }
     }
 
+
     //methodes supplementaires
     private void addEspace() {
         simplePanel.add(new JLabel(""));
@@ -118,6 +110,8 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
         simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
         boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
+
+ 
     }
 
     @Override
@@ -125,21 +119,16 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         if (event.getSource() == boutons.get(0)) {
             //ajouterEleve();
         }
-
         if (event.getSource() == boutons.get(1)) {
             //enregistrerNote();
 
         }
-
         if (event.getSource() == boutons.get(2)) {
             listerEleve();
         }
-        //TODO Gestion d'exceptions
         if (event.getSource() == boutons.get(3)) {
             afficherStatistiques();
-
         }
-
         if (event.getSource() == boutons.get(4)) {
             Quitter();
         }

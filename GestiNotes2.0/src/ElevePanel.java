@@ -9,12 +9,14 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class ElevePanel extends UtilePanel {
 
     //variables
     final int NBR_NOTES = 4;
+    JLabel notification;
 
     //Méthodes
     //Constructeur
@@ -33,6 +35,7 @@ public class ElevePanel extends UtilePanel {
         addBouton("Enregistrer un eleve");
         addBouton("Afficher un eleve");
         addBouton("Modifier un eleve");
+        notification =(addLabel(""));
     }
     //Get-Set
     //toString
@@ -43,6 +46,7 @@ public class ElevePanel extends UtilePanel {
 
         if (((JButton) event.getSource()).getText() == "Enregistrer un eleve") {
             Etablissement.addEleve(new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText()));
+            notification.setText("Enregistrement effectue");
             System.out.println("ElevePanel.actionPerformed()");
         }
         if (((JButton) event.getSource()).getText() == "Afficher un eleve") {
@@ -75,7 +79,7 @@ public class ElevePanel extends UtilePanel {
             for (int i = 0; i < NBR_NOTES; i++) {
                 setChamp(i + 4, getNote(eleve, i));
             }
-
+            notification.setText("Affichage effectue");
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -102,7 +106,8 @@ public class ElevePanel extends UtilePanel {
             for (int i = 0; i < NBR_NOTES; i++) {
                 evaluations.get(i).setNote(Double.parseDouble(getChamp(i + 4).getText()));
             }
-
+            notification.setText("Modification effectue");
+            
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
         }

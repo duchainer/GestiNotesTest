@@ -51,6 +51,11 @@ public class UtilePanel extends JPanel implements ActionListener {
         simplePanel.add(champ);
         champs.add(champ);
     }
+    public JLabel addLabel(String texte) {
+        JLabel label =new JLabel(texte);
+        simplePanel.add(label);
+        return label;
+    }
     public void addEspace(){
         simplePanel.add(new JLabel(""));
     }
