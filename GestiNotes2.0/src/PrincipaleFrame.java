@@ -13,40 +13,34 @@ import java.awt.Image;
  *
  * @author Patrick Domingues 28/9/2016 et Raphael Duchaine 26/10/2016
  */
-public class PrincipaleFrame extends JFrame implements ActionListener {
+public class PrincipaleFrame extends UtileFrame {
 
     //Attributs
     
     //Attributs graphiques
-    JPanel simplePanel;
+    //VENANT DE UTILEFRAME:
+    //JPanel simplePanel;  
+    //ArrayList<JButton> boutons = new ArrayList<JButton>();
+    //ArrayList<JTextField> champs = new ArrayList<JTextField>();
+    
     JRadioButton radio1, radio2;
     ButtonGroup group;
         
-
-    
-    ArrayList<JButton> boutons = new ArrayList<JButton>();
-    ArrayList<JTextField> champs = new ArrayList<JTextField>();
-    
     Image logo =new LogoRosemont().logo;
 
     
     //Constructeurs
     public PrincipaleFrame() {
-        setTitle("GestiNotes_02");    		       		// Titre
+        super("GestiNotes_02",255, 350); // Titre, Dimensions x, y
         setIconImage(logo);
-        setSize(255, 350); 								// Dimensions
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
-        setLocationRelativeTo(null);					// Fenetre centree
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Le X ne fait rien 
         setResizable(true);
 
-            //Look And Feel
+            //Look And Feel natif
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-//            System.out.println(UIManager.getLookAndFeel());
-//            System.out.println(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            System.err.println("Erreur de Look and feel");
+            System.err.println("Erreur de Look and feel: "+e.toString());
         }
 
         simplePanel = new JPanel(); 					//Cree le panneau
@@ -181,16 +175,6 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         } while (!sortir);
     }
 
-    //methodes supplementaires
-    private void addEspace() {
-        simplePanel.add(new JLabel(""));
-    }
-
-    public void addBouton(String label) {
-        boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
-        simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
-        boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
-    }
 
     @Override
     public void actionPerformed(ActionEvent event) {
