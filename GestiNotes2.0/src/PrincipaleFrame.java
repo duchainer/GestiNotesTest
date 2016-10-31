@@ -108,79 +108,6 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         }
     }
 
-    public void enregistrerNote() throws HeadlessException {
-        //Enregistrement (ou modification) d'une note d'un eleve d'un groupe
-        boolean sortir = false;
-        do {
-            
-            //Creation d'un eleve dans un croupe (cree un autre groupe si le groupe present e 10 eleves)
-            String titre = "Modifier des notes";
-            String codePermanent = JOptionPane.showInputDialog(null, "Entrer le code permanent de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
-            Eleve eleve;
-            try {
-                eleve = Etablissement.searchEleve(codePermanent);
-                if(eleve.equals(null))
-                    throw new Exception("Eleve introuvable");
-            }catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
-                break;
-            }
-            catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-                break;
-            }
-            
-            for (Evaluation c : eleve.getTabEvaluation()) {
-                try {
-                    String note = JOptionPane.showInputDialog(null, "Entrer la note de l'eleve en " + c.getNom().toUpperCase() + " ou -1 s'il n'en n'a pas:" + "\n Note actuelle: " + c.getNote(), titre, JOptionPane.QUESTION_MESSAGE);
-                    if (note == "") {
-                        break;
-                    }
-                    double noteInt = Double.parseDouble(note);
-                    if (noteInt < 0) {
-                        noteInt = -1;
-                    } else if (noteInt > 100) {
-                        throw new Exception("La note doit être comprise en 0 et 100");
-                    }
-                    c.setNote(noteInt);
-                } catch (NullPointerException e) {
-                    JOptionPane.showMessageDialog(null, "La note de "+c.getNom()+" reste inchangée.", titre, JOptionPane.INFORMATION_MESSAGE);
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "La note de "+c.getNom()+" reste inchangée.", titre, JOptionPane.INFORMATION_MESSAGE);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.toString() + " --- " + e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-            
-            int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous modifier d'autres notes?",
-                    titre, JOptionPane.YES_NO_OPTION);
-            if (reponse == JOptionPane.NO_OPTION) {
-                sortir = true;
-            }
-        } while (!sortir);
-    }
-
-    public void ajouterEleve() throws HeadlessException {
-        boolean sortir = false;
-        do {
-            
-            //Creation d'un eleve dans un groupe (cree un autre groupe si le groupe present a 10 eleves)
-            String titre = "Enregistrer un élève";
-            String nom = JOptionPane.showInputDialog(null, "Entrer le nom de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
-            String prenom = JOptionPane.showInputDialog(null, "Entrer le prenom de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
-            String date = JOptionPane.showInputDialog(null, "Entrer la date de naissance de l'eleve (JJ-MM-AAAA):", titre, JOptionPane.QUESTION_MESSAGE);
-            Eleve eleve = new Eleve(nom, prenom, date);
-            
-            Etablissement.addEleve(eleve);
-            
-            int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous enregistrer un autre élève?",
-                    titre, JOptionPane.YES_NO_OPTION);
-            if (reponse == JOptionPane.NO_OPTION) {
-                sortir = true;
-            }
-        } while (!sortir);
-    }
-
     //methodes supplementaires
     private void addEspace() {
         simplePanel.add(new JLabel(""));
@@ -195,11 +122,11 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == boutons.get(0)) {
-            ajouterEleve();
+            //ajouterEleve();
         }
 
         if (event.getSource() == boutons.get(1)) {
-            enregistrerNote();
+            //enregistrerNote();
 
         }
 

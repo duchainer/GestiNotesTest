@@ -26,11 +26,14 @@ public class UtilePanel extends JPanel implements ActionListener {
     //Get-Set
     //toString
     //Autres Méthodes
-    public void addButton(String label) {
+    public void addBouton(String label) {
         JButton bouton = new JButton(label);
         simplePanel.add(bouton);
         bouton.addActionListener(this);
         boutons.add(bouton);
+    }
+    public JButton getLastBouton(){
+        return boutons.get(boutons.size()-1);
     }
 
     public JTextField addChamp(String label) {
