@@ -34,7 +34,7 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
     public PrincipaleFrame() {
         setTitle("GestiNotes_02");    		       		// Titre
         setIconImage(logo);
-        setSize(255, 350); 								// Dimensions
+        setSize(800, 500); 								// Dimensions
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);					// Fenetre centree
         setResizable(true);
@@ -50,9 +50,10 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
         }
 
         simplePanel = new JPanel(); 					//Cree le panneau
-
-        GridLayout gl = new GridLayout(5, 0, 0, 25);	//Cree GridLayout
-        simplePanel.setLayout(gl);
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        simplePanel.add(tabbedPane);
+        tabbedPane.addTab("Menu Eleve", new ElevePanel());
+        
 
         addBouton("Inscrire un élève");
         boutons.get(boutons.size() - 1).setForeground(Color.blue);

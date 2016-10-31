@@ -32,15 +32,24 @@ public class UtilePanel extends JPanel implements ActionListener {
         bouton.addActionListener(this);
         boutons.add(bouton);
     }
+    public JTextField getChamp(int index) {
+        return champs.get(index);
+    }
+    public JButton getBouton(int index){
+        return boutons.get(index);
+    }
     public JButton getLastBouton(){
-        return boutons.get(boutons.size()-1);
+        return getBouton(boutons.size()-1);
+    }
+    public JTextField getLastChamp() {
+        return getChamp(champs.size()-1);
     }
 
-    public JTextField addChamp(String label) {
+    public void addChamp(String label) {
         simplePanel.add(new JLabel(label));
         JTextField champ = new JTextField(10);
         simplePanel.add(champ);
-        return champ;
+        champs.add(champ);
     }
     public void addEspace(){
         simplePanel.add(new JLabel(""));
