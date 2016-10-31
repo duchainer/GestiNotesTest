@@ -7,46 +7,36 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 
-
 /**
  * 28/09/2016
  *
  * @author Patrick Domingues 28/9/2016 et Raphael Duchaine 26/10/2016
  */
-public class PrincipaleFrame extends JFrame implements ActionListener {
+public class PrincipaleFrame extends UtileFrame {
 
     //Attributs
-    
     //Attributs graphiques
-    JPanel simplePanel;
+    //VENANT DE UTILEFRAME:
+    //JPanel simplePanel;  
+    //ArrayList<JButton> boutons = new ArrayList<JButton>();
+    //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     JRadioButton radio1, radio2;
     ButtonGroup group;
-        
 
-    
-    ArrayList<JButton> boutons = new ArrayList<JButton>();
-    ArrayList<JTextField> champs = new ArrayList<JTextField>();
-    
-    Image logo =new LogoRosemont().logo;
+    Image logo = new LogoRosemont().logo;
 
-    
     //Constructeurs
     public PrincipaleFrame() {
-        setTitle("GestiNotes_02");    		       		// Titre
+        super("GestiNotes_02", 255, 350); // Titre, Dimensions x, y
         setIconImage(logo);
-        setSize(255, 350); 								// Dimensions
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
-        setLocationRelativeTo(null);					// Fenetre centree
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Le X ne fait rien 
         setResizable(true);
 
-            //Look And Feel
+        //Look And Feel natif
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-//            System.out.println(UIManager.getLookAndFeel());
-//            System.out.println(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            System.err.println("Erreur de Look and feel");
+            System.err.println("Erreur de Look and feel: " + e.toString());
         }
 
         simplePanel = new JPanel(); 					//Cree le panneau
@@ -88,12 +78,10 @@ public class PrincipaleFrame extends JFrame implements ActionListener {
                     + "Moyenne : " + Statistique.calculerMoyenne(groupe) + "\n"
                     + "Variance: " + Statistique.calculerVariance(groupe) + "\n"
                     + "Ecart-Type: " + Statistique.calculerEcartType(groupe) + "\n" /*+"Nombre d'élèves: "+groupe.getTabEleve().size()*/);
-//                System.err.println(" sdfsdfsdf");
-JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        //System.out.println("QuelqueCHose"+Etablissement.tabGroupe.get(i).listeEleve());
     }
 
     public void listerEleve() throws HeadlessException {
@@ -112,28 +100,28 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         //Enregistrement (ou modification) d'une note d'un eleve d'un groupe
         boolean sortir = false;
         do {
-            
+
             //Creation d'un eleve dans un croupe (cree un autre groupe si le groupe present e 10 eleves)
             String titre = "Modifier des notes";
             String codePermanent = JOptionPane.showInputDialog(null, "Entrer le code permanent de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
             Eleve eleve;
             try {
                 eleve = Etablissement.searchEleve(codePermanent);
-                if(eleve.equals(null))
+                if (eleve.equals(null)) {
                     throw new Exception("Eleve introuvable");
-            }catch (NullPointerException e) {
+                }
+            } catch (NullPointerException e) {
                 JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
                 break;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 break;
             }
-            
+
             for (Evaluation c : eleve.getTabEvaluation()) {
                 try {
                     String note = JOptionPane.showInputDialog(null, "Entrer la note de l'eleve en " + c.getNom().toUpperCase() + " ou -1 s'il n'en n'a pas:" + "\n Note actuelle: " + c.getNote(), titre, JOptionPane.QUESTION_MESSAGE);
-                    if (note == "") {
+                    if ("".equals(note)) {
                         break;
                     }
                     double noteInt = Double.parseDouble(note);
@@ -144,14 +132,14 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
                     }
                     c.setNote(noteInt);
                 } catch (NullPointerException e) {
-                    JOptionPane.showMessageDialog(null, "La note de "+c.getNom()+" reste inchangée.", titre, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "La note de " + c.getNom() + " reste inchangée.", titre, JOptionPane.INFORMATION_MESSAGE);
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "La note de "+c.getNom()+" reste inchangée.", titre, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "La note de " + c.getNom() + " reste inchangée.", titre, JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.toString() + " --- " + e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            
+
             int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous modifier d'autres notes?",
                     titre, JOptionPane.YES_NO_OPTION);
             if (reponse == JOptionPane.NO_OPTION) {
@@ -163,16 +151,15 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
     public void ajouterEleve() throws HeadlessException {
         boolean sortir = false;
         do {
-            
             //Creation d'un eleve dans un groupe (cree un autre groupe si le groupe present a 10 eleves)
             String titre = "Enregistrer un élève";
             String nom = JOptionPane.showInputDialog(null, "Entrer le nom de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
             String prenom = JOptionPane.showInputDialog(null, "Entrer le prenom de l'eleve:", titre, JOptionPane.QUESTION_MESSAGE);
             String date = JOptionPane.showInputDialog(null, "Entrer la date de naissance de l'eleve (JJ-MM-AAAA):", titre, JOptionPane.QUESTION_MESSAGE);
             Eleve eleve = new Eleve(nom, prenom, date);
-            
+
             Etablissement.addEleve(eleve);
-            
+
             int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous enregistrer un autre élève?",
                     titre, JOptionPane.YES_NO_OPTION);
             if (reponse == JOptionPane.NO_OPTION) {
@@ -181,37 +168,20 @@ JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionP
         } while (!sortir);
     }
 
-    //methodes supplementaires
-    private void addEspace() {
-        simplePanel.add(new JLabel(""));
-    }
-
-    public void addBouton(String label) {
-        boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
-        simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
-        boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
-    }
-
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == boutons.get(0)) {
             ajouterEleve();
         }
-
         if (event.getSource() == boutons.get(1)) {
             enregistrerNote();
-
         }
-
         if (event.getSource() == boutons.get(2)) {
             listerEleve();
         }
-        //TODO Gestion d'exceptions
         if (event.getSource() == boutons.get(3)) {
             afficherStatistiques();
-
         }
-
         if (event.getSource() == boutons.get(4)) {
             Quitter();
         }
