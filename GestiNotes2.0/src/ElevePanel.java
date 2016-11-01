@@ -56,12 +56,7 @@ public class ElevePanel extends UtilePanel {
         if (((JButton) event.getSource()).getText() == "Modifier un eleve") {
             modifierEleve();
             System.out.println("ElevePanel.actionPerformed()");
-
         }
-    }
-
-    public void setChamp(int index, String texte) {
-        champs.get(index).setText(texte);
     }
 
     private void afficherEleve() {

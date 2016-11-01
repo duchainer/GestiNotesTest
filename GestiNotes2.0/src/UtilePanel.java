@@ -44,6 +44,9 @@ public class UtilePanel extends JPanel implements ActionListener {
     public JTextField getLastChamp() {
         return getChamp(champs.size()-1);
     }
+    public void setChamp(int index, String texte) {
+        champs.get(index).setText(texte);
+    }
 
     public void addChamp(String label) {
         simplePanel.add(new JLabel(label));

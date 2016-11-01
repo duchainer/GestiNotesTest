@@ -46,6 +46,7 @@ public class PrincipaleFrame extends UtileFrame {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         simplePanel.add(tabbedPane);
         tabbedPane.addTab("Menu Eleve", new ElevePanel());
+        tabbedPane.addTab("Menu Aide", new AidePanel());
         
 
         addBouton("Inscrire un élève");
@@ -63,7 +64,7 @@ public class PrincipaleFrame extends UtileFrame {
 
     }
 
-    public void Quitter() throws HeadlessException {
+    public void quitter() throws HeadlessException {
         //Permet l'arret du programme
         int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?",
                 "Quitter", JOptionPane.YES_NO_OPTION);
@@ -110,6 +111,7 @@ public class PrincipaleFrame extends UtileFrame {
         boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
         simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
         boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
+        
 
  
     }
@@ -130,7 +132,7 @@ public class PrincipaleFrame extends UtileFrame {
             afficherStatistiques();
         }
         if (event.getSource() == boutons.get(4)) {
-            Quitter();
+            quitter();
         }
     }
 }
