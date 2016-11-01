@@ -28,6 +28,12 @@ public class AidePanel extends UtilePanel{
     public AidePanel() {
         super();
         notification =(addLabel(""));
+        GridLayout gl = new GridLayout(0, 1, 5, 5);	//Cree GridLayout
+        simplePanel.setLayout(gl);
+        addBouton("?");
+        addBouton("À Propos");
+        addBouton("Annuler");
+        addBouton("Quitter");
     }
     //Get-Set
     //toString
