@@ -13,10 +13,20 @@ import javax.swing.JOptionPane;
  */
 public class AidePanel extends UtilePanel{
 
-    String aPropos= "GestiNotes par Patrick Dominguès et Raphaël Duchaîne"
+    String aPropos= "GestiNotes par Patrick Dominguès et Raphaël Duchaîne de InnovTech"
             + "\nMontréal,Québec"
             + "\nVersion 2 (04/11/2016)"
-            + "\nVersion 1 (12/10/2016)";
+            + "\nVersion 1 (12/10/2016)"
+            + "\n"
+            + "\nQuand on demanda aux ingénieurs de InnovTech de concevoir le futur du gestionnaire scolaire,"
+            + "\n(un produit qui serait à la fois convivial, efficace et graphique) la majorité de ceux présents a lâché l'éponge."
+            + "\nMais les deux qui restaient ont vraiment fait de gros efforts pour accoucher de ce bijou de technologie.";
+    String instructions="Pour utiliser ce bijou d'innovation, il faut savoir:"
+            + "\n-Que chaque groupe ne peut comprendre que 10 eleves"
+            + "\n-Qu'un eleve doit être initialisé avec nom, prenom et date "
+            + "\n-Que l'on ne peut pas enlever d'eleve dans cette version"
+            + "\n-Que l'aide se trouve ici"
+            + "\n-Que 2 et 2 font 4";
            
 
     //variables
@@ -69,7 +79,7 @@ public class AidePanel extends UtilePanel{
     }
     //Instruction sur l'utilisation du programme
     private void instructions() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(simplePanel, instructions,"Instructions",JOptionPane.INFORMATION_MESSAGE);
     }
     //quitter le programme
     public void quitter() throws HeadlessException {
