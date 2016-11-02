@@ -1,4 +1,3 @@
-
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -7,12 +6,6 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * Crée 2016-11-01,09:29:42 
@@ -66,18 +59,19 @@ public class AidePanel extends UtilePanel{
             System.out.println("ElevePanel.actionPerformed()");
         }
     }
-
+    //Retour au début du programme
     private void annuler() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    //Fenêtre incluant les créateurs, dates, lieu, etc)
     private void aPropos() {
         JOptionPane.showMessageDialog(simplePanel, aPropos,"À Propos",JOptionPane.INFORMATION_MESSAGE);
     }
-
+    //Instruction sur l'utilisation du programme
     private void instructions() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    //quitter le programme
     public void quitter() throws HeadlessException {
         //Permet l'arret du programme
         int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?",
