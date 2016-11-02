@@ -98,20 +98,10 @@ public class PrincipaleFrame extends UtileFrame {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == boutons.get(0)) {
-            //ajouterEleve();
-        }
-        if (event.getSource() == boutons.get(1)) {
-            //enregistrerNote();
-
-        }
-        if (event.getSource() == boutons.get(2)) {
             listerEleve();
         }
-        if (event.getSource() == boutons.get(3)) {
+        if (event.getSource() == boutons.get(1)) {
             afficherStatistiques();
-        }
-        if (event.getSource() == boutons.get(4)) {
-            quitter();
         }
     }
 }
