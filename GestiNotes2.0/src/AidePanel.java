@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,6 +19,12 @@ import javax.swing.JOptionPane;
  * @author Raphael Duchaine
  */
 public class AidePanel extends UtilePanel{
+
+    String aPropos= "GestiNotes par Patrick Dominguès et Raphaël Duchaîne"
+            + "\nMontréal,Québec"
+            + "\nVersion 2 (04/11/2016)"
+            + "\nVersion 1 (12/10/2016)";
+           
 
     //variables
     final int NBR_NOTES = 4;
@@ -41,7 +48,6 @@ public class AidePanel extends UtilePanel{
 
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-
         if (((JButton) event.getSource()).getText() == "Quitter") {
             quitter();
             System.out.println("ElevePanel.actionPerformed()");
@@ -58,7 +64,6 @@ public class AidePanel extends UtilePanel{
         if (((JButton) event.getSource()).getText() == "Annuler") {
             annuler();
             System.out.println("ElevePanel.actionPerformed()");
-
         }
     }
 
@@ -67,7 +72,7 @@ public class AidePanel extends UtilePanel{
     }
 
     private void aPropos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(simplePanel, aPropos,"À Propos",JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void instructions() {
