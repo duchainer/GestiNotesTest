@@ -102,24 +102,10 @@ public class EtablissementTest {
      * Test of addGroupe method, of class Etablissement.
      */
     @Test
-    public void testAddGroupe_0args() {
+    public void testAddGroupe() {
         System.out.println("addGroupe");
         Groupe expResult = null;
         Groupe result = Etablissement.addGroupe();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addGroupe method, of class Etablissement.
-     */
-    @Test
-    public void testAddGroupe_Eleve() {
-        System.out.println("addGroupe");
-        Eleve eleve = null;
-        Groupe expResult = null;
-        Groupe result = Etablissement.addGroupe(eleve);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

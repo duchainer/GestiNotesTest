@@ -58,12 +58,7 @@ public final class Etablissement {
         getTabGroupe().add(groupe);
         return groupe;
     }
-    //Ajoute un groupe avec un eleve
-    public static Groupe addGroupe(Eleve eleve) {
-        Groupe groupe = Etablissement.addGroupe();
-        groupe.addEleve(eleve);
-        return groupe;
-    }
+    
     //Ajout un eleve dans le dernier
     public static void addEleve(Eleve eleve){
         Groupe groupe = getLastGroupe();
