@@ -47,19 +47,11 @@ public class PrincipaleFrame extends UtileFrame {
         simplePanel.add(tabbedPane);
         tabbedPane.addTab("Menu Eleve", new ElevePanel());
         tabbedPane.addTab("Menu Aide", new AidePanel());
-        
 
-        addBouton("Inscrire un élève");
-        boutons.get(boutons.size() - 1).setForeground(Color.blue);
-        addBouton("Gérer les notes");
-        boutons.get(boutons.size() - 1).setForeground(Color.green);
         addBouton("Afficher les élèves d'un groupe");
         boutons.get(boutons.size() - 1).setForeground(Color.LIGHT_GRAY);
         addBouton("Afficher les statistiques d'un groupe");
         boutons.get(boutons.size() - 1).setForeground(Color.orange);
-        addBouton("Quitter");
-        boutons.get(boutons.size() - 1).setForeground(Color.red);
-
         add(simplePanel);
 
     }
@@ -103,19 +95,6 @@ public class PrincipaleFrame extends UtileFrame {
 
 
     //methodes supplementaires
-    private void addEspace() {
-        simplePanel.add(new JLabel(""));
-    }
-
-    public void addBouton(String label) {
-        boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
-        simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
-        boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
-        
-
- 
-    }
-
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == boutons.get(0)) {
