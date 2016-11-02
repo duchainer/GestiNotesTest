@@ -46,6 +46,11 @@ public class UtileFrame extends JFrame implements ActionListener {
         champs.add(champ);//Ajoute le champ dans le tableau champs
         return label; //Retourne le label
     }
+    public JLabel addLabel(String texte) {
+        JLabel label =new JLabel(texte);
+        simplePanel.add(label);
+        return label;
+    }
 
     @Override
     public void actionPerformed(ActionEvent event) { // Methode recoit evenement
