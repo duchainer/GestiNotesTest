@@ -22,14 +22,16 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     JRadioButton radio1, radio2;
     ButtonGroup group;
+    JProgressBar pBar; 
+    JTabbedPane tabbedPane;
 
     Image logo = new LogoRosemont().logo;
 
     //Constructeurs
     public PrincipaleFrame() {
-        super("GestiNotes_02", 255, 350); // Titre, Dimensions x, y
+        super("GestiNotes_02", 255, 500); // Titre, Dimensions x, y
         setIconImage(logo);
-        setSize(800, 500); 								// Dimensions
+        setSize(800, 750); 								// Dimensions
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);					// Fenetre centree
 
@@ -43,28 +45,30 @@ public class PrincipaleFrame extends UtileFrame {
         }
 
         simplePanel = new JPanel(); 					//Cree le panneau
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         simplePanel.add(tabbedPane);
         tabbedPane.addTab("Menu Eleve", new ElevePanel());
-        tabbedPane.addTab("Menu Aide", new AidePanel());
+        tabbedPane.addTab("Menu Gestionnaire", new GestionnairePanel(this, tabbedPane));        
         
-
-        addBouton("Inscrire un élève");
-        boutons.get(boutons.size() - 1).setForeground(Color.blue);
-        addBouton("Gérer les notes");
-        boutons.get(boutons.size() - 1).setForeground(Color.green);
-        addBouton("Afficher les élèves d'un groupe");
-        boutons.get(boutons.size() - 1).setForeground(Color.LIGHT_GRAY);
-        addBouton("Afficher les statistiques d'un groupe");
-        boutons.get(boutons.size() - 1).setForeground(Color.orange);
-        addBouton("Quitter");
-        boutons.get(boutons.size() - 1).setForeground(Color.red);
-
+        //ProgressBar (à faire update)
+        /*
+        for(int i=0; i<Etablissement.getTabGroupe().size(); i++){
+            pBar = new JProgressBar();
+            pBar.setMinimum(0);
+            pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
+            pBar.setValue(Etablissement.getTabGroupe().get(i).getTabEleve().size());
+                        
+            simplePanel.add(new JLabel(pBar.getMinimum()+""));
+            simplePanel.add(pBar);
+            simplePanel.add(new JLabel(pBar.getMaximum()+""));
+                
+        }*/
+        
         add(simplePanel);
 
     }
 
-    public void quitter() throws HeadlessException {
+    public void Quitter() throws HeadlessException {
         //Permet l'arret du programme
         int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?",
                 "Quitter", JOptionPane.YES_NO_OPTION);
@@ -72,7 +76,7 @@ public class PrincipaleFrame extends UtileFrame {
             System.exit(0);
         }
     }
-
+    /*
     public void afficherStatistiques() throws HeadlessException {
         //Affichage des statistiques d'un groupe (moyenne, variance, ecart-type)
         try {
@@ -82,25 +86,12 @@ public class PrincipaleFrame extends UtileFrame {
             String stats = ("Statistiques du groupe " + i + ":\n"
                     + "Moyenne : " + Statistique.calculerMoyenne(groupe) + "\n"
                     + "Variance: " + Statistique.calculerVariance(groupe) + "\n"
-                    + "Ecart-Type: " + Statistique.calculerEcartType(groupe) + "\n" /*+"Nombre d'élèves: "+groupe.getTabEleve().size()*/);
+                    + "Ecart-Type: " + Statistique.calculerEcartType(groupe) + "\n");
             JOptionPane.showMessageDialog(null, stats, "Afficher des Statistiques", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    public void listerEleve() throws HeadlessException {
-        //Affichage de la liste d'eleves d'un groupe, avec leurs notes
-        try {
-            int i = Integer.parseInt(JOptionPane.showInputDialog(null, "Quel groupe voulez-vous voir?",
-                    "Liste de classe", JOptionPane.QUESTION_MESSAGE));
-            String liste = Etablissement.getTabGroupe().get(i).listeEleve();
-            JOptionPane.showMessageDialog(null, liste, "Liste des élèves du groupe " + i, JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
 
     //methodes supplementaires
     private void addEspace() {
@@ -111,7 +102,6 @@ public class PrincipaleFrame extends UtileFrame {
         boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
         simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
         boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
-        
 
  
     }
@@ -132,7 +122,7 @@ public class PrincipaleFrame extends UtileFrame {
             afficherStatistiques();
         }
         if (event.getSource() == boutons.get(4)) {
-            quitter();
+            Quitter();
         }
-    }
+    }*/
 }
