@@ -35,8 +35,8 @@ public class AidePanel extends UtilePanel{
 
     //Méthodes
     //Constructeur
-    public AidePanel() {
-        super();
+    public AidePanel(UtileFrame fenetre) {
+        super(fenetre);
         notification =(addLabel(""));
         GridLayout gl = new GridLayout(0, 1, 5, 5);	//Cree GridLayout
         simplePanel.setLayout(gl);
@@ -45,6 +45,9 @@ public class AidePanel extends UtilePanel{
         addBouton("Annuler");
         addBouton("Quitter");
     }
+    public AidePanel(){
+        this(null);
+    }
     //Get-Set
     //toString
     //Autres Méthodes
@@ -52,7 +55,7 @@ public class AidePanel extends UtilePanel{
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
         if (((JButton) event.getSource()).getText() == "Quitter") {
-            quitter();
+            fenetre.quitter();
             System.out.println("ElevePanel.actionPerformed()");
         }
         if (((JButton) event.getSource()).getText() == "?") {

@@ -3,6 +3,7 @@
  *
  * @author Raphael Duchaine
  */
+import java.awt.HeadlessException;
 import javax.swing.*;
 //import java.awt.*;
 import java.awt.event.*;
@@ -56,6 +57,15 @@ public class UtileFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) { // Methode recoit evenement
         if (((JButton) event.getSource()).getText() == "HelloWorld") {
             System.out.println("HelloWorld");
+        }
+    }
+
+    public void quitter() throws HeadlessException {
+        //Permet l'arret du programme
+        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?",
+                "Quitter", JOptionPane.YES_NO_OPTION);
+        if (reponse == JOptionPane.YES_OPTION) {
+            System.exit(0);
         }
     }
 

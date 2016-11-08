@@ -17,11 +17,12 @@ public class ElevePanel extends UtilePanel {
     //variables
     final int NBR_NOTES = 4;
     JLabel notification;
+    UtileFrame fenetre;
 
     //Méthodes
     //Constructeur
-    public ElevePanel() {
-        super();
+    public ElevePanel(UtileFrame fenetre) {
+        super(fenetre);
         GridLayout gl = new GridLayout(5, 1, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addChamp("Nom");
@@ -36,6 +37,9 @@ public class ElevePanel extends UtilePanel {
         addBouton("Afficher un eleve");
         addBouton("Modifier un eleve");
         notification =(addLabel(""));
+    }
+    public ElevePanel(){
+        this(null);
     }
     //Get-Set
     //toString
