@@ -14,6 +14,7 @@ public class UtileFrame extends JFrame implements ActionListener {
     JPanel simplePanel;
     ArrayList<JButton> boutons;
     ArrayList<JTextField> champs;
+    public JTabbedPane tabbedPane;
 
     //Méthodes
     //Constructeur
