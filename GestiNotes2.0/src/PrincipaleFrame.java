@@ -48,6 +48,8 @@ public class PrincipaleFrame extends UtileFrame {
         tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
         tabbedPane.addTab("Menu Aide", new AidePanel(this));
 
+        addBouton("Lister un groupe");
+        boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
         addBouton("Afficher les statistiques d'un groupe");
         boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
         add(simplePanel);
@@ -69,7 +71,7 @@ public class PrincipaleFrame extends UtileFrame {
         }
     }
 
-    /*public void listerEleve() throws HeadlessException {
+    public void listerEleve() throws HeadlessException {
         //Affichage de la liste d'eleves d'un groupe, avec leurs notes
         try {
             int i = Integer.parseInt(JOptionPane.showInputDialog(null, "Quel groupe voulez-vous voir?",
@@ -80,13 +82,15 @@ public class PrincipaleFrame extends UtileFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-    */
+    
 
 
     //methodes supplementaires
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == boutons.get(0)) {
+            listerEleve();
+        }if (event.getSource() == boutons.get(1)) {
             afficherStatistiques();
         }
     }
