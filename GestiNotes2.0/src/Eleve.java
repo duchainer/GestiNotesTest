@@ -86,7 +86,8 @@ class Eleve {
         double somme = 0;
         for (int i = 0; i < evaluations.size(); i++) {
             Evaluation my_cours = evaluations.get(i);
-            somme += (my_cours.getNote() * my_cours.getValeurEvaluation());
+            if(my_cours.getNote()!=-1.)
+                somme += (my_cours.getNote() * my_cours.getValeurEvaluation());
         }
         return somme;
     }
