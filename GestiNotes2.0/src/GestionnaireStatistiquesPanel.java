@@ -21,7 +21,6 @@ import javax.swing.JTabbedPane;
 public class GestionnaireStatistiquesPanel extends UtilePanel {
 
     //variables
-    JComboBox<Groupe> comboBox1;
     JFrame uneFrame;
     JTabbedPane unTabbedPane;
     Groupe g;

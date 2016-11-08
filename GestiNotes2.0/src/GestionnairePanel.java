@@ -36,58 +36,46 @@ public class GestionnairePanel extends UtilePanel {
 
         GridLayout gl = new GridLayout(13, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
-
+        //Liste des groupe existants
         addLabel("Lister: ");
-        comboBox1 = new JComboBox<Groupe>();
-        remplir(comboBox1);
-        simplePanel.add(comboBox1);
+        comboBox1=addComboBox();
         comboBox1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 lister();
             }
         });
-
+         //Liste des groupe existants
         addLabel("Modifier: ");
-        comboBox2 = new JComboBox<Groupe>();
-        remplir(comboBox2);
-        simplePanel.add(comboBox2);
+        comboBox2=addComboBox();
         comboBox2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 modifier();
             }
         });
-
+         //Liste des groupe existants
         addLabel("Statistiques: ");
-        comboBox3 = new JComboBox<Groupe>();
-        remplir(comboBox3);
-        simplePanel.add(comboBox3);
+        comboBox3=addComboBox();
         comboBox3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 statistiques();
             }
         });
-
+        //Ajoute les divers label pour les divers informations
         addLabel("");
         addLabel("Prenom");
         addLabel("Nom");
         addLabel("Date de naissance");
-        addLabel("  Note finale");
+        addLabel("     Note finale");
         addLabel("Code permanent");
-
+        
+        //Ajoute les divers champs pour les divers informations tout en les protégeant de l'édition
         for (int i = 0; i < Etablissement.ELEVES_PAR_GROUPE; i++) {
-
-            for (int j = 0; j < 1; j++) {
-            }
             addChamp("Eleve " + (i + 1));
             getLastChamp().setEditable(false);
-            addTextField();
-            getLastChamp().setEditable(false);
-            addTextField();
-            getLastChamp().setEditable(false);
-            addTextField();
-            getLastChamp().setEditable(false);
-            addTextField();
-            getLastChamp().setEditable(false);
+            addProtectedChamp();
+            addProtectedChamp();
+            addProtectedChamp();
+            addProtectedChamp();
         }
         addBouton("Aide");
 
@@ -96,10 +84,9 @@ public class GestionnairePanel extends UtilePanel {
 
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-
         if (((JButton) event.getSource()).getText() == "Aide") {
-            JOptionPane.showMessageDialog(uneFrame, "Pour effectuer une operation, lisez les options, \n"
-                    + "puis choisissez le groupe que vous voulez consulter ou modifier", "Aide", JOptionPane.INFORMATION_MESSAGE);  			 // Creation objet Frame    
+            JOptionPane.showMessageDialog(uneFrame, "Pour effectuer une operation, lisez les options,"
+                    + "\npuis choisissez le groupe que vous voulez consulter ou modifier", "Aide", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -108,7 +95,6 @@ public class GestionnairePanel extends UtilePanel {
         int num = Integer.parseInt(code.substring(7));
         Groupe groupe = Etablissement.getTabGroupe().get(num);
         //System.out.println(""+num);
-
         try {
             for (int i = 0; i < groupe.getTabEleve().size(); i++) {
                 setChamp((5 * i), groupe.getTabEleve().get(i).getNom());
@@ -123,7 +109,7 @@ public class GestionnairePanel extends UtilePanel {
     }
 
     private void modifier() {
-        String code = (String) comboBox1.getSelectedItem();
+        String code = (String) comboBox2.getSelectedItem();
         int num = Integer.parseInt(code.substring(7));
         Groupe groupe = Etablissement.getTabGroupe().get(num);
 
@@ -135,7 +121,7 @@ public class GestionnairePanel extends UtilePanel {
     }
 
     private void statistiques() {
-        String code = (String) comboBox1.getSelectedItem();
+        String code = (String) comboBox3.getSelectedItem();
         int num = Integer.parseInt(code.substring(7));
         Groupe groupe = Etablissement.getTabGroupe().get(num);
 
@@ -145,6 +131,18 @@ public class GestionnairePanel extends UtilePanel {
         uneFrame.revalidate();
         uneFrame.repaint();
 
+    }
+
+    private void addProtectedChamp() {
+        addTextField();
+        getLastChamp().setEditable(false);
+    }
+
+    private JComboBox addComboBox() {
+        JComboBox comboBox = new JComboBox<Groupe>();
+        remplir(comboBox);
+        simplePanel.add(comboBox);
+        return comboBox;
     }
 
     public static String getNote(Eleve eleve, int index) {
