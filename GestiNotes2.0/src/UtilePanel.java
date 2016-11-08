@@ -12,6 +12,7 @@ public class UtilePanel extends JPanel implements ActionListener {
     //variables
     ArrayList<JButton> boutons;
     ArrayList<JTextField> champs;
+    ArrayList<JComboBox> comboBoxes;
     
     JPanel simplePanel;
     UtileFrame fenetre;
@@ -23,6 +24,7 @@ public class UtilePanel extends JPanel implements ActionListener {
         add(simplePanel);
         boutons = new ArrayList<JButton>();
         champs = new ArrayList<JTextField>();
+        //comboBoxes = new ArrayList<JComboBox>();
     }
     public UtilePanel(UtileFrame fenetre) {
         this();
@@ -31,6 +33,16 @@ public class UtilePanel extends JPanel implements ActionListener {
     //Get-Set
     //toString
     //Autres Méthodes
+    
+    /*
+    public void addComboBox(String label) {
+        String comboBox = label;
+        JComboBox<String> comboBox = new JComboBox<String>();
+        simplePanel.add(comboBox);
+        comboBox.addActionListener(this);
+        comboBoxes.add(comboBox);
+    }*/
+    
     public void addBouton(String label) {
         JButton bouton = new JButton(label);
         simplePanel.add(bouton);
@@ -49,10 +61,13 @@ public class UtilePanel extends JPanel implements ActionListener {
     public JTextField getLastChamp() {
         return getChamp(champs.size()-1);
     }
-    public void setChamp(int index, String texte) {
-        champs.get(index).setText(texte);
+    
+    public void addTextField() {
+        JTextField champ = new JTextField(10);
+        simplePanel.add(champ);
+        champs.add(champ);
     }
-
+    
     public void addChamp(String label) {
         simplePanel.add(new JLabel(label));
         JTextField champ = new JTextField(10);

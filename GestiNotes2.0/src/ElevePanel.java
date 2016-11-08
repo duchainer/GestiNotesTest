@@ -51,12 +51,14 @@ public class ElevePanel extends UtilePanel {
 
         if (((JButton) event.getSource()).getText() == "Enregistrer un eleve") {
             addEleve();
+            revalidate();
         }
         if (((JButton) event.getSource()).getText() == "Afficher un eleve") {
             afficherEleve();
         }
         if (((JButton) event.getSource()).getText() == "Modifier un eleve") {
             modifierEleve();
+            revalidate();
         }
         //Un bouton qui vide tous les champs
         if (((JButton) event.getSource()).getText() == "Vider les champs") {
@@ -64,6 +66,10 @@ public class ElevePanel extends UtilePanel {
         }
        
         
+    }
+
+    public void setChamp(int index, String texte) {
+        champs.get(index).setText(texte);
     }
 
     private void addEleve() {
