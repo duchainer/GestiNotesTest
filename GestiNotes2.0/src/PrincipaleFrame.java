@@ -45,32 +45,12 @@ public class PrincipaleFrame extends UtileFrame {
         simplePanel = new JPanel(); 					//Cree le panneau
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         simplePanel.add(tabbedPane);
-        tabbedPane.addTab("Menu Eleve", new ElevePanel());
-        tabbedPane.addTab("Menu Aide", new AidePanel());
-        
+        tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
+        tabbedPane.addTab("Menu Aide", new AidePanel(this));
 
-        addBouton("Inscrire un élève");
-        boutons.get(boutons.size() - 1).setForeground(Color.blue);
-        addBouton("Gérer les notes");
-        boutons.get(boutons.size() - 1).setForeground(Color.green);
-        addBouton("Afficher les élèves d'un groupe");
-        boutons.get(boutons.size() - 1).setForeground(Color.LIGHT_GRAY);
         addBouton("Afficher les statistiques d'un groupe");
-        boutons.get(boutons.size() - 1).setForeground(Color.orange);
-        addBouton("Quitter");
-        boutons.get(boutons.size() - 1).setForeground(Color.red);
-
+        boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
         add(simplePanel);
-
-    }
-
-    public void quitter() throws HeadlessException {
-        //Permet l'arret du programme
-        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?",
-                "Quitter", JOptionPane.YES_NO_OPTION);
-        if (reponse == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
     }
 
     public void afficherStatistiques() throws HeadlessException {
@@ -89,7 +69,7 @@ public class PrincipaleFrame extends UtileFrame {
         }
     }
 
-    public void listerEleve() throws HeadlessException {
+    /*public void listerEleve() throws HeadlessException {
         //Affichage de la liste d'eleves d'un groupe, avec leurs notes
         try {
             int i = Integer.parseInt(JOptionPane.showInputDialog(null, "Quel groupe voulez-vous voir?",
@@ -100,39 +80,14 @@ public class PrincipaleFrame extends UtileFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
+    */
 
 
     //methodes supplementaires
-    private void addEspace() {
-        simplePanel.add(new JLabel(""));
-    }
-
-    public void addBouton(String label) {
-        boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
-        simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
-        boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
-        
-
- 
-    }
-
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == boutons.get(0)) {
-            //ajouterEleve();
-        }
-        if (event.getSource() == boutons.get(1)) {
-            //enregistrerNote();
-
-        }
-        if (event.getSource() == boutons.get(2)) {
-            listerEleve();
-        }
-        if (event.getSource() == boutons.get(3)) {
             afficherStatistiques();
-        }
-        if (event.getSource() == boutons.get(4)) {
-            quitter();
         }
     }
 }

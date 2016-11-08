@@ -14,6 +14,7 @@ public class UtilePanel extends JPanel implements ActionListener {
     ArrayList<JTextField> champs;
     
     JPanel simplePanel;
+    UtileFrame fenetre;
 
     //Méthodes
     //Constructeur
@@ -22,6 +23,10 @@ public class UtilePanel extends JPanel implements ActionListener {
         add(simplePanel);
         boutons = new ArrayList<JButton>();
         champs = new ArrayList<JTextField>();
+    }
+    public UtilePanel(UtileFrame fenetre) {
+        this();
+        this.fenetre=fenetre;
     }
     //Get-Set
     //toString

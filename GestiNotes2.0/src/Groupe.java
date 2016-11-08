@@ -40,7 +40,8 @@ public class Groupe {
             getTabEleve().add(eleve);
         }
         else{
-            Etablissement.addGroupe(eleve);
+            Etablissement.addGroupe();
+            Etablissement.addEleve(eleve);
         }
     }
     
