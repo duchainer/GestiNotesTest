@@ -22,7 +22,6 @@ public class GestionnaireModifierPanel extends UtilePanel {
 
     //variables
     final int NBR_NOTES = 4;
-    JLabel notification;
     JComboBox<Groupe> comboBox1;
     JFrame uneFrame;
     JTabbedPane unTabbedPane;
@@ -102,10 +101,6 @@ public class GestionnaireModifierPanel extends UtilePanel {
             combo.addItem("eleve " + i + " : " + g.getTabEleve().get(i).codePermanent() + ", "
                     + g.getTabEleve().get(i).getNom() + ", " + g.getTabEleve().get(i).getPrenom());
         }
-    }
-
-    public void setChamp(int index, String texte) {
-        champs.get(index).setText(texte);
     }
 }
 

@@ -82,6 +82,10 @@ public class UtilePanel extends JPanel implements ActionListener {
     public void addEspace(){
         simplePanel.add(new JLabel(""));
     }
+    
+    public void setChamp(int index, String texte) {
+        champs.get(index).setText(texte);
+    }
 
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenemen

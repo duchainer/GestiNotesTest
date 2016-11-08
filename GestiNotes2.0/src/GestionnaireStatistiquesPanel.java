@@ -21,8 +21,6 @@ import javax.swing.JTabbedPane;
 public class GestionnaireStatistiquesPanel extends UtilePanel {
 
     //variables
-    final int NBR_NOTES = 4;
-    JLabel notification;
     JComboBox<Groupe> comboBox1;
     JFrame uneFrame;
     JTabbedPane unTabbedPane;
@@ -112,10 +110,6 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
         }
         taux = (taux / g.getTabEleve().size()) * 100;
         return taux;
-    }
-
-    public void setChamp(int index, String texte) {
-        champs.get(index).setText(texte);
     }
 }
 

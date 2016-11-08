@@ -21,8 +21,6 @@ import javax.swing.JTabbedPane;
 public class GestionnairePanel extends UtilePanel {
 
     //variables
-    final int NBR_NOTES = 4;
-    JLabel notification;
     JComboBox<Groupe> comboBox1;
     JComboBox<Groupe> comboBox2;
     JComboBox<Groupe> comboBox3;
@@ -155,13 +153,10 @@ public class GestionnairePanel extends UtilePanel {
 
     //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
     public void remplir(JComboBox combo) {
+        combo.removeAllItems();
         for (int i = 0; i < Etablissement.getTabGroupe().size(); i++) {
             combo.addItem("Groupe " + i);
         }
-    }
-
-    public void setChamp(int index, String texte) {
-        champs.get(index).setText(texte);
     }
 }
 
