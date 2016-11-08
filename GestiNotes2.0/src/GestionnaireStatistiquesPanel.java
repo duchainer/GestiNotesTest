@@ -3,6 +3,7 @@
  * Crée 2016-11-04,17:58
  *
  *  TODO: -actionPerformed
+ *
  * @author Patrick Domingues
  */
 import java.awt.GridLayout;
@@ -26,7 +27,7 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
     JFrame uneFrame;
     JTabbedPane unTabbedPane;
     Groupe g;
-    
+
     //Méthodes
     //Constructeur
     public GestionnaireStatistiquesPanel(JFrame frame, Groupe g, JTabbedPane tabbedPane) {
@@ -36,8 +37,7 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
         this.g = g;
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
-        
-        
+
         addLabel("Statistiques");
         addEspace();
         addChamp("moyenne: ");
@@ -52,26 +52,25 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
         getLastChamp().setEditable(false);
         addChamp("taux de succes: ");
         getLastChamp().setEditable(false);
-                
+
         addBouton("retour");
         stats();
-        
-        
+
     }
     //Autres Méthodes
-    
+
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-            //uneFrame.getContentPane().add(new GestionnairePanel(uneFrame, unTabbedPane));
+        //uneFrame.getContentPane().add(new GestionnairePanel(uneFrame, unTabbedPane));
         if (((JButton) event.getSource()).getText() == "retour") {
-            
-            uneFrame.getContentPane().removeAll();            
+
+            uneFrame.getContentPane().removeAll();
             uneFrame.setSize(800, 750);
             unTabbedPane.setSize(800, 750);
             uneFrame.add(unTabbedPane);
             uneFrame.revalidate();
-            uneFrame.repaint();            
-        }        
+            uneFrame.repaint();
+        }
     }
 
     private void stats() {
@@ -80,44 +79,45 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
         setChamp(2, String.valueOf(Statistique.calculerEcartType(g)));
         setChamp(3, String.valueOf(meilleureNote()));
         setChamp(4, String.valueOf(pireNote()));
-        setChamp(5, String.valueOf(tauxDeReussite())+"%");            
-                
+        setChamp(5, String.valueOf(tauxDeReussite()) + "%");
+
     }
-   
-    public double meilleureNote(){
+
+    public double meilleureNote() {
         double note = 0;
-        for (int i=0; i<g.getTabEleve().size();i++){
-            if(g.getTabEleve().get(i).calculerNoteFinale()>note){
-            note = g.getTabEleve().get(i).calculerNoteFinale();
+        for (int i = 0; i < g.getTabEleve().size(); i++) {
+            if (g.getTabEleve().get(i).calculerNoteFinale() > note) {
+                note = g.getTabEleve().get(i).calculerNoteFinale();
             }
         }
         return note;
     }
-    public double pireNote(){
+
+    public double pireNote() {
         double note = 101;
-        for (int i=0; i<g.getTabEleve().size();i++){
-            if(g.getTabEleve().get(i).calculerNoteFinale()<note){
-            note = g.getTabEleve().get(i).calculerNoteFinale();
-            }
-        }        
-        return note;
-    }
-    public double tauxDeReussite(){
-        double taux = 0;
-        for (int i=0; i<g.getTabEleve().size();i++){
-            if(g.getTabEleve().get(i).calculerNoteFinale()>60){
-            taux ++;
+        for (int i = 0; i < g.getTabEleve().size(); i++) {
+            if (g.getTabEleve().get(i).calculerNoteFinale() < note) {
+                note = g.getTabEleve().get(i).calculerNoteFinale();
             }
         }
-        taux = (taux/g.getTabEleve().size())*100;
+        return note;
+    }
+
+    public double tauxDeReussite() {
+        double taux = 0;
+        for (int i = 0; i < g.getTabEleve().size(); i++) {
+            if (g.getTabEleve().get(i).calculerNoteFinale() > 60) {
+                taux++;
+            }
+        }
+        taux = (taux / g.getTabEleve().size()) * 100;
         return taux;
     }
-    
+
     public void setChamp(int index, String texte) {
         champs.get(index).setText(texte);
     }
 }
-
 
 //Etablissement.getTabGroupe().get(i)
 //combo.getItemAt(i).  //setName("Groupe "+i);
