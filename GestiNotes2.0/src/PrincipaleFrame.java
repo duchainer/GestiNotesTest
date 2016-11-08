@@ -62,11 +62,6 @@ public class PrincipaleFrame extends UtileFrame {
         tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
         tabbedPane.addTab("Menu Gestionnaire", new GestionnairePanel(this, tabbedPane));
         tabbedPane.addTab("Menu Aide", new AidePanel(this));
-
-        addBouton("Lister un groupe");
-        boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
-        addBouton("Afficher les statistiques d'un groupe");
-        boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
     }
 
     public void afficherStatistiques() throws HeadlessException {
