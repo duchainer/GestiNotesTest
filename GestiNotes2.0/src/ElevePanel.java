@@ -49,8 +49,7 @@ public class ElevePanel extends UtilePanel {
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
 
         if (((JButton) event.getSource()).getText() == "Enregistrer un eleve") {
-            Etablissement.addEleve(new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText()));
-            notification.setText("Enregistrement effectue");
+            addEleve();
             System.out.println("ElevePanel.actionPerformed()");
         }
         if (((JButton) event.getSource()).getText() == "Afficher un eleve") {
@@ -63,6 +62,25 @@ public class ElevePanel extends UtilePanel {
         }
     }
 
+    private void addEleve() {
+        try{
+            //Traitement de champ vide
+            for(int i=0;i<2;i++){
+                if(champs.get(i).getText().equals(""))
+                    throw new Exception("Donnée introuvable");
+            }
+            if(champs.get(2).getText().length() != 10){
+                throw new Exception("Format incorect \n format requis: \"JJ-MM-AAAA\"");                
+            }
+       
+        Etablissement.addEleve(new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText()));
+        notification.setText("Enregistrement effectue");
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    
     private void afficherEleve() {
         String codePermanent = JOptionPane.showInputDialog(null, "Entrer le code permanent de l'eleve:", "Afficher un Eleve", JOptionPane.QUESTION_MESSAGE);
         Eleve eleve;
