@@ -45,6 +45,7 @@ public class PrincipaleFrame extends UtileFrame {
         simplePanel = new JPanel(); 					//Cree le panneau
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         simplePanel.add(tabbedPane);
+        tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
         tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
         tabbedPane.addTab("Menu Aide", new AidePanel(this));
 
