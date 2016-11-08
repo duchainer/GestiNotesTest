@@ -3,6 +3,7 @@
  *
  * @author Raphael Duchaine
  */
+import java.awt.HeadlessException;
 import javax.swing.*;
 //import java.awt.*;
 import java.awt.event.*;
@@ -86,13 +87,18 @@ public class UtilePanel extends JPanel implements ActionListener {
     public void setChamp(int index, String texte) {
         champs.get(index).setText(texte);
     }
-
+    
+    
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenemen
 
         if (((JButton) event.getSource()).getText() == "HelloWorld") {
             System.out.println("HelloWorld");
         }
+    }
+
+    public void messageErreur(Exception e) throws HeadlessException {
+        JOptionPane.showMessageDialog(null,e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 
 }

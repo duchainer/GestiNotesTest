@@ -89,7 +89,7 @@ public class ElevePanel extends UtilePanel {
         //Afficher l'élève créé
         //Enregistrer des notes
         } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                messageErreur(e);
         }
     }
     
@@ -116,7 +116,11 @@ public class ElevePanel extends UtilePanel {
             }
             return true;
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
+            messageErreur(new Exception("Eleve introuvable"));
+            return false;
+        }
+        catch (Exception e) {
+            messageErreur(e);
             return false;
         }
     }
@@ -145,7 +149,7 @@ public class ElevePanel extends UtilePanel {
             notification("Modification effectue");
             
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
+            messageErreur(e);
         }
 
     }

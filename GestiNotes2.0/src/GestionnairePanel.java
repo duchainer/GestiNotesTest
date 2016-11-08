@@ -104,7 +104,7 @@ public class GestionnairePanel extends UtilePanel {
                 setChamp((5 * i) + 4, "" + groupe.getTabEleve().get(i).codePermanent());
             }
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Groupe introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
+            messageErreur(new Exception("Groupe introuvable"));
         }
     }
 

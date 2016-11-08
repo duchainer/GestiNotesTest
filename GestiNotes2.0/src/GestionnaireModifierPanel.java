@@ -62,21 +62,24 @@ public class GestionnaireModifierPanel extends UtilePanel {
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
         //uneFrame.getContentPane().add(new GestionnairePanel(uneFrame, unTabbedPane));
         if (((JButton) event.getSource()).getText() == "Enregistrer") {
-            String code = (String) comboBox1.getSelectedItem();
-            int num = Integer.parseInt(code.substring(6, 7));
-            Eleve eleve = g.getTabEleve().get(num);
+            try {
+                String code = (String) comboBox1.getSelectedItem();
+                int num = Integer.parseInt(code.substring(6, 7));
+                Eleve eleve = g.getTabEleve().get(num);
 
-            ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
-            for (int i = 0; i < NBR_NOTES; i++) {
-                evaluations.get(i).setNote(Double.parseDouble(getChamp(i).getText()));
-            }
-
+                ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
+                for (int i = 0; i < NBR_NOTES; i++) {
+                    evaluations.get(i).setNote(Double.parseDouble(getChamp(i).getText()));
+                }
             uneFrame.getContentPane().removeAll();
             //uneFrame.setSize(800, 750);
             //unTabbedPane.setSize(800, 750);
             uneFrame.add(unTabbedPane);
             uneFrame.revalidate();
             uneFrame.repaint();
+            } catch (NumberFormatException e) {
+                messageErreur(new Exception("Format des notes incorrect"));
+            }
         }
     }
 
@@ -90,7 +93,7 @@ public class GestionnaireModifierPanel extends UtilePanel {
                 setChamp(i, String.valueOf(eleve.getTabEvaluation().get(i).getNote()));
             }
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
+            messageErreur(new Exception("Eleve introuvable"));
         }
 
     }
