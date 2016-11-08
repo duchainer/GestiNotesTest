@@ -15,6 +15,7 @@ public class UtilePanel extends JPanel implements ActionListener {
     ArrayList<JComboBox> comboBoxes;
     
     JPanel simplePanel;
+    UtileFrame fenetre;
 
     //Méthodes
     //Constructeur
@@ -24,6 +25,10 @@ public class UtilePanel extends JPanel implements ActionListener {
         boutons = new ArrayList<JButton>();
         champs = new ArrayList<JTextField>();
         //comboBoxes = new ArrayList<JComboBox>();
+    }
+    public UtilePanel(UtileFrame fenetre) {
+        this();
+        this.fenetre=fenetre;
     }
     //Get-Set
     //toString

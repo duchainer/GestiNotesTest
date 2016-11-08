@@ -22,16 +22,15 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     JRadioButton radio1, radio2;
     ButtonGroup group;
-    JProgressBar pBar; 
+    JProgressBar pBar;
     JTabbedPane tabbedPane;
 
     Image logo = new LogoRosemont().logo;
 
     //Constructeurs
     public PrincipaleFrame() {
-        super("GestiNotes_02", 255, 500); // Titre, Dimensions x, y
+        super("GestiNotes_02", 800, 750); // Titre, Dimensions x, y
         setIconImage(logo);
-        setSize(800, 750); 								// Dimensions
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);					// Fenetre centree
 
@@ -44,12 +43,6 @@ public class PrincipaleFrame extends UtileFrame {
             System.err.println("Erreur de Look and feel: " + e.toString());
         }
 
-        simplePanel = new JPanel(); 					//Cree le panneau
-        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        simplePanel.add(tabbedPane);
-        tabbedPane.addTab("Menu Eleve", new ElevePanel());
-        tabbedPane.addTab("Menu Gestionnaire", new GestionnairePanel(this, tabbedPane));        
-        
         //ProgressBar (à faire update)
         /*
         for(int i=0; i<Etablissement.getTabGroupe().size(); i++){
@@ -63,20 +56,19 @@ public class PrincipaleFrame extends UtileFrame {
             simplePanel.add(new JLabel(pBar.getMaximum()+""));
                 
         }*/
-        
-        add(simplePanel);
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        simplePanel.add(tabbedPane);
+        tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
+        tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
+        tabbedPane.addTab("Menu Gestionnaire", new GestionnairePanel(this, tabbedPane));
+        tabbedPane.addTab("Menu Aide", new AidePanel(this));
 
+        addBouton("Lister un groupe");
+        boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
+        addBouton("Afficher les statistiques d'un groupe");
+        boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
     }
 
-    public void Quitter() throws HeadlessException {
-        //Permet l'arret du programme
-        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?",
-                "Quitter", JOptionPane.YES_NO_OPTION);
-        if (reponse == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }
-    /*
     public void afficherStatistiques() throws HeadlessException {
         //Affichage des statistiques d'un groupe (moyenne, variance, ecart-type)
         try {
@@ -94,35 +86,4 @@ public class PrincipaleFrame extends UtileFrame {
     }
 
     //methodes supplementaires
-    private void addEspace() {
-        simplePanel.add(new JLabel(""));
-    }
-
-    public void addBouton(String label) {
-        boutons.add(new JButton(label));				//Cree le bouton et le met dans boutons
-        simplePanel.add(boutons.get(boutons.size() - 1)); 		//Ajoute bouton au panneau
-        boutons.get(boutons.size() - 1).addActionListener(this);	//Rend le bouton interactif
-
- 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == boutons.get(0)) {
-            //ajouterEleve();
-        }
-        if (event.getSource() == boutons.get(1)) {
-            //enregistrerNote();
-
-        }
-        if (event.getSource() == boutons.get(2)) {
-            listerEleve();
-        }
-        if (event.getSource() == boutons.get(3)) {
-            afficherStatistiques();
-        }
-        if (event.getSource() == boutons.get(4)) {
-            Quitter();
-        }
-    }*/
 }
