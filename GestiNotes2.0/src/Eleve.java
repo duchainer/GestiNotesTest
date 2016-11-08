@@ -21,15 +21,15 @@ class Eleve {
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);
+        addEvaluation(new Evaluation("Science", .2));
+        addEvaluation(new Evaluation("Math", .2));
+        addEvaluation(new Evaluation("Français", .3));
+        addEvaluation(new Evaluation("Informatique", .3));
     }
 
 
     Eleve(String nom, String prenom, String date, boolean initialise) {
         this(nom,prenom,date);
-        addEvaluation(new Evaluation("Science", .2));
-        addEvaluation(new Evaluation("Math", .2));
-        addEvaluation(new Evaluation("Français", .3));
-        addEvaluation(new Evaluation("Informatique", .3));
         //Si l'on veut générer une note au hasard
         if (initialise) {
             for (int i = 0; i < evaluations.size(); i++) {
