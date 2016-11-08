@@ -37,7 +37,6 @@ public class AidePanel extends UtilePanel{
     //Constructeur
     public AidePanel(UtileFrame fenetre) {
         super(fenetre);
-        notification =(addLabel(""));
         GridLayout gl = new GridLayout(0, 1, 5, 5);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addBouton("?");
@@ -74,7 +73,7 @@ public class AidePanel extends UtilePanel{
     }
     //Retour au début du programme
     private void annuler() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        fenetre.tabbedPane.setSelectedIndex(0);
     }
     //Fenêtre incluant les créateurs, dates, lieu, etc)
     private void aPropos() {

@@ -41,10 +41,9 @@ public class PrincipaleFrame extends UtileFrame {
         } catch (Exception e) {
             System.err.println("Erreur de Look and feel: " + e.toString());
         }
-
-        simplePanel = new JPanel(); 					//Cree le panneau
-        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         simplePanel.add(tabbedPane);
+        tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
         tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
         tabbedPane.addTab("Menu Aide", new AidePanel(this));
 
@@ -53,6 +52,7 @@ public class PrincipaleFrame extends UtileFrame {
         addBouton("Afficher les statistiques d'un groupe");
         boutons.get(boutons.size() - 1).setForeground(Color.BLACK);
         add(simplePanel);
+
     }
 
     public void afficherStatistiques() throws HeadlessException {
