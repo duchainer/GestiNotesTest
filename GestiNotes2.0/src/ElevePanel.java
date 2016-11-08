@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class ElevePanel extends UtilePanel {
 
     //variables
     final int NBR_NOTES = 4;
-    JLabel notification;
     UtileFrame fenetre;
 
     //Méthodes
@@ -36,7 +36,8 @@ public class ElevePanel extends UtilePanel {
         addBouton("Enregistrer un eleve");
         addBouton("Afficher un eleve");
         addBouton("Modifier un eleve");
-        notification =(addLabel(""));
+        //Un bouton "Clear"
+        addBouton("Vider les champs");
     }
     public ElevePanel(){
         this(null);
@@ -49,22 +50,51 @@ public class ElevePanel extends UtilePanel {
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
 
         if (((JButton) event.getSource()).getText() == "Enregistrer un eleve") {
-            Etablissement.addEleve(new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText()));
-            notification.setText("Enregistrement effectue");
-            System.out.println("ElevePanel.actionPerformed()");
+            addEleve();
         }
         if (((JButton) event.getSource()).getText() == "Afficher un eleve") {
             afficherEleve();
-            System.out.println("ElevePanel.actionPerformed()");
         }
         if (((JButton) event.getSource()).getText() == "Modifier un eleve") {
             modifierEleve();
-            System.out.println("ElevePanel.actionPerformed()");
         }
+        //Un bouton qui vide tous les champs
+        if (((JButton) event.getSource()).getText() == "Vider les champs") {
+            viderChamps();
+        }
+       
+        
     }
 
-    private void afficherEleve() {
-        String codePermanent = JOptionPane.showInputDialog(null, "Entrer le code permanent de l'eleve:", "Afficher un Eleve", JOptionPane.QUESTION_MESSAGE);
+    private void addEleve() {
+        try{
+            //Traitement de champ vide
+            for(int i=0;i<2;i++){
+                if(champs.get(i).getText().equals(""))
+                    throw new Exception("Donnée introuvable");
+            }
+            if(champs.get(2).getText().length() != 10){
+                throw new Exception("Format incorect \n format requis: \"JJ-MM-AAAA\"");                
+            }
+        Eleve eleve =new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText());
+        Etablissement.addEleve(eleve);
+        afficherEleve(eleve.codePermanent());
+        notification("Enregistrement effectue");
+        //Afficher l'élève créé
+        //Enregistrer des notes
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void afficherEleve(){
+            String codePermanent = JOptionPane.showInputDialog(null,
+                    "Entrer le code permanent de l'eleve:",
+                    "Afficher un Eleve", JOptionPane.QUESTION_MESSAGE);
+            if(afficherEleve(codePermanent))
+                notification("Affichage effectue");
+    }
+    private boolean afficherEleve(String codePermanent) {
         Eleve eleve;
         try {
             eleve = Etablissement.searchEleve(codePermanent);
@@ -78,9 +108,10 @@ public class ElevePanel extends UtilePanel {
             for (int i = 0; i < NBR_NOTES; i++) {
                 setChamp(i + 4, getNote(eleve, i));
             }
-            notification.setText("Affichage effectue");
+            return true;
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
@@ -105,12 +136,21 @@ public class ElevePanel extends UtilePanel {
             for (int i = 0; i < NBR_NOTES; i++) {
                 evaluations.get(i).setNote(Double.parseDouble(getChamp(i + 4).getText()));
             }
-            notification.setText("Modification effectue");
+            notification("Modification effectue");
             
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Eleve introuvable", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
 
+    }
+
+    private void notification(String texte) {
+        JOptionPane.showMessageDialog(null, texte, "Operation Effectué", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void viderChamps() {
+        for(JTextField champ :champs)
+            champ.setText("");
     }
 
     public static String getNote(Eleve eleve, int index) {
