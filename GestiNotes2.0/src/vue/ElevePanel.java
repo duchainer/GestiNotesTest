@@ -32,7 +32,7 @@ public class ElevePanel extends UtilePanel {
         simplePanel.setLayout(gl);
         addChamp("Nom");
         addChamp("Prenom");
-        addChamp("Date (JJMMAAAA)");
+        addChamp("Date (JJ-MM-AAAA)");
         addChamp("Code Permanent");
         getLastChamp().setEditable(false);
         for (int i = 0; i < NBR_NOTES; i++) {
@@ -85,8 +85,8 @@ public class ElevePanel extends UtilePanel {
                 if(champs.get(i).getText().equals(""))
                     throw new Exception("Donnée introuvable");
             }
-            if(champs.get(2).getText().length() != 8){
-                throw new Exception("Format incorect \n format requis: \"JJMMAAAA\"");                
+            if(champs.get(2).getText().length() != 10){
+                throw new Exception("Format incorect \n format requis: \"JJ-MM-AAAA\"");                
             }
         Eleve eleve =new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText());
         Etablissement.addEleve(eleve);
