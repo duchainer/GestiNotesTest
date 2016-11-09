@@ -37,7 +37,7 @@ public class PrincipaleFrame extends UtileFrame {
         super("GestiNotes_02", 800, 750); // Titre, Dimensions x, y
         setIconImage(logo);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
-        setLocationRelativeTo(null);					// Fenetre centree
+        setLocationRelativeTo(null);			// Fenetre centree
 
         setResizable(true);
 
