@@ -5,10 +5,16 @@
         <group>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/PrincipaleFrame.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/UtilePanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/GestiNotesGraphique.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/ElevePanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/AcceuilPanel.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/AidePanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/Evaluation.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/GestionnaireModifierPanel.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/UtileFrame.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/GestionnaireStatistiquesPanel.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/LogoRosemont.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/GestionnairePanel.java</file>
         </group>
     </open-files>
 </project-private>

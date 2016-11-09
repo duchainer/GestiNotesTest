@@ -14,7 +14,7 @@ class Eleve {
 
 //Constructeur
     Eleve() {
-        this("Etychen", "Paul", "01-04-1999");
+        this("Etychen", "Paul", "01041999");
     }
 
     Eleve(String nom, String prenom, String dateNaissance) {
@@ -79,7 +79,7 @@ class Eleve {
 //Autres méthodes
     public String codePermanent() {
         //ex : Duchaine Raphael 29-04-1998  donne  DR1998
-        return getNom().substring(0, 1) + getPrenom().substring(0, 1) + getDateNaissance().substring(6, 10);
+        return getNom().substring(0, 1) + getPrenom().substring(0, 1) + getDateNaissance().substring(4, 8);
     }
 
     public double calculerNoteFinale() {

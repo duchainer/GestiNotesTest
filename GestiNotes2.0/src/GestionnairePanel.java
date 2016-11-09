@@ -70,7 +70,7 @@ public class GestionnairePanel extends UtilePanel {
         
         //Ajoute les divers champs pour les divers informations tout en les protégeant de l'édition
         for (int i = 0; i < Etablissement.ELEVES_PAR_GROUPE; i++) {
-            addChamp("Eleve " + (i + 1));
+            addChamp("Eleve " + i);
             getLastChamp().setEditable(false);
             addProtectedChamp();
             addProtectedChamp();
@@ -127,7 +127,7 @@ public class GestionnairePanel extends UtilePanel {
 
         uneFrame.getContentPane().removeAll();
         //uneFrame.add(unTabbedPane);
-        uneFrame.getContentPane().add(new GestionnaireStatistiquesPanel(uneFrame, groupe, unTabbedPane));
+        uneFrame.getContentPane().add(new GestionnaireStatistiquesPanel(uneFrame, num, groupe, unTabbedPane));
         uneFrame.revalidate();
         uneFrame.repaint();
 

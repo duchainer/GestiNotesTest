@@ -23,15 +23,16 @@ public class ElevePanel extends UtilePanel {
     //Constructeur
     public ElevePanel(UtileFrame fenetre) {
         super(fenetre);
-        GridLayout gl = new GridLayout(5, 1, 0, 25);	//Cree GridLayout
+        GridLayout gl = new GridLayout(13, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addChamp("Nom");
         addChamp("Prenom");
-        addChamp("Date");
+        addChamp("Date (JJMMAAAA)");
         addChamp("Code Permanent");
         getLastChamp().setEditable(false);
         for (int i = 0; i < NBR_NOTES; i++) {
             addChamp("Note" + (i + 1));
+            //if((i%2)!=0){addEspace();}
         }
         addBouton("Enregistrer un eleve");
         addBouton("Afficher un eleve");
@@ -79,8 +80,8 @@ public class ElevePanel extends UtilePanel {
                 if(champs.get(i).getText().equals(""))
                     throw new Exception("Donnée introuvable");
             }
-            if(champs.get(2).getText().length() != 10){
-                throw new Exception("Format incorect \n format requis: \"JJ-MM-AAAA\"");                
+            if(champs.get(2).getText().length() != 8){
+                throw new Exception("Format incorect \n format requis: \"JJMMAAAA\"");                
             }
         Eleve eleve =new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText());
         Etablissement.addEleve(eleve);

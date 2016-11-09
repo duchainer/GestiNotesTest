@@ -27,7 +27,7 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
 
     //Méthodes
     //Constructeur
-    public GestionnaireStatistiquesPanel(JFrame frame, Groupe g, JTabbedPane tabbedPane) {
+    public GestionnaireStatistiquesPanel(JFrame frame, int num, Groupe g, JTabbedPane tabbedPane) {
         super();
         this.uneFrame = frame;
         this.unTabbedPane = tabbedPane;
@@ -36,7 +36,7 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
         simplePanel.setLayout(gl);
 
         addLabel("Statistiques");
-        addEspace();
+        addLabel("Groupe "+num);
         addChamp("moyenne: ");
         getLastChamp().setEditable(false);
         addChamp("variance: ");

@@ -19,8 +19,8 @@ public class AidePanel extends UtilePanel{
             + "\nVersion 1 (12/10/2016)"
             + "\n"
             + "\nQuand on demanda aux ingénieurs de InnovTech de concevoir le futur du gestionnaire scolaire,"
-            + "\n(un produit qui serait à la fois convivial, efficace et graphique) la majorité de ceux présents a lâché l'éponge."
-            + "\nMais les deux qui restaient ont vraiment fait de gros efforts pour accoucher de ce bijou de technologie.";
+            + "\n(un produit qui serait à la fois convivial, efficace et graphique) la majorité de ceux présents a lancé l'éponge."
+            + "\nMais les deux qui restèrent ont vraiment fait de gros efforts pour accoucher de ce bijou de technologie.";
     String instructions="Pour utiliser ce bijou d'innovation, il faut savoir:"
             + "\n-Que chaque groupe ne peut comprendre que 10 eleves"
             + "\n-Qu'un eleve doit être initialisé avec nom, prenom et date "
@@ -37,7 +37,7 @@ public class AidePanel extends UtilePanel{
     //Constructeur
     public AidePanel(UtileFrame fenetre) {
         super(fenetre);
-        GridLayout gl = new GridLayout(0, 1, 5, 5);	//Cree GridLayout
+        GridLayout gl = new GridLayout(13, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addBouton("?");
         addBouton("À Propos");

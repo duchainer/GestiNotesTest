@@ -13,7 +13,7 @@ public final class Etablissement {
     private static ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
     static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "Karato", "K'amon"};
     static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "Ash", "ToutTemps"};
-    static String[] dates = {"01-01-0001", "21-05-1982", "30-04-1213", "21-11-1395", "04-02-0999", "31-12-2012", "16-06-0654", "09-07-6000"};
+    static String[] dates = {"01010001", "21051982", "30041213", "21111395", "04020999", "31122012", "16060654", "09076000"};
 
 //Constructeur
     public static void Etablissement() {
