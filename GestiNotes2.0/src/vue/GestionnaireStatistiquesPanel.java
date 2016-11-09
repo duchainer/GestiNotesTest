@@ -1,3 +1,5 @@
+package vue;
+
 
 /**
  * Crée 2016-11-04,17:58
@@ -6,6 +8,8 @@
  *
  * @author Patrick Domingues
  */
+import modele.Groupe;
+import modele.Statistique;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;

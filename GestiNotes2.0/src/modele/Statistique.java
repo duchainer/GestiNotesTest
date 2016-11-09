@@ -1,3 +1,5 @@
+package modele;
+
 
 import java.util.*;
 
@@ -5,7 +7,7 @@ import java.util.*;
  * 30/09/2016
  * @author raphael
  */
-class Statistique {
+public class Statistique {
     
     
     //Méthode pour calculer la moyenne

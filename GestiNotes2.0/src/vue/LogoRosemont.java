@@ -1,3 +1,5 @@
+package vue;
+
 // Codage de la TEXTURE des formes du LOGO du cégep
 
 // Packages de noyau Java.

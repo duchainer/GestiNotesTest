@@ -1,8 +1,10 @@
+package modele;
+
 /**
  * 28/09/2016
  * @author raphael
  */
-class Evaluation {
+public class Evaluation {
 //variables
     private String nom;
     private Professeur prof;

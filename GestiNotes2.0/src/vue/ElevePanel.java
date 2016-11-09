@@ -1,9 +1,14 @@
+package vue;
+
 
 /**
  * Crée 2016-10-31,09:38:32
  *
  * @author Raphael Duchaine
  */
+import modele.Evaluation;
+import modele.Etablissement;
+import modele.Eleve;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;

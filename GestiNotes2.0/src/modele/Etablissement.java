@@ -1,3 +1,5 @@
+package modele;
+
 
 import java.util.*;
 
@@ -9,7 +11,7 @@ import java.util.*;
 public final class Etablissement {
 
     private static String nomEcole = "Academie de RobberVals";
-    static final int ELEVES_PAR_GROUPE = 10;
+    public static final int ELEVES_PAR_GROUPE = 10;
     private static ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
     static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "Karato", "K'amon"};
     static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "Ash", "ToutTemps"};

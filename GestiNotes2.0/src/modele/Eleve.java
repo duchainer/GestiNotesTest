@@ -1,3 +1,5 @@
+package modele;
+
 
 import java.util.*;
 
@@ -6,7 +8,7 @@ import java.util.*;
  *
  * @author Raphael
  */
-class Eleve {
+public class Eleve {
 //variables
 
     private String nom, prenom, dateNaissance;
@@ -17,7 +19,7 @@ class Eleve {
         this("Etychen", "Paul", "01041999");
     }
 
-    Eleve(String nom, String prenom, String dateNaissance) {
+    public Eleve(String nom, String prenom, String dateNaissance) {
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);
@@ -28,7 +30,7 @@ class Eleve {
     }
 
 
-    Eleve(String nom, String prenom, String date, boolean initialise) {
+    public Eleve(String nom, String prenom, String date, boolean initialise) {
         this(nom,prenom,date);
         //Si l'on veut générer une note au hasard
         if (initialise) {

@@ -1,3 +1,5 @@
+package modele;
+
 import java.util.ArrayList;
 /**
  *  28/09/2016

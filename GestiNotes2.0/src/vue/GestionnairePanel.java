@@ -1,3 +1,5 @@
+package vue;
+
 
 /**
  * Crée 2016-10-31,20:58:32
@@ -6,6 +8,9 @@
  *
  * @author Patrick Domingues
  */
+import modele.Eleve;
+import modele.Etablissement;
+import modele.Groupe;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;

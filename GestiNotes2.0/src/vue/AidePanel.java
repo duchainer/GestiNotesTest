@@ -1,3 +1,5 @@
+package vue;
+
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,9 @@
+package vue;
 
+
+import modele.Groupe;
+import modele.Statistique;
+import modele.Etablissement;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.event.*;
