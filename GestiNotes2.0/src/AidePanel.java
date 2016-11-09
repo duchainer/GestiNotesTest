@@ -6,6 +6,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 
 /**
  * Crée 2016-11-01,09:29:42 
@@ -30,13 +31,11 @@ public class AidePanel extends UtilePanel{
            
 
     //variables
-    final int NBR_NOTES = 4;
-    JLabel notification;
 
     //Méthodes
     //Constructeur
-    public AidePanel(UtileFrame fenetre) {
-        super(fenetre);
+    public AidePanel(UtileFrame fenetre, JTabbedPane tabbedPane) {
+        super(fenetre,tabbedPane);
         GridLayout gl = new GridLayout(13, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addBouton("?");
@@ -45,7 +44,8 @@ public class AidePanel extends UtilePanel{
         addBouton("Quitter");
     }
     public AidePanel(){
-        this(null);
+        this(null,null);
+        
     }
     //Get-Set
     //toString
@@ -55,25 +55,21 @@ public class AidePanel extends UtilePanel{
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
         if (((JButton) event.getSource()).getText() == "Quitter") {
             fenetre.quitter();
-            System.out.println("ElevePanel.actionPerformed()");
         }
         if (((JButton) event.getSource()).getText() == "?") {
             instructions();
-            System.out.println("ElevePanel.actionPerformed()");
         }
         if (((JButton) event.getSource()).getText() == "À Propos") {
             aPropos();
-            System.out.println("ElevePanel.actionPerformed()");
 
         }
         if (((JButton) event.getSource()).getText() == "Annuler") {
             annuler();
-            System.out.println("ElevePanel.actionPerformed()");
         }
     }
     //Retour au début du programme
     private void annuler() {
-        fenetre.tabbedPane.setSelectedIndex(0);
+        tabbedPane.setSelectedIndex(0);
     }
     //Fenêtre incluant les créateurs, dates, lieu, etc)
     private void aPropos() {

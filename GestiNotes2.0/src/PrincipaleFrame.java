@@ -61,7 +61,7 @@ public class PrincipaleFrame extends UtileFrame {
         tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
         tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
         tabbedPane.addTab("Menu Gestionnaire", new GestionnairePanel(this, tabbedPane));
-        tabbedPane.addTab("Menu Aide", new AidePanel(this));
+        tabbedPane.addTab("Menu Aide", new AidePanel(this, tabbedPane));
     }
 
     public void afficherStatistiques() throws HeadlessException {
