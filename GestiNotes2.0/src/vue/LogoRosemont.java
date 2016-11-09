@@ -26,9 +26,9 @@ public class LogoRosemont extends JFrame {
 
     public LogoRosemont()
    {
-      super( "Tracé de formes bidimensionnelles" );
-      setSize( 425, 160 );
-      setVisible( true );
+//      super( "Tracé de formes bidimensionnelles" );
+//      setSize( 425, 160 );
+//      setVisible( true );
       //getContentPane().setBackground(Color.white);
    }
 
