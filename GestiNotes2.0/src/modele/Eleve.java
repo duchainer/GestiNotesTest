@@ -35,7 +35,7 @@ public class Eleve {
         //Si l'on veut générer une note au hasard
         if (initialise) {
             for (int i = 0; i < evaluations.size(); i++) {
-                evaluations.get(i).setNote(Etablissement.randomNote());
+                evaluations.get(i).setNote(Math.round(Etablissement.randomNote()*100.0)/100.0);
             }
         }
 
@@ -85,13 +85,16 @@ public class Eleve {
     }
 
     public double calculerNoteFinale() {
-        double somme = 0;
+        double somme = 0,valeurAccumulée = 0;
+        
         for (int i = 0; i < evaluations.size(); i++) {
             Evaluation my_cours = evaluations.get(i);
             if(my_cours.getNote()!=-1.)
+                valeurAccumulée+=my_cours.getValeurEvaluation();
                 somme += (my_cours.getNote() * my_cours.getValeurEvaluation());
         }
-        return somme;
+        somme/=valeurAccumulée;
+        return Math.round(somme*100.0)/100.0;
     }
 
     @Override
