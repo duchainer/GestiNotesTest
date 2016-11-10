@@ -1,6 +1,5 @@
 package vue;
 
-
 import modele.Groupe;
 import modele.Statistique;
 import modele.Etablissement;
@@ -36,10 +35,12 @@ public class PrincipaleFrame extends UtileFrame {
     public PrincipaleFrame() {
         super("GestiNotes_02", 800, 750); // Titre, Dimensions x, y
         setIconImage(logo);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermeture par x
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);			// Fenetre centree
 
         setResizable(true);
+        
+        addWindowListener(exitListener);
 
         //Look And Feel natif
         try {
@@ -65,7 +66,7 @@ public class PrincipaleFrame extends UtileFrame {
         simplePanel.add(tabbedPane);
         UtilePanel gestionPanel = new GestionnairePanel(this, tabbedPane);
         tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
-        tabbedPane.addTab("Menu Eleve", new ElevePanel(this,gestionPanel));
+        tabbedPane.addTab("Menu Eleve", new ElevePanel(this, gestionPanel));
         tabbedPane.addTab("Menu Gestionnaire", gestionPanel);
         tabbedPane.addTab("Menu Aide", new AidePanel(this, tabbedPane));
     }
@@ -87,4 +88,10 @@ public class PrincipaleFrame extends UtileFrame {
     }
 
     //methodes supplementaires
+    WindowListener exitListener = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            quitter();
+        }
+    };
 }
