@@ -5,6 +5,7 @@ package vue;
  *
  * @author Raphael Duchaine
  */
+import java.awt.Color;
 import java.awt.HeadlessException;
 import javax.swing.*;
 //import java.awt.*;
@@ -39,6 +40,7 @@ public class UtilePanel extends JPanel implements ActionListener{
         champs= new ArrayList<JTextField>();
         tabComboBox = new ArrayList<JComboBox>();
         add(simplePanel);
+        //simplePanel.setBackground(Color.CYAN);
 
     }
     //Get-Set
