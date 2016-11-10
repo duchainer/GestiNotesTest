@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.BorderLayout;
 import modele.Groupe;
 import modele.Statistique;
 import modele.Etablissement;
@@ -26,7 +27,6 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     JRadioButton radio1, radio2;
     ButtonGroup group;
-    JProgressBar pBar;
     JTabbedPane tabbedPane;
 
     Image logo = new LogoRosemont().logo;
@@ -37,9 +37,10 @@ public class PrincipaleFrame extends UtileFrame {
         setIconImage(logo);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);			// Fenetre centree
-
+        BorderLayout bl = new BorderLayout();
+        simplePanel.setLayout(bl);
         setResizable(true);
-        
+
         addWindowListener(exitListener);
 
         //Look And Feel natif
@@ -48,27 +49,25 @@ public class PrincipaleFrame extends UtileFrame {
         } catch (Exception e) {
             System.err.println("Erreur de Look and feel: " + e.toString());
         }
+        //Création ProgressBar
+        pBar = new JProgressBar();
+        pBar.setMinimum(0);
+        pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
+        pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
 
-        //ProgressBar (à faire update)
-        /*
-        for(int i=0; i<Etablissement.getTabGroupe().size(); i++){
-            pBar = new JProgressBar();
-            pBar.setMinimum(0);
-            pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
-            pBar.setValue(Etablissement.getTabGroupe().get(i).getTabEleve().size());
-                        
-            simplePanel.add(new JLabel(pBar.getMinimum()+""));
-            simplePanel.add(pBar);
-            simplePanel.add(new JLabel(pBar.getMaximum()+""));
-                
-        }*/
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        simplePanel.add(tabbedPane);
-        UtilePanel gestionPanel = new GestionnairePanel(this, tabbedPane);
+        simplePanel.add(tabbedPane, BorderLayout.NORTH);
+        UtilePanel gestionPanel = new GestionnairePanel(this, tabbedPane,pBar);
         tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
         tabbedPane.addTab("Menu Eleve", new ElevePanel(this, gestionPanel));
         tabbedPane.addTab("Menu Gestionnaire", gestionPanel);
         tabbedPane.addTab("Menu Aide", new AidePanel(this, tabbedPane));
+
+       
+        
+        simplePanel.add(new JLabel(pBar.getMinimum() + ""), BorderLayout.WEST);
+        simplePanel.add(pBar, BorderLayout.CENTER);
+        simplePanel.add(new JLabel(pBar.getMaximum() + ""), BorderLayout.EAST);
     }
 
     public void afficherStatistiques() throws HeadlessException {
@@ -94,4 +93,5 @@ public class PrincipaleFrame extends UtileFrame {
             quitter();
         }
     };
+
 }

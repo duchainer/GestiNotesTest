@@ -8,6 +8,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import java.awt.BorderLayout;
 import modele.Groupe;
 import modele.Statistique;
 import java.awt.GridLayout;
@@ -20,21 +21,20 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 import javax.swing.JTabbedPane;
+import modele.Etablissement;
 
-public class GestionnaireStatistiquesPanel extends UtilePanel {
+public class GestionnaireStatistiquesPanel extends ComplementPanel {
 
-    //variables
-    JFrame uneFrame;
-    JTabbedPane unTabbedPane;
+
+    //variable
     Groupe g;
 
     //Méthodes
     //Constructeur
-    public GestionnaireStatistiquesPanel(JFrame frame, int num, Groupe g, JTabbedPane tabbedPane) {
-        super();
-        this.uneFrame = frame;
-        this.unTabbedPane = tabbedPane;
+    public GestionnaireStatistiquesPanel(UtileFrame frame, int num, Groupe g, JTabbedPane tabbedPane) {
+        super(frame,tabbedPane);
         this.g = g;
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
@@ -60,19 +60,19 @@ public class GestionnaireStatistiquesPanel extends UtilePanel {
     }
     //Autres Méthodes
 
+    GestionnaireStatistiquesPanel(UtileFrame uneFrame, int num, Groupe groupe, JTabbedPane unTabbedPane, JProgressBar pBar) {
+        this(uneFrame,num,groupe,unTabbedPane);
+        this.pBar=pBar;
+    }
+
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-        //uneFrame.getContentPane().add(new GestionnairePanel(uneFrame, unTabbedPane));
+        //uneFrame.getContentPane().add(new GestionnairePanel(fenetre, tabbedPane));
         if (((JButton) event.getSource()).getText() == "retour") {
-
-            uneFrame.getContentPane().removeAll();
-            uneFrame.setSize(800, 750);
-            unTabbedPane.setSize(800, 750);
-            uneFrame.add(unTabbedPane);
-            uneFrame.revalidate();
-            uneFrame.repaint();
+            retour();
         }
     }
+
 
     private void stats() {
         setChamp(0, String.valueOf(Statistique.calculerMoyenne(g)));

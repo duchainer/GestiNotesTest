@@ -12,29 +12,26 @@ import modele.Etablissement;
 import modele.Groupe;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 import javax.swing.JTabbedPane;
 
 public class GestionnairePanel extends UtilePanel {
 
+    private JProgressBar pBar;
+
     //variables
-    JFrame uneFrame;
-    JTabbedPane unTabbedPane;
 
     //Méthodes
     //Constructeur
-    public GestionnairePanel(JFrame frame, JTabbedPane tabbedPane) {
-        super();
-        this.uneFrame = frame;
-        this.unTabbedPane = tabbedPane;
+    public GestionnairePanel(UtileFrame frame, JTabbedPane tabbedPane) {
+        super(frame,tabbedPane);
 
         GridLayout gl = new GridLayout(13, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
@@ -45,7 +42,7 @@ public class GestionnairePanel extends UtilePanel {
         addComboBox();
         addLabel("Statistiques: ");
         addComboBox();
-        
+
         //Ajoute les divers label pour les divers informations
         addLabel("");
         addLabel("Prenom");
@@ -68,28 +65,39 @@ public class GestionnairePanel extends UtilePanel {
         boutons.get(0).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(uneFrame, "Pour effectuer une operation, lisez les options,"
+                JOptionPane.showMessageDialog(fenetre, "Pour effectuer une operation, lisez les options,"
                         + "\npuis choisissez le groupe que vous voulez consulter ou modifier", "Aide", JOptionPane.INFORMATION_MESSAGE);
             }
         });
-        comboBoxes.get(0).addActionListener(new ActionListener() {
+        tabComboBox.get(0).addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                lister();
+                if (tabComboBox.get(0).getSelectedItem() != null) {
+                    lister();
+                }
             }
         });
-        comboBoxes.get(1).addActionListener(new ActionListener() {
+        tabComboBox.get(1).addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                modifier();
+                if (tabComboBox.get(1).getSelectedItem() != null) {
+                    modifier();
+                }
             }
         });
-        comboBoxes.get(2).addActionListener(new ActionListener() {
+        tabComboBox.get(2).addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                statistiques();
+                if (tabComboBox.get(2).getSelectedItem() != null) {
+                    statistiques();
+                }
             }
         });
     }
     //Autres Méthodes
-   
+
+    GestionnairePanel(UtileFrame frame, JTabbedPane tabbedPane, JProgressBar pBar) {
+        this(frame,tabbedPane);
+        this.pBar = pBar;
+    }
+
     public void refreshComboBoxes() {
         super.refreshComboBoxes(Etablissement.getTabGroupe());
     }
@@ -97,7 +105,7 @@ public class GestionnairePanel extends UtilePanel {
     private void lister() {
         if (champs != null) {
 
-            String code = (String) comboBoxes.get(0).getSelectedItem();
+            String code = (String) tabComboBox.get(0).getSelectedItem();
             int num = Integer.parseInt(code.substring(7));
             Groupe groupe = Etablissement.getTabGroupe().get(num);
             //System.out.println(""+num);
@@ -116,27 +124,27 @@ public class GestionnairePanel extends UtilePanel {
     }
 
     private void modifier() {
-        String code = (String) comboBoxes.get(1).getSelectedItem();
+        String code = (String) tabComboBox.get(1).getSelectedItem();
         int num = Integer.parseInt(code.substring(7));
         Groupe groupe = Etablissement.getTabGroupe().get(num);
 
-        uneFrame.getContentPane().removeAll();
-        //uneFrame.add(unTabbedPane);
-        uneFrame.getContentPane().add(new GestionnaireModifierPanel(uneFrame, groupe, unTabbedPane));
-        uneFrame.revalidate();
-        uneFrame.repaint();
+        fenetre.getContentPane().removeAll();
+        //uneFrame.add(tabbedPane);
+        fenetre.getContentPane().add(new GestionnaireModifierPanel(fenetre, groupe, tabbedPane));
+        fenetre.revalidate();
+        fenetre.repaint();
     }
 
     private void statistiques() {
-        String code = (String) comboBoxes.get(2).getSelectedItem();
+        String code = (String) tabComboBox.get(2).getSelectedItem();
         int num = Integer.parseInt(code.substring(7));
         Groupe groupe = Etablissement.getTabGroupe().get(num);
 
-        uneFrame.getContentPane().removeAll();
-        //uneFrame.add(unTabbedPane);
-        uneFrame.getContentPane().add(new GestionnaireStatistiquesPanel(uneFrame, num, groupe, unTabbedPane));
-        uneFrame.revalidate();
-        uneFrame.repaint();
+        fenetre.getContentPane().removeAll();
+        //uneFrame.add(tabbedPane);
+        fenetre.getContentPane().add(new GestionnaireStatistiquesPanel(fenetre, num, groupe, tabbedPane,pBar));
+        fenetre.revalidate();
+        fenetre.repaint();
 
     }
 
@@ -148,7 +156,7 @@ public class GestionnairePanel extends UtilePanel {
     public static String getNote(Eleve eleve, int index) {
         return eleve.getTabEvaluation().get(index).getNote().toString();
     }
-    
+
     /*
     //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
     public void remplir(JComboBox combo, ArrayList list) {
@@ -157,7 +165,6 @@ public class GestionnairePanel extends UtilePanel {
             combo.addItem("Groupe " + i);
         }
     }*/
-
     @Override
     public void actionPerformed(ActionEvent e) {
         revalidate();

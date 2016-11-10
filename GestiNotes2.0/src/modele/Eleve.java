@@ -89,7 +89,7 @@ public class Eleve {
         
         for (int i = 0; i < evaluations.size(); i++) {
             Evaluation my_cours = evaluations.get(i);
-            if(my_cours.getNote()!=-1.)
+            if(my_cours.getNote()!=-1.0)
                 valeurAccumulée+=my_cours.getValeurEvaluation();
                 somme += (my_cours.getNote() * my_cours.getValeurEvaluation());
         }

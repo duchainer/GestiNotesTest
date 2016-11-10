@@ -16,7 +16,7 @@ public class UtilePanel extends JPanel implements ActionListener{
     //variables
     ArrayList<JButton> boutons;
     ArrayList<JTextField> champs;
-    ArrayList<JComboBox> comboBoxes;
+    ArrayList<JComboBox> tabComboBox;
 
     JPanel simplePanel = new JPanel();
     UtileFrame fenetre;
@@ -37,7 +37,7 @@ public class UtilePanel extends JPanel implements ActionListener{
     public UtilePanel() {
         boutons= new ArrayList<JButton>();
         champs= new ArrayList<JTextField>();
-        comboBoxes = new ArrayList<JComboBox>();
+        tabComboBox = new ArrayList<JComboBox>();
         add(simplePanel);
 
     }
@@ -50,7 +50,7 @@ public class UtilePanel extends JPanel implements ActionListener{
         JComboBox<String> comboBox = new JComboBox<String>();
         simplePanel.add(comboBox);
         comboBox.addActionListener(this);
-        comboBoxes.add(comboBox);
+        tabComboBox.add(comboBox);
     }
     
     public void addBouton(String label) {
@@ -121,9 +121,9 @@ public class UtilePanel extends JPanel implements ActionListener{
     }
     
     public void refreshComboBoxes(ArrayList liste) {
-        if (comboBoxes != null) {
-            for (int i = 0; i < comboBoxes.size(); i++) {
-                final JComboBox get = comboBoxes.get(i);
+        if (tabComboBox != null) {
+            for (int i = 0; i < tabComboBox.size(); i++) {
+                final JComboBox get = tabComboBox.get(i);
                 remplir(get,liste);
                 get.revalidate();
                 get.repaint();

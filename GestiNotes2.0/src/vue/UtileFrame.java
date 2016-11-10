@@ -5,6 +5,7 @@ package vue;
  *
  * @author Raphael Duchaine
  */
+import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import javax.swing.*;
 //import java.awt.*;
@@ -12,11 +13,13 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class UtileFrame extends JFrame implements ActionListener {
+
     //variables
     JPanel simplePanel;
     ArrayList<JButton> boutons;
     ArrayList<JTextField> champs;
     public JTabbedPane tabbedPane;
+    JProgressBar pBar;
 
     //Méthodes
     //Constructeur
@@ -50,8 +53,9 @@ public class UtileFrame extends JFrame implements ActionListener {
         champs.add(champ);//Ajoute le champ dans le tableau champs
         return label; //Retourne le label
     }
+
     public JLabel addLabel(String texte) {
-        JLabel label =new JLabel(texte);
+        JLabel label = new JLabel(texte);
         simplePanel.add(label);
         return label;
     }
@@ -62,6 +66,8 @@ public class UtileFrame extends JFrame implements ActionListener {
             System.out.println("HelloWorld");
         }
     }
+    
+
 
     public void quitter() throws HeadlessException {
         //Permet l'arret du programme
