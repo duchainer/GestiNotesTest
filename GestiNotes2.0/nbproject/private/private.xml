@@ -3,19 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/AidePanel.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/modele/Statistique.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/GestionnairePanel.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/GestionnaireModifierPanel.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/UtileFrame.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/AcceuilPanel.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/modele/Etablissement.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/PrincipaleFrame.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/ComplementPanel.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/GestionnaireStatistiquesPanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/PrincipaleFrame.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/modele/Eleve.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/LogoRosemont.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/AidePanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/GestionnairePanel.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/ElevePanel.java</file>
-            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/GestiNotesGraphique.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/UtileFrame.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotesTest/GestiNotes2.0/src/vue/UtilePanel.java</file>
         </group>
     </open-files>
