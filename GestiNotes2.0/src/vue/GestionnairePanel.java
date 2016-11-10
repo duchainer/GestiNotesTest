@@ -110,6 +110,13 @@ public class GestionnairePanel extends UtilePanel {
             Groupe groupe = Etablissement.getTabGroupe().get(num);
             //System.out.println(""+num);
             try {
+                for (int i = 0; i < Etablissement.ELEVES_PAR_GROUPE; i++) {
+                    setChamp((5 * i), "");
+                    setChamp((5 * i) + 1, "");
+                    setChamp((5 * i) + 2, "");
+                    setChamp((5 * i) + 3, "");
+                    setChamp((5 * i) + 4, "");
+                }
                 for (int i = 0; i < groupe.getTabEleve().size(); i++) {
                     setChamp((5 * i), groupe.getTabEleve().get(i).getNom());
                     setChamp((5 * i) + 1, groupe.getTabEleve().get(i).getPrenom());
