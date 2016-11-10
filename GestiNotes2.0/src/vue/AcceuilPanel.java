@@ -25,11 +25,11 @@ public class AcceuilPanel extends UtilePanel {
         // Creer le contexte graphique 2D
         Graphics2D g2d = (Graphics2D) g;
         Image image = getToolkit().getImage("images/bille.png");    // chercher fichier image
-        g2d.drawImage(image, 2*570/3-125, 750/4, 570/2, 750/2, this);        // le dessiner avec coordonnees et dimensions
+        g2d.drawImage(image, 150, 160, 500, 450, this);        // le dessiner avec coordonnees et dimensions
         g2d.setFont( new Font( "Algerian", Font.BOLD, 20 ) );
-        g2d.drawString("Bienvenue dans le", 15, 250);
-        g2d.drawString("gestionnaire GestiNotes", 15, 270);
-        g2d.drawString("version 2.0!", 15, 290);
+        g2d.drawString("Bienvenue dans le", 255, 50);
+        g2d.drawString("gestionnaire GestiNotes", 255, 70);
+        g2d.drawString("version 2.0!", 255, 90);
         
     }
     //Get-Set

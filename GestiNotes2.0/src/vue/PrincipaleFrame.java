@@ -63,9 +63,10 @@ public class PrincipaleFrame extends UtileFrame {
         }*/
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         simplePanel.add(tabbedPane);
+        UtilePanel gestionPanel = new GestionnairePanel(this, tabbedPane);
         tabbedPane.addTab("Acceuil", new AcceuilPanel(this));
-        tabbedPane.addTab("Menu Eleve", new ElevePanel(this));
-        tabbedPane.addTab("Menu Gestionnaire", new GestionnairePanel(this, tabbedPane));
+        tabbedPane.addTab("Menu Eleve", new ElevePanel(this,gestionPanel));
+        tabbedPane.addTab("Menu Gestionnaire", gestionPanel);
         tabbedPane.addTab("Menu Aide", new AidePanel(this, tabbedPane));
     }
 

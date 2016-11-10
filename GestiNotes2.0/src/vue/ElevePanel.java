@@ -20,14 +20,17 @@ import javax.swing.JTextField;
 
 public class ElevePanel extends UtilePanel {
 
+    private UtilePanel gestionPanel;
+
     //variables
     final int NBR_NOTES = 4;
     UtileFrame fenetre;
 
     //Méthodes
     //Constructeur
-    public ElevePanel(UtileFrame fenetre) {
+    public ElevePanel(UtileFrame fenetre, UtilePanel gestionPanel) {
         super(fenetre);
+        this.gestionPanel=gestionPanel;
         GridLayout gl = new GridLayout(13, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addChamp("Nom");
@@ -46,7 +49,7 @@ public class ElevePanel extends UtilePanel {
         addBouton("Vider les champs");
     }
     public ElevePanel(){
-        this(null);
+        this(null,null);
     }
     //Get-Set
     //toString
@@ -86,7 +89,7 @@ public class ElevePanel extends UtilePanel {
                     throw new Exception("Donnée introuvable");
             }
             if(champs.get(2).getText().length() != 10){
-                throw new Exception("Format incorect \n format requis: \"JJ-MM-AAAA\"");                
+                throw new Exception("Format incorrect \n format requis: \"JJ-MM-AAAA\"");                
             }
         Eleve eleve =new Eleve(champs.get(0).getText(), champs.get(1).getText(), champs.get(2).getText());
         Etablissement.addEleve(eleve);
@@ -97,6 +100,7 @@ public class ElevePanel extends UtilePanel {
         } catch (Exception e) {
                 messageErreur(e);
         }
+                refreshComboBoxes();
     }
     
     private void afficherEleve(){
@@ -171,5 +175,8 @@ public class ElevePanel extends UtilePanel {
 
     public static String getNote(Eleve eleve, int index) {
         return eleve.getTabEvaluation().get(index).getNote().toString();
+    }
+    public void refreshComboBoxes() {
+        gestionPanel.refreshComboBoxes(Etablissement.getTabGroupe());
     }
 }

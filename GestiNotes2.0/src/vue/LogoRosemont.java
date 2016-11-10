@@ -28,8 +28,8 @@ public class LogoRosemont extends JFrame {
    {
 //      super( "Tracé de formes bidimensionnelles" );
 //      setSize( 425, 160 );
-//      setVisible( true );
-      //getContentPane().setBackground(Color.white);
+      setVisible( true );
+      getContentPane().setBackground(Color.white);
    }
 
     // Dessiner des formes avec l'API Java2D.
