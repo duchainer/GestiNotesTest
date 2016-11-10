@@ -78,6 +78,7 @@ public class LogoRosemont extends JFrame {
         drawTriangleRect(g2d, 50, 50, 30, 50);
         g2d.setPaint(new TexturePaint(imageTampon3, new Rectangle(100, 100)));   // Rectangle(width, height)
         g2d.fill(new Rectangle2D.Double(20, 0, 30, 100));  // affichage du rectangle contenant la texture : Rectangle2D.Double( x,  y,  width,  height)
+        setVisible(false);
     }
 
     protected void createImageTampon(BufferedImage image, boolean reverse) {
