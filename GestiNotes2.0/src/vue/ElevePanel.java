@@ -77,9 +77,6 @@ public class ElevePanel extends UtilePanel {
         
     }
 
-    public void setChamp(int index, String texte) {
-        champs.get(index).setText(texte);
-    }
 
     private void addEleve() {
         try{
@@ -122,7 +119,7 @@ public class ElevePanel extends UtilePanel {
             setChamp(2, eleve.getDateNaissance());
             setChamp(3, codePermanent);
             for (int i = 0; i < NBR_NOTES; i++) {
-                setChamp(i + 4, getNote(eleve, i));
+                setChamp(i + 4, eleve.getNote(i));
             }
             return true;
         } catch (NullPointerException e) {
@@ -173,9 +170,6 @@ public class ElevePanel extends UtilePanel {
             champ.setText("");
     }
 
-    public static String getNote(Eleve eleve, int index) {
-        return eleve.getTabEvaluation().get(index).getNote().toString();
-    }
     public void refreshComboBoxes() {
         gestionPanel.refreshComboBoxes(Etablissement.getTabGroupe());
     }

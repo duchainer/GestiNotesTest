@@ -73,6 +73,10 @@ public class Eleve {
     public ArrayList<Evaluation> getTabEvaluation() {
         return evaluations;
     }
+    
+    public String getNote(int index) {
+        return getTabEvaluation().get(index).getNote().toString();
+    }
 
     public void addEvaluation(Evaluation cours) {
         this.evaluations.add(cours);

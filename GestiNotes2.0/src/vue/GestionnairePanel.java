@@ -160,10 +160,6 @@ public class GestionnairePanel extends UtilePanel {
         getLastChamp().setEditable(false);
     }
 
-    public static String getNote(Eleve eleve, int index) {
-        return eleve.getTabEvaluation().get(index).getNote().toString();
-    }
-
     /*
     //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
     public void remplir(JComboBox combo, ArrayList list) {
