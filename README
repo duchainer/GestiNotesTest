@@ -2,12 +2,14 @@
 ![diagrammevue](https://cloud.githubusercontent.com/assets/11084784/19949953/fe02e808-a12a-11e6-9919-9517e3500a88.png)
 
 
-GestiNotes_02
+GestiNotes_03
 But:
-Cette nouvelle version a toujours pour but de gérer les notes, en y intégrant ce qui suit :
-- des interfaces graphiques plus riches pour améliorer la convivialité de l’application
-- des composants graphiques de choix, pour minimiser les erreurs de saisie
-- des gestionnaires d’évènements variés pour améliorer l’interactivité de l’application
-- des gestionnaires de présentations plus intéressants pour améliorer l’organisation des
-composants graphiques
-- des look and feel pertinents pour afficher le style graphique de la plateforme native
+- L’intégration d’animations au graphisme : pour augmenter l’attractivité et la convivialité des
+interfaces graphiques
+- L’intégration des tests unitaires : pour permettre de tester les classes modèles de l’application
+- L’intégration des fichiers pour permettre la sauvegarde et la récupération des données ainsi
+que la génération de rapports tels que le bulletin des notes
+- L’intégration du multitâche pour éviter tout blocage à cause de traitements longs dus aux
+fichiers
+- L’intégration de la gestion des exceptions : pour éviter tout bugg et améliorer la signalisation
+des erreurs
