@@ -1,0 +1,12 @@
+
+
+
+GestiNotes_02
+But:
+Cette nouvelle version a toujours pour but de gérer les notes, en y intégrant ce qui suit :
+- des interfaces graphiques plus riches pour améliorer la convivialité de l’application
+- des composants graphiques de choix, pour minimiser les erreurs de saisie
+- des gestionnaires d’évènements variés pour améliorer l’interactivité de l’application
+- des gestionnaires de présentations plus intéressants pour améliorer l’organisation des
+composants graphiques
+- des look and feel pertinents pour afficher le style graphique de la plateforme native
