@@ -67,36 +67,21 @@ public class EleveTest {
     }
 
     /**
-     * Test of setDateNaissance method, of class Eleve.
+     * Test of get&setDateNaissance method, of class Eleve.
      */
     @Test
-    public void testSetDateNaissance() {
+    public void testGetSetDateNaissance() {
         System.out.println("setDateNaissance");
         String dateNaissance = "29-04-1998";
         instance.setDateNaissance(dateNaissance);
         String result = instance.getDateNaissance();
         assertEquals(dateNaissance, result);
     }
-
     /**
-     * Test of getNote method, of class Eleve.
+     * Test of get&setNote method, of class Eleve.
      */
     @Test
-    public void testGetNote() {
-        System.out.println("getNote");
-        int index = 0;
-        String expResult = "";
-        String result = instance.getNote(index);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
-    /**
-     * Test of setNote method, of class Eleve.
-     */
-    @Test
-    public void testSetNote() {
+    public void testGetSetNote() {
         System.out.println("setNote");
         int index = 0;
         float note = 50.42f;
@@ -111,10 +96,10 @@ public class EleveTest {
     @Test
     public void testAddEvaluation() {
         System.out.println("addEvaluation");
-        Evaluation cours = null;
+        Evaluation cours = new Evaluation("ScienceFiction", .42f);
         instance.addEvaluation(cours);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final ArrayList<Evaluation> tabEvaluation = instance.getTabEvaluation();
+        Evaluation result = tabEvaluation.get(tabEvaluation.size()-1);
     }
 
     /**
@@ -123,24 +108,31 @@ public class EleveTest {
     @Test
     public void testCodePermanent() {
         System.out.println("codePermanent");
-        String expResult = "";
+        String expResult = "EP1999";
         String result = instance.codePermanent();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of calculerNoteFinale method, of class Eleve.
      */
     @Test
-    public void testCalculerNoteFinale() {
+    public void testCalculerNoteFinaleZero() {
         System.out.println("calculerNoteFinale");
         double expResult = 0.0;
         double result = instance.calculerNoteFinale();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    /**
+     * Test of calculerNoteFinale method, of class Eleve.
+     */
+    @Test
+    public void testCalculerNoteFinale() {
+        System.out.println("calculerNoteFinale");
+        double expResult = 100.0;
+        instance.setNote(0, 100f);
+        double result = instance.calculerNoteFinale();
+        assertEquals(expResult, result, 0.0);
     }
 
     /**
@@ -149,8 +141,9 @@ public class EleveTest {
     @Test
     public void testToString() {
         System.out.println("toString");
+        String expResult= "Etychen, Paul, 01-04-1999, 0.0% EP1999";
         String result = instance.toString();
-        assertNotNull(result);
+        assertEquals(result,expResult);
     }
 
 }

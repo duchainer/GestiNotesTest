@@ -32,7 +32,7 @@ public class Eleve {
         this(nom, prenom, date);
         //Si l'on veut générer une note au hasard
         if (initialise) {
-            for (int i = 0; i < evaluations.size(); i++) {
+            for (int i = 0; i < getTabEvaluation().size(); i++) {
                 evaluations.get(i).setNote((float) (Math.round(Etablissement.randomNote() * 100.0) / 100.0));
             }
         }
