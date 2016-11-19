@@ -8,7 +8,6 @@ import java.util.*;
  * @author raphael
  */
 public final class Etablissement {
-
     private static String nomEcole = "Academie de RobberVals";
     public static final int ELEVES_PAR_GROUPE = 10;
     private static ArrayList<Groupe> tabGroupe = new ArrayList<Groupe>();
@@ -81,9 +80,9 @@ public final class Etablissement {
         return eleve;
     }
 
-    public static double randomNote() {
+    public static float randomNote() {
         Random ran = new Random();
-        double num = Math.ceil(ran.nextFloat() * 100);
+        float num = (float) Math.ceil(ran.nextFloat() * 100);
         return num;
     }
 

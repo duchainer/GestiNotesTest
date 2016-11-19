@@ -22,10 +22,10 @@ public class Eleve {
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);
-        addEvaluation(new Evaluation("Science", .2));
-        addEvaluation(new Evaluation("Math", .2));
-        addEvaluation(new Evaluation("Français", .3));
-        addEvaluation(new Evaluation("Informatique", .3));
+        addEvaluation(new Evaluation("Science", .2f));
+        addEvaluation(new Evaluation("Math", .2f));
+        addEvaluation(new Evaluation("Français", .3f));
+        addEvaluation(new Evaluation("Informatique", .3f));
     }
 
     public Eleve(String nom, String prenom, String date, boolean initialise) {
@@ -33,7 +33,7 @@ public class Eleve {
         //Si l'on veut générer une note au hasard
         if (initialise) {
             for (int i = 0; i < evaluations.size(); i++) {
-                evaluations.get(i).setNote(Math.round(Etablissement.randomNote() * 100.0) / 100.0);
+                evaluations.get(i).setNote((float) (Math.round(Etablissement.randomNote() * 100.0) / 100.0));
             }
         }
 
@@ -73,7 +73,7 @@ public class Eleve {
     }
 
     public String getNote(int index) {
-        return getTabEvaluation().get(index).getNote().toString();
+        return Float.toString(getTabEvaluation().get(index).getNote());
     }
 
     public void addEvaluation(Evaluation cours) {
@@ -86,8 +86,8 @@ public class Eleve {
         return getNom().substring(0, 1) + getPrenom().substring(0, 1) + getDateNaissance().substring(6, 10);
     }
 
-    public double calculerNoteFinale() {
-        double somme = 0, valeurAccumulée = 0;
+    public float calculerNoteFinale() {
+        float somme = 0, valeurAccumulée = 0;
 
         for (int i = 0; i < evaluations.size(); i++) {
             Evaluation my_cours = evaluations.get(i);
@@ -97,7 +97,7 @@ public class Eleve {
             }
         }
         somme /= valeurAccumulée;
-        return Math.round(somme * 100.0) / 100.0;
+        return (float) (Math.round(somme * 100.0) / 100.0);
     }
 
     @Override

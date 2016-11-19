@@ -81,8 +81,8 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
 
     }
 
-    public double meilleureNote() {
-        double note = 0;
+    public float meilleureNote() {
+        float note = 0;
         for (int i = 0; i < g.getTabEleve().size(); i++) {
             if (g.getTabEleve().get(i).calculerNoteFinale() > note) {
                 note = g.getTabEleve().get(i).calculerNoteFinale();
@@ -91,8 +91,8 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         return note;
     }
 
-    public double pireNote() {
-        double note = 101;
+    public float pireNote() {
+        float note = 101;
         for (int i = 0; i < g.getTabEleve().size(); i++) {
             if (g.getTabEleve().get(i).calculerNoteFinale() < note) {
                 note = g.getTabEleve().get(i).calculerNoteFinale();
@@ -101,8 +101,8 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         return note;
     }
 
-    public double tauxDeReussite() {
-        double taux = 0;
+    public float tauxDeReussite() {
+        float taux = 0;
         for (int i = 0; i < g.getTabEleve().size(); i++) {
             if (g.getTabEleve().get(i).calculerNoteFinale() > 60) {
                 taux++;

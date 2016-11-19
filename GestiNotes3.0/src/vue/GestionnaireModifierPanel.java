@@ -73,7 +73,7 @@ public class GestionnaireModifierPanel extends UtilePanel {
 
                 ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
                 for (int i = 0; i < NBR_NOTES; i++) {
-                    evaluations.get(i).setNote(Double.parseDouble(getChamp(i).getText()));
+                    evaluations.get(i).setNote(Float.parseFloat(getChamp(i).getText()));
                 }
                 uneFrame.getContentPane().removeAll();
                 //uneFrame.setSize(800, 750);
