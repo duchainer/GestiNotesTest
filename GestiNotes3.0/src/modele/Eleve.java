@@ -75,6 +75,9 @@ public class Eleve {
     public String getNote(int index) {
         return Float.toString(getTabEvaluation().get(index).getNote());
     }
+    public void setNote(int index,float note) {
+        getTabEvaluation().get(index).setNote(note);
+    }
 
     public void addEvaluation(Evaluation cours) {
         this.evaluations.add(cours);

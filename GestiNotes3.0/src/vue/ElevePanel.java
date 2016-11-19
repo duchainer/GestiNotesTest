@@ -39,7 +39,7 @@ public class ElevePanel extends UtilePanel {
         getLastChamp().setEditable(false);
         for (int i = 0; i < NBR_NOTES; i++) {
             addChamp("Note" + (i + 1));
-            //if((i%2)!=0){addEspace();}
+            //if((i%2)!=0)addEspace();
         }
         addBouton("Enregistrer un eleve");
         addBouton("Afficher un eleve");
@@ -149,9 +149,8 @@ public class ElevePanel extends UtilePanel {
             eleve.setNom(getChamp(0).getText());
             eleve.setPrenom(getChamp(1).getText());
             eleve.setDateNaissance(getChamp(2).getText());
-            ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
             for (int i = 0; i < NBR_NOTES; i++) {
-                evaluations.get(i).setNote(Float.parseFloat(getChamp(i + 4).getText()));
+                eleve.setNote(i,Float.parseFloat(getChamp(i + 4).getText()));
             }
             notification("Modification effectue");
 
