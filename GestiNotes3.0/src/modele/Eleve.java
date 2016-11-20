@@ -45,6 +45,8 @@ public class Eleve {
     }
 
     public void setNom(String nom) {
+        if(nom.equals(""))
+            throw new ArgumentInvalideException("Un eleve doit avoir un nom!");
         this.nom = nom;
     }
 
