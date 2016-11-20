@@ -55,6 +55,8 @@ public class Eleve {
     }
 
     public void setPrenom(String prenom) {
+        if(prenom.equals(""))
+            throw new ArgumentInvalideException("Un eleve doit avoir un prenom!");
         this.prenom = prenom;
     }
 
@@ -63,6 +65,8 @@ public class Eleve {
     }
 
     public void setDateNaissance(String dateNaissance) {
+        if(dateNaissance.equals(""))
+            throw new ArgumentInvalideException("Un eleve doit avoir une date de naissance!");
         this.dateNaissance = dateNaissance;
     }
 

@@ -39,7 +39,7 @@ public class EleveTest {
     /**
      * Test of setNom method, of class Eleve.
      */
-    @Test(expected = Exception.class)
+    @Test(expected = ArgumentInvalideException.class)
     public void testSetNomVide() {
         System.out.println("setNom");
         System.out.println("L\'argument est invalide");
@@ -58,6 +58,12 @@ public class EleveTest {
     /**
      * Test of setPrenom method, of class Eleve.
      */
+    @Test(expected = ArgumentInvalideException.class)
+    public void testSetPrenomVide() {
+        System.out.println("setPrenom");
+        String prenom = "";
+        instance.setPrenom(prenom);
+    }
     @Test
     public void testSetPrenom() {
         System.out.println("setPrenom");
@@ -68,10 +74,16 @@ public class EleveTest {
     }
 
     /**
-     * Test of get&setDateNaissance method, of class Eleve.
+     * Test of setDateNaissance method, of class Eleve.
      */
+    @Test(expected = ArgumentInvalideException.class)
+    public void testSetDateNaissanceVide() {
+        System.out.println("setDateNaissance");
+        String dateNaissance = "";
+        instance.setDateNaissance(dateNaissance);
+    }
     @Test
-    public void testGetSetDateNaissance() {
+    public void testSetDateNaissance() {
         System.out.println("setDateNaissance");
         String dateNaissance = "29-04-1998";
         instance.setDateNaissance(dateNaissance);
