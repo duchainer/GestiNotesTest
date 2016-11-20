@@ -35,6 +35,8 @@ public class Groupe {
     }
 
     public void setNumero(int numero) {
+        if(numero<0)
+            throw new ArgumentInvalideException("Le numéro d'un groupe ne peut pas être négatif!");
         this.numero = numero;
     }
 
@@ -68,12 +70,14 @@ public class Groupe {
     }
 
     public void trier() {
-        Collections.sort(getTabEleve(), new Comparator<Eleve>() {
-            @Override
-            public int compare(Eleve e1, Eleve e2) {
-                return e1.getNom().compareToIgnoreCase(e2.getNom());
-            }
-        });
+        Collections.sort(getTabEleve(), new CompareNoms());
     }
+}
 
+class CompareNoms implements Comparator<Eleve> {
+
+    @Override
+    public int compare(Eleve e1, Eleve e2) {
+        return e1.getNom().compareToIgnoreCase(e2.getNom());
+    }
 }
