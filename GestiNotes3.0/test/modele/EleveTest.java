@@ -42,6 +42,7 @@ public class EleveTest {
     @Test(expected = Exception.class)
     public void testSetNomVide() {
         System.out.println("setNom");
+        System.out.println("L\'argument est invalide");
         String nom = "";
         instance.setNom(nom);
     }
@@ -86,8 +87,8 @@ public class EleveTest {
         int index = 0;
         float note = 50.42f;
         instance.setNote(index,note);
-        String result = instance.getNote(index);
-        assertEquals(note, result);
+        float result = Float.parseFloat(instance.getNote(index));
+        assertEquals(note, result,0.0);
     }
 
     /**
@@ -100,6 +101,7 @@ public class EleveTest {
         instance.addEvaluation(cours);
         final ArrayList<Evaluation> tabEvaluation = instance.getTabEvaluation();
         Evaluation result = tabEvaluation.get(tabEvaluation.size()-1);
+        assertEquals(cours, result);
     }
 
     /**
