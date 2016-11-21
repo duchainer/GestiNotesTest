@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * @author Raphael Duchaine
  */
 public class EleveTest {
-    Eleve instance = new Eleve();
+    private static Eleve instance = new Eleve();
 
     public EleveTest() {
     }
@@ -25,6 +25,8 @@ public class EleveTest {
 
     @AfterClass
     public static void tearDownClass() {
+        //Pour le garbage collector
+        instance =null;
     }
 
     @Before

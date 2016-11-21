@@ -32,6 +32,7 @@ public class EtablissementTest {
 
     @AfterClass
     public static void tearDownClass() {
+        Etablissement.setTabGroupe(null);
     }
 
     @Before
