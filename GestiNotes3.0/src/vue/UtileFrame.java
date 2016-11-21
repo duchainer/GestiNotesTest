@@ -8,7 +8,7 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import javax.swing.*;
-//import java.awt.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class UtileFrame extends JFrame implements ActionListener {
     JPanel simplePanel;
     ArrayList<JButton> boutons;
     ArrayList<JTextField> champs;
-    public JTabbedPane tabbedPane;
+    public JMenuBar menuBar; //tabbedPane;
     JProgressBar pBar;
 
     //Méthodes
@@ -30,6 +30,7 @@ public class UtileFrame extends JFrame implements ActionListener {
         add(simplePanel);
         boutons = new ArrayList<JButton>();
         champs = new ArrayList<JTextField>();
+        menuBar = new JMenuBar();
         setLocationRelativeTo(null);            // Fenetre centree
     }
 
@@ -59,6 +60,14 @@ public class UtileFrame extends JFrame implements ActionListener {
         simplePanel.add(label);
         return label;
     }
+    
+    public JMenu addMenuItem (String texte, JMenu menu) {
+        JMenuItem item = new JMenuItem(texte);
+        item.addActionListener(this);
+        menu.add(item);
+        menu.addSeparator();
+        return menu;
+    }
 
     @Override
     public void actionPerformed(ActionEvent event) { // Methode recoit evenement
@@ -66,6 +75,8 @@ public class UtileFrame extends JFrame implements ActionListener {
             System.out.println("HelloWorld");
         }
     }
+    
+
 
     public void quitter() throws HeadlessException {
         //Permet l'arret du programme

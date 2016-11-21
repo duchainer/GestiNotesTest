@@ -1,44 +1,36 @@
 package vue;
 
+
 /**
  * Crée 2016-11-04,17:58
  *
- * TODO: -actionPerformed
+ *  TODO: -actionPerformed
  *
  * @author Patrick Domingues
  */
-import java.awt.BorderLayout;
 import modele.Groupe;
 import modele.Statistique;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
-import javax.swing.JTabbedPane;
 import modele.Etablissement;
 
 public class GestionnaireStatistiquesPanel extends ComplementPanel {
 
-    //variable
-    Groupe g;
 
+    //variable
     //Méthodes
     //Constructeur
-    public GestionnaireStatistiquesPanel(UtileFrame frame, int num, Groupe g, JTabbedPane tabbedPane) {
-        super(frame, tabbedPane);
-        this.g = g;
+    public GestionnaireStatistiquesPanel(UtileFrame frame) {
+        super(frame);
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
 
         addLabel("Statistiques");
-        addLabel("Groupe " + num);
+        addEspace();
+        addLabel("Lister: ");
+        addComboBox();
         addChamp("moyenne: ");
         getLastChamp().setEditable(false);
         addChamp("variance: ");
@@ -51,38 +43,43 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         getLastChamp().setEditable(false);
         addChamp("taux de succes: ");
         getLastChamp().setEditable(false);
-
-        addBouton("retour");
-        stats();
+        refreshComboBoxes();
+        
+        tabComboBox.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (tabComboBox.get(0).getSelectedItem() != null) {
+                    stats();
+                }
+            }
+        });
 
     }
     //Autres Méthodes
 
-    GestionnaireStatistiquesPanel(UtileFrame uneFrame, int num, Groupe groupe, JTabbedPane unTabbedPane, JProgressBar pBar) {
-        this(uneFrame, num, groupe, unTabbedPane);
-        this.pBar = pBar;
+    GestionnaireStatistiquesPanel(UtileFrame uneFrame, JProgressBar pBar) {
+        this(uneFrame);
+        this.pBar=pBar;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-        //uneFrame.getContentPane().add(new GestionnairePanel(fenetre, tabbedPane));
-        if (((JButton) event.getSource()).getText() == "retour") {
-            retour();
-        }
-    }
 
     private void stats() {
+        
+        String code = (String) tabComboBox.get(0).getSelectedItem();
+        int num = Integer.parseInt(code.substring(7));
+        Groupe g = Etablissement.getTabGroupe().get(num);
+            
         setChamp(0, String.valueOf(Statistique.calculerMoyenne(g)));
         setChamp(1, String.valueOf(Statistique.calculerVariance(g)));
         setChamp(2, String.valueOf(Statistique.calculerEcartType(g)));
-        setChamp(3, String.valueOf(meilleureNote()));
-        setChamp(4, String.valueOf(pireNote()));
-        setChamp(5, String.valueOf(tauxDeReussite()) + "%");
+        setChamp(3, String.valueOf(meilleureNote(g)));
+        setChamp(4, String.valueOf(pireNote(g)));
+        setChamp(5, String.valueOf(tauxDeReussite(g)) + "%");
 
     }
 
-    public float meilleureNote() {
-        float note = 0;
+    public double meilleureNote(Groupe g) {
+        double note = 0;
         for (int i = 0; i < g.getTabEleve().size(); i++) {
             if (g.getTabEleve().get(i).calculerNoteFinale() > note) {
                 note = g.getTabEleve().get(i).calculerNoteFinale();
@@ -91,8 +88,8 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         return note;
     }
 
-    public float pireNote() {
-        float note = 101;
+    public double pireNote(Groupe g) {
+        double note = 101;
         for (int i = 0; i < g.getTabEleve().size(); i++) {
             if (g.getTabEleve().get(i).calculerNoteFinale() < note) {
                 note = g.getTabEleve().get(i).calculerNoteFinale();
@@ -101,8 +98,8 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         return note;
     }
 
-    public float tauxDeReussite() {
-        float taux = 0;
+    public double tauxDeReussite(Groupe g) {
+        double taux = 0;
         for (int i = 0; i < g.getTabEleve().size(); i++) {
             if (g.getTabEleve().get(i).calculerNoteFinale() > 60) {
                 taux++;
@@ -110,6 +107,10 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         }
         taux = (taux / g.getTabEleve().size()) * 100;
         return taux;
+    }
+    
+    public void refreshComboBoxes() {
+    super.refreshComboBoxes(Etablissement.getTabGroupe());
     }
 }
 
