@@ -24,12 +24,13 @@ public class LogoRosemont extends JFrame {
     BufferedImage imageTampon2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB), imageTampon = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
     // Définir la chaîne de la barre de titre et ses dimensions.
 
-    public LogoRosemont() {
+    public LogoRosemont()
+   {
 //      super( "Tracé de formes bidimensionnelles" );
 //      setSize( 425, 160 );
-        setVisible(true);
-        getContentPane().setBackground(Color.white);
-    }
+      setVisible( true );
+      getContentPane().setBackground(Color.white);
+   }
 
     // Dessiner des formes avec l'API Java2D.
     public void paint(Graphics g) {
@@ -45,9 +46,9 @@ public class LogoRosemont extends JFrame {
         int i = 0;
         g2dLogo.translate(-20, -140);
         for (i = 0; i < 27; i++) {
-
+            
             GeneralPath poly1 = new GeneralPath();
-
+            
             poly1.moveTo(50, 200);
             poly1.lineTo(150, 100);
             poly1.lineTo(250, 200);
@@ -65,8 +66,9 @@ public class LogoRosemont extends JFrame {
 
         // public BufferedImage(int width,int height,int imageType)
         createImageTampon(imageTampon2, true);
-
+        
         //g2d.translate(20, 20);
+        
         // Peindre imageTampon sur le JFrame, en tant que  rectangles de 5x10 pixels
         g2d.setColor(Color.WHITE);
         g2d.fill(new Rectangle2D.Double(0, 0, 100, 100));
@@ -113,12 +115,13 @@ public class LogoRosemont extends JFrame {
         g2d.fill(poly);			// dessiner polygone plein
     }
 
-    /* // Pour tester l'application.
+   /* // Pour tester l'application.
    public static void main( String args[] )
    {
       LogoRosemont application = new LogoRosemont();
       application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
    }*/
+    
 }
 
 

@@ -31,11 +31,11 @@ class ComplementPanel extends UtilePanel {
         super(fenetre);
     }
 
-    public ComplementPanel(UtileFrame fenetre, JTabbedPane tabbedPane) {
-        super(fenetre, tabbedPane);
+    public ComplementPanel(UtileFrame fenetre, JTabbedPane tabbedPane ) {
+        super(fenetre,tabbedPane);
     }
 
-    public ComplementPanel(UtileFrame fenetre, JTabbedPane tabbedPane, JProgressBar pBar) {
+    public ComplementPanel( UtileFrame fenetre,JTabbedPane tabbedPane,JProgressBar pBar) {
         super(fenetre, tabbedPane);
         this.pBar = pBar;
     }
