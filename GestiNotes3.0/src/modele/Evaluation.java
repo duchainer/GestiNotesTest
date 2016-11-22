@@ -8,22 +8,22 @@ public class Evaluation {
 //variables
     private String nom;
     private Professeur prof;
-    private Double valeurEvaluation;
-    private Double note=-1.;
+    private float valeurEvaluation;
+    private float note=-1.f;
 //Constructeurs
     Evaluation(){
-        this("cours",.2);
+        this("cours",.2f);
     }
-    Evaluation(String nom,Double valeurEvaluation){
+    Evaluation(String nom,float valeurEvaluation){
         setNom(nom);
         setProf(new Professeur());
         setValeurEvaluation(valeurEvaluation);
     }
-    Evaluation(String nom,Double valeurEvaluation,Double note){
+    Evaluation(String nom,float valeurEvaluation,float note){
         this(nom, valeurEvaluation);
         setNote(note);
     }
-    Evaluation(String nom,String nomProf,Double valeurEvaluation){
+    Evaluation(String nom,String nomProf,float valeurEvaluation){
         this (nom,valeurEvaluation);
         setProf(new Professeur(nomProf));
     }
@@ -42,17 +42,17 @@ public class Evaluation {
         this.prof = prof;
     }
 
-    public Double getValeurEvaluation() {
+    public float getValeurEvaluation() {
         return valeurEvaluation;
     }
-    public void setValeurEvaluation(Double valeurEvaluation) {
+    public void setValeurEvaluation(float valeurEvaluation) {
         this.valeurEvaluation = valeurEvaluation;
     }
     
-    public Double getNote() {
+    public float getNote() {
         return note;
     }
-    public void setNote(Double note) {
+    public void setNote(float note) {
         this.note = note;
     }
     

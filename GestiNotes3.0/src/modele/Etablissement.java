@@ -78,9 +78,9 @@ public final class Etablissement {
         return eleve;
     }
     
-    public static double randomNote(){
+    public static float randomNote(){
         Random ran = new Random();
-        double num= Math.ceil(ran.nextFloat() * 100);
+        float num= (float) Math.ceil(ran.nextFloat() * 100);
         return num;
     }
 

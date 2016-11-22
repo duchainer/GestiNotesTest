@@ -135,8 +135,8 @@ public class EleveTest {
     @Test
     public void testCalculerNoteFinaleZero() {
         System.out.println("calculerNoteFinale");
-        double expResult = 0.0;
-        double result = instance.calculerNoteFinale();
+        float expResult = -1f;
+        float result = instance.calculerNoteFinale();
         assertEquals(expResult, result, 0.0);
     }
     /**
@@ -145,9 +145,9 @@ public class EleveTest {
     @Test
     public void testCalculerNoteFinale() {
         System.out.println("calculerNoteFinale");
-        double expResult = 100.0;
+        float expResult = 100.0f;
         instance.setNote(0, 100f);
-        double result = instance.calculerNoteFinale();
+        float result = instance.calculerNoteFinale();
         assertEquals(expResult, result, 0.0);
     }
 
@@ -157,7 +157,7 @@ public class EleveTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        String expResult= "Etychen, Paul, 01-04-1999, 0.0% EP1999";
+        String expResult= "Etychen, Paul, 01-04-1999, -1.0% EP1999";
         String result = instance.toString();
         assertEquals(result,expResult);
     }

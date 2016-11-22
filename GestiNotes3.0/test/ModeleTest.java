@@ -12,8 +12,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    EleveTest.class,
-    EvaluationTest.class
+//    EleveTest.class,
+//    EvaluationTest.class
 })
 public class ModeleTest {
 

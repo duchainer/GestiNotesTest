@@ -4,7 +4,7 @@ package modele;
  *
  * @author Raphael Duchaine
  */
-class ArgumentInvalideException extends IllegalArgumentException {
+public class ArgumentInvalideException extends IllegalArgumentException {
     
     public ArgumentInvalideException() {
         super("L\'argument est invalide");
