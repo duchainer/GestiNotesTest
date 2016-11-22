@@ -68,12 +68,14 @@ public class Groupe {
     }
 
     public void trier() {
-        Collections.sort(getTabEleve(), new Comparator<Eleve>() {
-            @Override
-            public int compare(Eleve e1, Eleve e2) {
-                return e1.getNom().compareToIgnoreCase(e2.getNom());
-            }
-        });
+        Collections.sort(getTabEleve(), new CompareNoms());
     }
+}
 
+class CompareNoms implements Comparator<Eleve> {
+
+    @Override
+    public int compare(Eleve e1, Eleve e2) {
+        return e1.getNom().compareToIgnoreCase(e2.getNom());
+    }
 }

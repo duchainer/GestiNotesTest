@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import static modele.Etablissement.noms;
 import static modele.Etablissement.prenoms;
 import static modele.Etablissement.dates;
+import modele.Groupe;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
