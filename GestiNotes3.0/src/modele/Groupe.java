@@ -1,5 +1,6 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +10,7 @@ import java.util.Comparator;
  *
  * @author Raphael
  */
-public class Groupe {
+public class Groupe implements Serializable{
 
     //Variables
     private int numero;
