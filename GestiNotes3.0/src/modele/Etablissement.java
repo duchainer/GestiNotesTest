@@ -15,12 +15,7 @@ public final class Etablissement {
     private static ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
     static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "Karato", "K'amon"};
     static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "Ash", "ToutTemps"};
-    static String[] dates = {"01-01-0001", "21-05-1982", "30-04-1213", "21-11-1395", "04-02-0999", "31-12-2012", "16-06-0654", "09-07-6000"};
-
-//Constructeur
-    public static void Etablissement() {
-
-    }
+    static String[] dates = {"01-01-0001", "21-05-1982", "30-04-1213", "21-11-1395", "04-02-0999", "31-12-2012","16-06-0654", "09-07-6000"};
     
     public static void initialise() {
         addGroupe();
@@ -83,6 +78,6 @@ public final class Etablissement {
         float num= (float) Math.ceil(ran.nextFloat() * 100);
         return num;
     }
-
-}
+    
+    }
 

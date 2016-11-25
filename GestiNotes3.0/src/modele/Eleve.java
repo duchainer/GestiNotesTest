@@ -1,6 +1,7 @@
 package modele;
 
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -8,7 +9,7 @@ import java.util.*;
  *
  * @author Raphael
  */
-public class Eleve {
+public class Eleve implements Serializable{
 //variables
 
     private String nom, prenom, dateNaissance;

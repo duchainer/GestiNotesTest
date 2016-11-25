@@ -1,10 +1,12 @@
 package modele;
 
+import java.io.Serializable;
+
 /**
  * 28/09/2016
  * @author raphael
  */
-public class Evaluation {
+public class Evaluation implements Serializable {
 //variables
     private String nom;
     private Professeur prof;
