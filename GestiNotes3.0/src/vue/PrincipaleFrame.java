@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import modele.Serialise;
 
 /**
  * 28/09/2016
@@ -26,6 +27,7 @@ public class PrincipaleFrame extends UtileFrame {
     //JPanel simplePanel;  
     //ArrayList<JButton> boutons = new ArrayList<JButton>();
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
+    String[] tabGestionnaireOptions ={"Initialiser","Importer","Exporter","Lister","Modifier","Statistiques"};
     Image logo = new LogoRosemont().logo;
     JProgressBar pBar;
 
@@ -61,10 +63,8 @@ public class PrincipaleFrame extends UtileFrame {
         
         JMenu menuGestionnaire= new JMenu("Gestionnaire") ; // création menu client
 	menuBar.add(menuGestionnaire); // ajout du menu à la barre des menus
-        
-        addMenuItem("Lister", menuGestionnaire);
-        addMenuItem("Modifier", menuGestionnaire);
-        addMenuItem("Statistiques", menuGestionnaire);
+        for(String s : tabGestionnaireOptions)
+            addMenuItem(s, menuGestionnaire);
         
         JMenu menuAide= new JMenu("Aide") ; // création menu client
 	menuBar.add(menuAide); // ajout du menu à la barre des menus
@@ -102,6 +102,30 @@ public class PrincipaleFrame extends UtileFrame {
                     this.getContentPane().removeAll();
                     this.add(new EleveModifierPanel(this, pBar));
                     repaint2();
+                }//Initialiser
+                if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[0]){
+                    try {
+                        Serialise.initialiseGroupes();
+                        JOptionPane.showMessageDialog(this, "Initialisation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception ex) {
+                        messageErreur(ex);
+                    }
+                }//Importer
+                if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[1]){
+                    try {
+                        Serialise.importeGroupes();
+                        JOptionPane.showMessageDialog(this, "Importation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception ex) {
+                        messageErreur(ex);
+                    }
+                }//Exporter
+                if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[2]){
+                    try {
+                        Serialise.exporteGroupes(Etablissement.getTabGroupe());
+                        JOptionPane.showMessageDialog(this, "Exportation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (Exception ex) {
+                        messageErreur(ex);
+                    }
                 }
                 if (((JMenuItem) e.getSource()).getText() == "Lister"){
                     this.getContentPane().removeAll();

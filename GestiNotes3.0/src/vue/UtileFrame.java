@@ -76,6 +76,10 @@ public class UtileFrame extends JFrame implements ActionListener {
         }
     }
     
+    public void messageErreur(Exception e) throws HeadlessException {
+        JOptionPane.showMessageDialog(null, e.toString(), "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+    
 
 
     public void quitter() throws HeadlessException {
