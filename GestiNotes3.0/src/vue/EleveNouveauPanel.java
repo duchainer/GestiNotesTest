@@ -34,7 +34,7 @@ public class EleveNouveauPanel extends UtilePanel {
         super(fenetre);
         this.gestionPanel=gestionPanel;
         this.pBar = pBar;
-        GridLayout gl = new GridLayout(12, 6, 0, 25);	//Cree GridLayout
+        GridLayout gl = new GridLayout(10, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addEspace();
         addChamp("Nom");

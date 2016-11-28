@@ -83,31 +83,6 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
     }
     //Autres Méthodes
 
-    /*
-    @Override
-    public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-        //uneFrame.getContentPane().add(new GestionnairePanel(uneFrame, unTabbedPane));
-        if (((JButton) event.getSource()).getText() == "Enregistrer") {
-            try {
-                String code = (String) tabComboBox.get(0).getSelectedItem();
-                int num = Integer.parseInt(code.substring(6, 7));
-                Eleve eleve = g.getTabEleve().get(num);
-
-                ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
-                for (int i = 0; i < NBR_NOTES; i++) {
-                    evaluations.get(i).setNote(Double.parseDouble(getChamp(i).getText()));
-                }
-            uneFrame.getContentPane().removeAll();
-            JOptionPane.showMessageDialog(uneFrame, "Les notes ont ete modifies", "Modification des notes", JOptionPane.INFORMATION_MESSAGE);
-            uneFrame.add(new AcceuilPanel((UtileFrame) uneFrame));
-            uneFrame.revalidate();
-            uneFrame.repaint();
-            } catch (NumberFormatException e) {
-                messageErreur(new Exception("Format des notes incorrect"));
-            }
-        }
-    }
-    */
     private void modifierEleve() {
         String code = (String) tabComboBox.get(0).getSelectedItem();
         int num = Integer.parseInt(code.substring(6, 7));
@@ -137,20 +112,3 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
         }
     }
 }
-
-//Etablissement.getTabGroupe().get(i)
-//combo.getItemAt(i).  //setName("Groupe "+i);
-/*
-
-    private void modifier() {
-        String code = (String) tabComboBox.get(0).getSelectedItem();
-        int num = Integer.parseInt(code.substring(7));
-        Groupe groupe = Etablissement.getTabGroupe().get(num);
-
-        fenetre.getContentPane().removeAll();
-        //uneFrame.add(tabbedPane);
-        fenetre.getContentPane().add(new GestionnaireModifierPanel(fenetre));
-        fenetre.revalidate();
-        fenetre.repaint();
-    }
-*/
