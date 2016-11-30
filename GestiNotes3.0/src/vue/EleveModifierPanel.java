@@ -136,9 +136,8 @@ public class EleveModifierPanel extends UtilePanel {
             eleve.setNom(getChamp(0).getText());
             eleve.setPrenom(getChamp(1).getText());
             eleve.setDateNaissance(getChamp(2).getText());
-            ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
             for (int i = 0; i < NBR_NOTES; i++) {
-                evaluations.get(i).setNote(Float.parseFloat(getChamp(i + 4).getText()));
+                eleve.setNote(i,Float.parseFloat(getChamp(i + 4).getText()));
             }
             notification("Modification effectue");
             
