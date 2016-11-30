@@ -28,7 +28,6 @@ public class AidePanel extends UtilePanel{
             + "\n-Que chaque groupe ne peut comprendre que 10 eleves"
             + "\n-Qu'un eleve doit être initialisé avec nom, prenom et date "
             + "\n-Que l'on ne peut pas enlever d'eleve dans cette version"
-            + "\n-Que les statistiques du groupe s'affichent lorsque un élève est ajouté"
             + "\n-Que l'aide se trouve ici"
             + "\n-Que 2 et 2 font 4";
            
