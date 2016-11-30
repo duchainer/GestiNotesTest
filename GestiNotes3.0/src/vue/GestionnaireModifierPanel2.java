@@ -62,7 +62,7 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
                     
                 Eleve eleve = g.getTabEleve().get(num);
                 for (int i = 0; i < NBR_NOTES; i++) {
-                    eleve.setNote(Float.parseFloat(getChamp(i).getText()));
+                    eleve.setNote(i,Float.parseFloat(getChamp(i).getText()));
                 }
                 uneFrame.getContentPane().removeAll();
                 JOptionPane.showMessageDialog(uneFrame, "Les notes ont ete modifies", "Modification des notes", JOptionPane.INFORMATION_MESSAGE);
