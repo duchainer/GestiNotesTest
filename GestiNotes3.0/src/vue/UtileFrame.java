@@ -34,6 +34,10 @@ public class UtileFrame extends JFrame implements ActionListener {
         setLocationRelativeTo(null);            // Fenetre centree
     }
 
+    UtileFrame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     //Autres Méthodes
     public void addBouton(String label) {
         JButton bouton = new JButton(label);    //Cree le bouton
@@ -74,10 +78,6 @@ public class UtileFrame extends JFrame implements ActionListener {
         if (((JButton) event.getSource()).getText() == "HelloWorld") {
             System.out.println("HelloWorld");
         }
-    }
-    
-    public void messageErreur(Exception e) throws HeadlessException {
-        JOptionPane.showMessageDialog(null, e.toString(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
     
 
