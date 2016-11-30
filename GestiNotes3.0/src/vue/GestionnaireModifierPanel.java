@@ -23,7 +23,7 @@ public class GestionnaireModifierPanel extends UtilePanel {
 
     //Méthodes
     //Constructeur
-    public GestionnaireModifierPanel(JFrame frame) {
+    public GestionnaireModifierPanel(UtileFrame frame) {
         super();
         this.uneFrame = frame;
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout

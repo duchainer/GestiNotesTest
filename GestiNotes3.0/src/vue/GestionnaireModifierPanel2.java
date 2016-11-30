@@ -23,12 +23,12 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
 
     //variables
     final int NBR_NOTES = 4;
-    JFrame uneFrame;
+    UtileFrame uneFrame;
     Groupe g;
 
     //Méthodes
     //Constructeur
-    public GestionnaireModifierPanel2(JFrame frame, Groupe g) {
+    public GestionnaireModifierPanel2(UtileFrame frame, Groupe g) {
         super();
         this.uneFrame = frame;
         this.g = g;
@@ -61,12 +61,13 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
                 int num = Integer.parseInt(code.substring(6, 7));
                 Eleve eleve = g.getTabEleve().get(num);
 
+                ArrayList<Evaluation> evaluations = eleve.getTabEvaluation();
                 for (int i = 0; i < NBR_NOTES; i++) {
-                    eleve.setNote(i,Float.parseFloat(getChamp(i).getText()));
+                    evaluations.get(i).setNote(Double.parseDouble(getChamp(i).getText()));
                 }
                 uneFrame.getContentPane().removeAll();
                 JOptionPane.showMessageDialog(uneFrame, "Les notes ont ete modifies", "Modification des notes", JOptionPane.INFORMATION_MESSAGE);
-                uneFrame.add(new AcceuilPanel((UtileFrame) uneFrame));
+                uneFrame.add(new AccueilPanel(uneFrame));
                 uneFrame.revalidate();
                 uneFrame.repaint();
                 } catch (NumberFormatException f) {
@@ -81,7 +82,6 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
             }
         });
     }
-    //Autres Méthodes
 
     private void modifierEleve() {
         String code = (String) tabComboBox.get(0).getSelectedItem();
@@ -97,7 +97,7 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
         }
 
     }
-    public void retour(JFrame frame) {
+    public void retour(UtileFrame frame) {
         frame.getContentPane().removeAll();
         frame.add(new GestionnaireModifierPanel(frame));
         frame.revalidate();

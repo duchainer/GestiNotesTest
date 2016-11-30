@@ -5,6 +5,7 @@ package vue;
  *
  * @author Raphael Duchaine
  */
+import java.awt.Color;
 import java.awt.HeadlessException;
 import javax.swing.*;
 //import java.awt.*;
