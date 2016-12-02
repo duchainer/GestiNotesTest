@@ -34,6 +34,8 @@ public class EleveModifierPanel extends UtilePanel {
                 super(fenetre);
         this.gestionPanel=gestionPanel;
         this.pBar = pBar;
+        pBar.setStringPainted(true);
+        pBar.setString(pBar.getValue() + "/10");
         GridLayout gl = new GridLayout(12, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addEspace();
@@ -59,11 +61,9 @@ public class EleveModifierPanel extends UtilePanel {
         //Un bouton "Clear"
         addBouton("Vider les champs");
         addEspace();
-        
-        addLabel("Eleve(s) dans le groupe: ");
-        simplePanel.add(new JLabel(pBar.getMinimum() + ""));
+        addEspace();
+        addLabel("Eleve(s) dans le groupe: ");       
         simplePanel.add(pBar);
-        simplePanel.add(new JLabel(pBar.getMaximum() + ""));
     }
     public EleveModifierPanel(){
         this(null, null);

@@ -34,6 +34,8 @@ public class EleveNouveauPanel extends UtilePanel {
         super(fenetre);
         this.gestionPanel=gestionPanel;
         this.pBar = pBar;
+        pBar.setStringPainted(true);
+        pBar.setString(pBar.getValue() + "/10");
         GridLayout gl = new GridLayout(10, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addEspace();
@@ -52,6 +54,7 @@ public class EleveNouveauPanel extends UtilePanel {
         getLastChamp().setEditable(false);
         for (int i = 0; i < NBR_NOTES; i++) {
             addChamp("Note" + (i + 1));
+            getLastChamp().setEditable(false);
             addEspace();
             addEspace();
         }
@@ -59,11 +62,9 @@ public class EleveNouveauPanel extends UtilePanel {
         //Un bouton "Clear"
         addBouton("Vider les champs");
         addEspace();
-        
-        addLabel("Eleve(s) dans le groupe: ");
-        simplePanel.add(new JLabel(pBar.getMinimum() + ""));
+        addEspace();
+        addLabel("Eleve(s) dans le groupe: ");       
         simplePanel.add(pBar);
-        simplePanel.add(new JLabel(pBar.getMaximum() + ""));
     }
     public EleveNouveauPanel(){
         this(null, null);
@@ -78,10 +79,12 @@ public class EleveNouveauPanel extends UtilePanel {
         if (((JButton) event.getSource()).getText() == "Enregistrer un eleve") {
             addEleve();
             pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
+            pBar.setString(pBar.getValue() + "/10");
             if(pBar.getValue()==Etablissement.ELEVES_PAR_GROUPE){
                 JOptionPane.showMessageDialog(fenetre, "Le prochain eleve sera enregistre dans un nouveau groupe", "Notification", JOptionPane.INFORMATION_MESSAGE);
                 pBar.setValue(0);
             }
+            pBar.setString(pBar.getValue() + "/10");
             revalidate();
         }
         //Un bouton qui vide tous les champs

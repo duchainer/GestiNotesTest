@@ -32,6 +32,7 @@ public class AccueilPanel extends UtilePanel implements Runnable {
     }                  
     
     
+    @Override
     public void paint(Graphics g) {
         
         // Appeler la methode paint de la superclasse.
