@@ -34,16 +34,21 @@ public class EleveAfficherPanel extends UtilePanel {
         super(fenetre);
         this.gestionPanel=gestionPanel;
         this.pBar = pBar;
+        pBar.setStringPainted(true);
+        pBar.setString(pBar.getValue() + "/10");
         GridLayout gl = new GridLayout(12, 6, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         addEspace();
         addChamp("Nom");
+        getLastChamp().setEditable(false);
         addEspace();
         addEspace();
         addChamp("Prenom");
+        getLastChamp().setEditable(false);
         addEspace();
         addEspace();
         addChamp("Date (JJ-MM-AAAA)");
+        getLastChamp().setEditable(false);
         addEspace();
         addEspace();
         addChamp("Code Permanent");
@@ -52,18 +57,17 @@ public class EleveAfficherPanel extends UtilePanel {
         getLastChamp().setEditable(false);
         for (int i = 0; i < NBR_NOTES; i++) {
             addChamp("Note" + (i + 1));
+            getLastChamp().setEditable(false);
             addEspace();
-            addEspace();
+            addEspace();           
         }
         addBouton("  Afficher un eleve   ");
         //Un bouton "Clear"
         addBouton("Vider les champs");
         addEspace();
-        
-        addLabel("Eleve(s) dans le groupe: ");
-        simplePanel.add(new JLabel(pBar.getMinimum() + ""));
+        addEspace();
+        addLabel("Eleve(s) dans le groupe: ");       
         simplePanel.add(pBar);
-        simplePanel.add(new JLabel(pBar.getMaximum() + ""));
     }
     public EleveAfficherPanel(){
         this(null, null);
