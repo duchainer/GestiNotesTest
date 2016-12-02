@@ -13,7 +13,6 @@ import javax.swing.UIManager;
 public class GestiNotesGraphique {
 
     public static void main(String[] args) {
-        Etablissement.initialise();
         PrincipaleFrame frame = new PrincipaleFrame(); 			 // Creation objet Frame
         frame.setVisible(true);                					 // Visibilite
 

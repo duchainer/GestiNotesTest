@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import modele.Eleve;
+import modele.Serialise;
 
 /**
  * 28/09/2016
@@ -33,6 +34,8 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     Image logo = new LogoRosemont().logo;
     JProgressBar pBar;
+    
+    String[] tabGestionnaireOptions ={"Initialiser","Importer","Exporter","Lister","Modifier","Statistiques"};
 
     //Constructeurs
     public PrincipaleFrame() {
@@ -68,9 +71,8 @@ public class PrincipaleFrame extends UtileFrame {
         JMenu menuGestionnaire = new JMenu("Gestionnaire"); // création menu client
         menuBar.add(menuGestionnaire); // ajout du menu à la barre des menus
 
-        addMenuItem("Lister", menuGestionnaire);
-        addMenuItem("Modifier", menuGestionnaire);
-        addMenuItem("Statistiques", menuGestionnaire);
+        for(String s : tabGestionnaireOptions)
+            addMenuItem(s, menuGestionnaire);
 
         JMenu menuAide = new JMenu("Aide"); // création menu client
         menuBar.add(menuAide); // ajout du menu à la barre des menus
@@ -92,6 +94,7 @@ public class PrincipaleFrame extends UtileFrame {
     @Override
     public void actionPerformed(ActionEvent e) // Afficher DOS le texte de l’élément de menu actionné.
     {
+        //Menu Étudiant
         if (((JMenuItem) e.getSource()).getText() == "Nouveau") {
             this.getContentPane().removeAll();
             this.add(new EleveNouveauPanel(this, pBar));
@@ -107,6 +110,37 @@ public class PrincipaleFrame extends UtileFrame {
             this.add(new EleveModifierPanel(this, pBar));
             repaint2();
         }
+        //permet de mettre le bulletin de l'eleve demande dans un fichier.txt
+        if (((JMenuItem) e.getSource()).getText() == "Imprimer") {
+            imprimer();
+        }
+        
+        //Menu Gestionnaire
+        if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[0]) {
+            try {
+                Serialise.initialiseGroupes();
+                JOptionPane.showMessageDialog(this, "Initialisation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                messageErreur(ex);
+            }
+        }//Importer
+        if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[1]) {
+            try {
+                Serialise.importeGroupes();
+                JOptionPane.showMessageDialog(this, "Importation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                messageErreur(ex);
+            }
+        }//Exporter
+        if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[2]) {
+            try {
+                Serialise.exporteGroupes(Etablissement.getTabGroupe());
+                JOptionPane.showMessageDialog(this, "Exportation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                messageErreur(ex);
+            }
+        }
+        
         if (((JMenuItem) e.getSource()).getText() == "Lister") {
             this.getContentPane().removeAll();
             this.add(new GestionnaireListerPanel(this));
@@ -150,50 +184,7 @@ public class PrincipaleFrame extends UtileFrame {
         if (((JMenuItem) e.getSource()).getText() == "Quitter") {
             this.quitter();
         }
-        //permet de mettre le bulletin de l'eleve demande dans un fichier.txt
-        if (((JMenuItem) e.getSource()).getText() == "Imprimer") {
-            boolean found = false;
-            String nomBulletin = "";
-            Eleve eleve = null;
-            Groupe groupe= null;
-            String emplacementSelectionne = "";
-            String code = JOptionPane.showInputDialog("Entrez le code de l'étudiant pour générer le bulletin");
-            
-            for (int index = 0; index < Etablissement.getTabGroupe().size(); index++) {
-                for (int index2 = 0; index2 < Etablissement.getTabGroupe().get(index).getTabEleve().size(); index2++) {
-
-                    if (code.equalsIgnoreCase(Etablissement.getTabGroupe().get(index).getTabEleve().get(index2).codePermanent())) {
-                        //Objet qui devrait correspondre
-                        eleve = Etablissement.getTabGroupe().get(index).getTabEleve().get(index2);
-                        groupe = Etablissement.getTabGroupe().get(index);
-
-                        JOptionPane.showMessageDialog(null, "Eleve trouve!\nVeuillez maintenant choisir le dossier dans lequel vous voulez enregistrer le bulletin", "GestiNotes", JOptionPane.INFORMATION_MESSAGE);
-
-                        //Création du nom du fichier bulletin
-                        nomBulletin = Etablissement.getTabGroupe().get(index).getTabEleve().get(index2).getNom() + Etablissement.getTabGroupe().get(index).getTabEleve().get(index2).getPrenom() + ".txt";
-                        //Création et enregistrement du fichier bulletin
-                        JFileChooser emplacementBulletin = new JFileChooser();
-                        emplacementBulletin.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                        int reponse = emplacementBulletin.showSaveDialog(this);
-                        if (reponse == JFileChooser.APPROVE_OPTION) {
-                            File emplacement = emplacementBulletin.getSelectedFile();
-                            emplacementSelectionne = emplacement.getPath();
-                        }
-                        try {
-                            creerBulletin(emplacementSelectionne, nomBulletin, groupe, eleve);
-
-                        } catch (IOException ex) {
-                            //À MODIFIER
-                            JOptionPane.showMessageDialog(null, " IOException", "GestiNotes", JOptionPane.ERROR_MESSAGE);
-                        }
-                        JOptionPane.showMessageDialog(null, "Bulletin cree avec succes!");
-                    }
-                }
-            }
-            if (eleve == null) {
-                JOptionPane.showMessageDialog(null, "Code invalide. Veuillez reessayer");
-            }
-        }
+        
 
     }
 
@@ -239,5 +230,49 @@ public class PrincipaleFrame extends UtileFrame {
             quitter();
         }
     };
+
+    public void imprimer() throws HeadlessException {
+        boolean found = false;
+        String nomBulletin = "";
+        Eleve eleve = null;
+        Groupe groupe= null;
+        String emplacementSelectionne = "";
+        String code = JOptionPane.showInputDialog("Entrez le code de l'étudiant pour générer le bulletin");
+        
+        for (int i = 0; i < Etablissement.getTabGroupe().size(); i++) {
+            for (int j = 0; j < Etablissement.getTabGroupe().get(i).getTabEleve().size(); j++) {
+                
+                if (code.equalsIgnoreCase(Etablissement.getTabGroupe().get(i).getTabEleve().get(j).codePermanent())) {
+                    //Objet qui devrait correspondre
+                    eleve = Etablissement.getTabGroupe().get(i).getTabEleve().get(j);
+                    groupe = Etablissement.getTabGroupe().get(i);
+                    
+                    JOptionPane.showMessageDialog(null, "Eleve trouve!\nVeuillez maintenant choisir le dossier dans lequel vous voulez enregistrer le bulletin", "GestiNotes", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    //Création du nom du fichier bulletin
+                    nomBulletin = Etablissement.getTabGroupe().get(i).getTabEleve().get(j).getNom() + Etablissement.getTabGroupe().get(i).getTabEleve().get(j).getPrenom() + ".txt";
+                    //Création et enregistrement du fichier bulletin
+                    JFileChooser emplacementBulletin = new JFileChooser();
+                    emplacementBulletin.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    int reponse = emplacementBulletin.showSaveDialog(this);
+                    if (reponse == JFileChooser.APPROVE_OPTION) {
+                        File emplacement = emplacementBulletin.getSelectedFile();
+                        emplacementSelectionne = emplacement.getPath();
+                    }
+                    try {
+                        creerBulletin(emplacementSelectionne, nomBulletin, groupe, eleve);
+                        
+                    } catch (IOException ex) {
+                        //À MODIFIER
+                        JOptionPane.showMessageDialog(null, " IOException", "GestiNotes", JOptionPane.ERROR_MESSAGE);
+                    }
+                    JOptionPane.showMessageDialog(null, "Bulletin cree avec succes!");
+                }
+            }
+        }
+        if (eleve == null) {
+            JOptionPane.showMessageDialog(null, "Code invalide. Veuillez reessayer");
+        }
+    }
 
 }
