@@ -34,8 +34,8 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     Image logo = new LogoRosemont().logo;
     JProgressBar pBar;
-    
-    String[] tabGestionnaireOptions ={"Initialiser","Importer","Exporter","Lister","Modifier","Statistiques"};
+
+    String[] tabGestionnaireOptions = {"Initialiser", "Importer", "Exporter", "Lister", "Modifier", "Statistiques"};
 
     //Constructeurs
     public PrincipaleFrame() {
@@ -71,8 +71,9 @@ public class PrincipaleFrame extends UtileFrame {
         JMenu menuGestionnaire = new JMenu("Gestionnaire"); // création menu client
         menuBar.add(menuGestionnaire); // ajout du menu à la barre des menus
 
-        for(String s : tabGestionnaireOptions)
+        for (String s : tabGestionnaireOptions) {
             addMenuItem(s, menuGestionnaire);
+        }
 
         JMenu menuAide = new JMenu("Aide"); // création menu client
         menuBar.add(menuAide); // ajout du menu à la barre des menus
@@ -87,7 +88,8 @@ public class PrincipaleFrame extends UtileFrame {
         pBar = new JProgressBar();
         pBar.setMinimum(0);
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
-        pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
+        
+        //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
 
     }
 
@@ -114,7 +116,7 @@ public class PrincipaleFrame extends UtileFrame {
         if (((JMenuItem) e.getSource()).getText() == "Imprimer") {
             imprimer();
         }
-        
+
         //Menu Gestionnaire
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[0]) {
             try {
@@ -140,7 +142,7 @@ public class PrincipaleFrame extends UtileFrame {
                 messageErreur(ex);
             }
         }
-        
+
         if (((JMenuItem) e.getSource()).getText() == "Lister") {
             this.getContentPane().removeAll();
             this.add(new GestionnaireListerPanel(this));
@@ -184,7 +186,6 @@ public class PrincipaleFrame extends UtileFrame {
         if (((JMenuItem) e.getSource()).getText() == "Quitter") {
             this.quitter();
         }
-        
 
     }
 
@@ -194,34 +195,34 @@ public class PrincipaleFrame extends UtileFrame {
     }
 
     public void creerBulletin(String chemin, String nomBulletin, Groupe groupe, Eleve eleve) throws IOException {
-        BufferedWriter imprBulletin = new BufferedWriter(new FileWriter(chemin + File.separator + nomBulletin));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(chemin + File.separator + nomBulletin));
 
         //Variable string permettant de mettre la première lettre du prénom de l'étudiant en majuscule en cas d'oubli lors de l'enregistrement de l'étudiant
         String prenomPresente = Character.toUpperCase(eleve.getPrenom().charAt(0)) + eleve.getPrenom().substring(1).toLowerCase();
 
-        imprBulletin.write("Bulletin de l'eleve " + eleve.getNom().toUpperCase() + ", " + prenomPresente + " (" + eleve.codePermanent() + ")");
-        imprBulletin.newLine();
-        imprBulletin.write("Date de naissance (JJ-MM-AAAA): " + eleve.getDateNaissance());
-        imprBulletin.newLine();
+        bw.write("Bulletin de l'eleve " + eleve.getNom().toUpperCase() + ", " + prenomPresente + " (" + eleve.codePermanent() + ")");
+        bw.newLine();
+        bw.write("Date de naissance (JJ-MM-AAAA): " + eleve.getDateNaissance());
+        bw.newLine();
         //Science
-        imprBulletin.write("Note du premier cours: " + eleve.getTabEvaluation().get(0).getNote() + " %");
-        imprBulletin.newLine();
-        imprBulletin.write("Note du deuxieme cours: " + eleve.getTabEvaluation().get(1).getNote() + " %");
-        imprBulletin.newLine();
-        imprBulletin.write("Note du troisieme cours: " + eleve.getTabEvaluation().get(2).getNote() + " %");
-        imprBulletin.newLine();
-        imprBulletin.write("Note du quatrieme cours: " + eleve.getTabEvaluation().get(3).getNote() + " %");
-        imprBulletin.newLine();
-        imprBulletin.write("Note finale de l'eleve: " + eleve.calculerNoteFinale() + " %");
-        imprBulletin.newLine();
-        imprBulletin.newLine();
+        bw.write("Note du premier cours: " + eleve.getTabEvaluation().get(0).getNote() + " %");
+        bw.newLine();
+        bw.write("Note du deuxieme cours: " + eleve.getTabEvaluation().get(1).getNote() + " %");
+        bw.newLine();
+        bw.write("Note du troisieme cours: " + eleve.getTabEvaluation().get(2).getNote() + " %");
+        bw.newLine();
+        bw.write("Note du quatrieme cours: " + eleve.getTabEvaluation().get(3).getNote() + " %");
+        bw.newLine();
+        bw.write("Note finale de l'eleve: " + eleve.calculerNoteFinale() + " %");
+        bw.newLine();
+        bw.newLine();
         //Trouver les statistiques du groupe appartenant à l'étudiant
-        imprBulletin.write("Moyenne du groupe: " + Statistique.calculerMoyenne(groupe) + " %");
-        imprBulletin.newLine();
-        imprBulletin.write("Ecart-Type du groupe: " + Statistique.calculerEcartType(groupe));
-        imprBulletin.newLine();
-        imprBulletin.write("Variance du groupe: " + Statistique.calculerVariance(groupe));
-        imprBulletin.close();
+        bw.write("Moyenne du groupe: " + Statistique.calculerMoyenne(groupe) + " %");
+        bw.newLine();
+        bw.write("Ecart-Type du groupe: " + Statistique.calculerEcartType(groupe));
+        bw.newLine();
+        bw.write("Variance du groupe: " + Statistique.calculerVariance(groupe));
+        bw.close();
     }
     //methodes supplementaires
     WindowListener exitListener = new WindowAdapter() {
@@ -235,44 +236,41 @@ public class PrincipaleFrame extends UtileFrame {
         boolean found = false;
         String nomBulletin = "";
         Eleve eleve = null;
-        Groupe groupe= null;
+        Groupe groupe = null;
         String emplacementSelectionne = "";
         String code = JOptionPane.showInputDialog("Entrez le code de l'étudiant pour générer le bulletin");
+
+        //Objets qui correspondent
+        eleve = Etablissement.searchEleve(code);
+        groupe = Etablissement.searchGroupeWEleve(code);
         
-        for (int i = 0; i < Etablissement.getTabGroupe().size(); i++) {
-            for (int j = 0; j < Etablissement.getTabGroupe().get(i).getTabEleve().size(); j++) {
-                
-                if (code.equalsIgnoreCase(Etablissement.getTabGroupe().get(i).getTabEleve().get(j).codePermanent())) {
-                    //Objet qui devrait correspondre
-                    eleve = Etablissement.getTabGroupe().get(i).getTabEleve().get(j);
-                    groupe = Etablissement.getTabGroupe().get(i);
-                    
-                    JOptionPane.showMessageDialog(null, "Eleve trouve!\nVeuillez maintenant choisir le dossier dans lequel vous voulez enregistrer le bulletin", "GestiNotes", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    //Création du nom du fichier bulletin
-                    nomBulletin = Etablissement.getTabGroupe().get(i).getTabEleve().get(j).getNom() + Etablissement.getTabGroupe().get(i).getTabEleve().get(j).getPrenom() + ".txt";
-                    //Création et enregistrement du fichier bulletin
-                    JFileChooser emplacementBulletin = new JFileChooser();
-                    emplacementBulletin.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                    int reponse = emplacementBulletin.showSaveDialog(this);
-                    if (reponse == JFileChooser.APPROVE_OPTION) {
-                        File emplacement = emplacementBulletin.getSelectedFile();
-                        emplacementSelectionne = emplacement.getPath();
-                    }
-                    try {
-                        creerBulletin(emplacementSelectionne, nomBulletin, groupe, eleve);
-                        
-                    } catch (IOException ex) {
-                        //À MODIFIER
-                        JOptionPane.showMessageDialog(null, " IOException", "GestiNotes", JOptionPane.ERROR_MESSAGE);
-                    }
-                    JOptionPane.showMessageDialog(null, "Bulletin cree avec succes!");
-                }
-            }
+         if (eleve == null) {
+            messageErreur(new Exception("Code invalide. Veuillez reessayer"));
+            return;
         }
-        if (eleve == null) {
-            JOptionPane.showMessageDialog(null, "Code invalide. Veuillez reessayer");
+
+        JOptionPane.showMessageDialog(null, "Eleve trouve!\nVeuillez maintenant choisir le dossier dans lequel vous voulez enregistrer le bulletin", "GestiNotes", JOptionPane.INFORMATION_MESSAGE);
+
+        //Création du nom du fichier bulletin
+        nomBulletin = eleve.getNom() + eleve.getPrenom() + ".txt";
+        //Création et enregistrement du fichier bulletin
+        JFileChooser emplacementBulletin = new JFileChooser();
+        emplacementBulletin.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int reponse = emplacementBulletin.showSaveDialog(this);
+        if (reponse == JFileChooser.APPROVE_OPTION) {
+            File emplacement = emplacementBulletin.getSelectedFile();
+            emplacementSelectionne = emplacement.getPath();
         }
+        try {
+            creerBulletin(emplacementSelectionne, nomBulletin, groupe, eleve);
+
+        } catch (IOException ex) {
+            //À MODIFIER
+            JOptionPane.showMessageDialog(null, " IOException", "GestiNotes", JOptionPane.ERROR_MESSAGE);
+        }
+        JOptionPane.showMessageDialog(null, "Bulletin cree avec succes!");
+
+       
     }
 
 }

@@ -72,6 +72,16 @@ public final class Etablissement {
         }
         return eleve;
     }
+    public static Groupe searchGroupeWEleve(String code){
+        Groupe groupe = null;
+        for(Groupe g:getTabGroupe()){
+            for(Eleve e:g.getTabEleve()){
+                if(e.codePermanent().equalsIgnoreCase(code))
+                    return g;
+            }
+        }
+        return groupe;
+    }
     
     public static float randomNote(){
         Random ran = new Random();
