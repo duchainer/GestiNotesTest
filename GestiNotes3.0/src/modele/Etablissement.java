@@ -66,7 +66,7 @@ public final class Etablissement {
         Eleve eleve = null;
         for(Groupe g:getTabGroupe()){
             for(Eleve e:g.getTabEleve()){
-                if(e.codePermanent().equals(code))
+                if(e.codePermanent().equalsIgnoreCase(code))
                     return e;
             }
         }
