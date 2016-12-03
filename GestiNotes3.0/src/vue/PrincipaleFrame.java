@@ -236,7 +236,6 @@ public class PrincipaleFrame extends UtileFrame {
     
     //methodes supplementaires
     public void imprimer() throws HeadlessException {
-        boolean found = false;
         String nomBulletin = "";
         Eleve eleve = null;
         Groupe groupe = null;
@@ -248,7 +247,7 @@ public class PrincipaleFrame extends UtileFrame {
         groupe = Etablissement.searchGroupeWEleve(code);
         
          if (eleve == null) {
-            messageErreur(new Exception("Code invalide. Veuillez reessayer"));
+            messageErreur(new Exception("Code invalide. Veuillez reessayer!"));
             return;
         }
 
