@@ -85,7 +85,7 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
                 note = g.getTabEleve().get(i).calculerNoteFinale();
             }
         }
-        return note;
+        return Math.round(note*100)/100;
     }
 
     public double pireNote(Groupe g) {
@@ -95,7 +95,7 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
                 note = g.getTabEleve().get(i).calculerNoteFinale();
             }
         }
-        return note;
+        return Math.round(note*100)/100;
     }
 
     public double tauxDeReussite(Groupe g) {
