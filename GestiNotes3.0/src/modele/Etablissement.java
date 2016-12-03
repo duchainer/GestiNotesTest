@@ -10,6 +10,8 @@ import java.util.*;
  */
 public final class Etablissement {
 
+    public static int NBR_NOTES=4;
+
     private static String nomEcole = "Academie de RobberVals";
     public static final int ELEVES_PAR_GROUPE = 10;
     private static ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
