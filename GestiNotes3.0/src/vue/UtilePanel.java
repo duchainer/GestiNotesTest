@@ -103,6 +103,15 @@ public class UtilePanel extends JPanel implements ActionListener{
     public void setChamp(int index, String texte) {
         champs.get(index).setText(texte);
     }
+    public void setChampEditable(int index, boolean editable) {
+        champs.get(index).setEditable(editable);
+    }
+    
+    public void viderChamps() {
+        for (JTextField champ : champs) {
+            champ.setText("");
+        }
+    }
     
     @Override
     public void actionPerformed(ActionEvent event) {  // Methode recoit evenemen
@@ -113,26 +122,9 @@ public class UtilePanel extends JPanel implements ActionListener{
         }
     }
     
-    //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
-    public void remplir(JComboBox combo, ArrayList liste) {
-        combo.removeAllItems();
-        for (int i = 0; i < liste.size(); i++) {
-            combo.addItem("Groupe " + i);
-        }
-    }
     
-    public void refreshComboBoxes(ArrayList liste) {
-        if (tabComboBox != null) {
-            for (int i = 0; i < tabComboBox.size(); i++) {
-                final JComboBox get = tabComboBox.get(i);
-                remplir(get,liste);
-                get.revalidate();
-                get.repaint();
-            }
-        }
-    }
 
     public void messageErreur(Exception e) throws HeadlessException {
-        JOptionPane.showMessageDialog(null, e.toString(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 }
