@@ -32,15 +32,23 @@ public class PrincipaleFrame extends UtileFrame {
     //JPanel simplePanel;  
     //ArrayList<JButton> boutons = new ArrayList<JButton>();
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
-    Image logo = new LogoRosemont().logo;
+    LogoRosemont logoRosemont = new LogoRosemont();
     JProgressBar pBar;
 
     String[] tabGestionnaireOptions = {"Initialiser", "Importer", "Exporter", "Lister", "Modifier", "Statistiques"};
-
+    
+    //Réaction losque la fenetre se fait fermé par X
+    WindowListener exitListener = new WindowAdapter() {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            quitter();
+        }
+    };
+    
+    
     //Constructeurs
     public PrincipaleFrame() {
-        super("GestiNotes_02", 800, 750); // Titre, Dimensions x, y
-        setIconImage(logo);
+        super("GestiNotes_03", 800, 750); // Titre, Dimensions x, y
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);			// Fenetre centree
         BorderLayout bl = new BorderLayout();
@@ -90,7 +98,7 @@ public class PrincipaleFrame extends UtileFrame {
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
         
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
-
+        setIconImage(logoRosemont.logo);
     }
 
     @Override
@@ -161,6 +169,7 @@ public class PrincipaleFrame extends UtileFrame {
         if (((JMenuItem) e.getSource()).getText() == "A propos") {
             JOptionPane.showMessageDialog(this, "GestiNotes par Patrick Dominguès et Raphaël Duchaîne de InnovTech"
                     + "\nMontréal,Québec"
+                    + "\nVersion 3 (02/12/2016)"
                     + "\nVersion 2 (04/11/2016)"
                     + "\nVersion 1 (12/10/2016)"
                     + "\n"
@@ -171,10 +180,10 @@ public class PrincipaleFrame extends UtileFrame {
 
         if (((JMenuItem) e.getSource()).getText() == "?") {
             JOptionPane.showMessageDialog(this, "Pour utiliser ce bijou d'innovation, il faut savoir:"
+                    + "\n-Qu'il faut initialiser/importer dans le menu Gestionnaire"
                     + "\n-Que chaque groupe ne peut comprendre que 10 eleves"
                     + "\n-Qu'un eleve doit être initialisé avec nom, prenom et date "
                     + "\n-Que l'on ne peut pas enlever d'eleve dans cette version"
-                    + "\n-Que les statistiques du groupe s'affichent lorsque un élève est ajouté"
                     + "\n-Que l'aide se trouve ici"
                     + "\n-Que 2 et 2 font 4", "Instructions", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -224,14 +233,8 @@ public class PrincipaleFrame extends UtileFrame {
         bw.write("Variance du groupe: " + Statistique.calculerVariance(groupe));
         bw.close();
     }
+    
     //methodes supplementaires
-    WindowListener exitListener = new WindowAdapter() {
-        @Override
-        public void windowClosing(WindowEvent e) {
-            quitter();
-        }
-    };
-
     public void imprimer() throws HeadlessException {
         boolean found = false;
         String nomBulletin = "";
@@ -263,12 +266,16 @@ public class PrincipaleFrame extends UtileFrame {
         }
         try {
             creerBulletin(emplacementSelectionne, nomBulletin, groupe, eleve);
+            JOptionPane.showMessageDialog(null, "Bulletin créé avec succès!");
 
         } catch (IOException ex) {
-            //À MODIFIER
-            JOptionPane.showMessageDialog(null, " IOException", "GestiNotes", JOptionPane.ERROR_MESSAGE);
+            messageErreur(new IOException("Échec lors de la création du fichier."));
+            
+        }catch (Exception ex) {
+            messageErreur(new Exception("Erreur inconnue lors de la création du fichier\n Veuillez contacter les développeur!"));
+            
         }
-        JOptionPane.showMessageDialog(null, "Bulletin cree avec succes!");
+        
 
        
     }
