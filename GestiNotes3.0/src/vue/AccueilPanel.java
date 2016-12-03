@@ -34,7 +34,6 @@ public class AccueilPanel extends UtilePanel implements Runnable {
     
     @Override
     public void paint(Graphics g) {
-        
         // Appeler la methode paint de la superclasse.
         super.paint(g);
         // Creer le contexte graphique 2D
@@ -45,12 +44,10 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         g2d.drawImage(image, x, 375-y, 285, 285, this); 
         g2d.drawImage(image, 500-x, y, 285, 285, this); 
         g2d.setFont( new Font( "Algerian", Font.BOLD, 17 ) );
-        g2d.drawString("Bienvenue dans le", 295, 318);
-        g2d.drawString("gestionnaire GestiNotes", 295, 338);
-        g2d.drawString("version 2.0!", 295, 358);
+        g2d.drawString("Bienvenue dans", 295, 318);
+        g2d.drawString("GestiNotes!", 315, 338);
         
-        this.setForeground(new Color(Math.abs((x/2)-(2*y/3)),(x/2),Math.abs((x/2)-(2*y/3)+5)));
-        
+        this.setForeground(new Color(Math.abs((x/3)-(2*y/3)),(x/3),Math.abs((x/2)-(2*y/3)+5)));
     }
 
     // Déplacement boule selon les valeurs des paramètres x et y
@@ -58,12 +55,13 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         this.x += x;
         this.y += y;
         try {
-            Thread.sleep(50); //Ici, une pause d'une seconde
+            Thread.sleep(50); //Ici, une petite pause
         }catch(InterruptedException e) {
             e.printStackTrace();
         }
         // L'objet  se redessine (actualiser)
         repaint();
+        revalidate();
     }
     
     @Override
@@ -80,7 +78,7 @@ public class AccueilPanel extends UtilePanel implements Runnable {
                 for(int i=0 ; i<25 ; i++)
                      deplacer(-20, 0);
             try {
-                Thread.sleep(25);
+                Thread.sleep(250);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -88,15 +86,3 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         }
     }
 }
-/*
-while(t==true){
-
-        for(int i=0 ; i<25 ; i++)
-            deplacer(0, 15);
-        for(int i=0 ; i<25 ; i++)
-            deplacer(20, 0);
-        for(int i=0 ; i<25 ; i++)
-            deplacer(0, -15);
-        for(int i=0 ; i<25 ; i++)
-            deplacer(-20, 0);
-		}*/  
