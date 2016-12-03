@@ -44,7 +44,6 @@ public class EleveTest {
     @Test(expected = ArgumentInvalideException.class)
     public void testSetNomVide() {
         System.out.println("setNom");
-        System.out.println("L\'argument est invalide");
         String nom = "";
         instance.setNom(nom);
     }
@@ -149,6 +148,11 @@ public class EleveTest {
         instance.setNote(0, 100f);
         float result = instance.calculerNoteFinale();
         assertEquals(expResult, result, 0.0);
+        expResult = 100.0f;
+        instance.setNote(0, 100f);
+        instance.setNote(1, 100f);
+        result = instance.calculerNoteFinale();
+        assertEquals(expResult, result, 0.0);
     }
 
     /**
@@ -161,5 +165,6 @@ public class EleveTest {
         String result = instance.toString();
         assertEquals(result,expResult);
     }
+    
 
 }

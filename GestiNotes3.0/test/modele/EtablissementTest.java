@@ -52,9 +52,6 @@ public class EtablissementTest {
         Etablissement.setTabGroupe(new ArrayList<Groupe>());
         Etablissement.initialise();
         //Un seul groupe
-        for(Groupe g:Etablissement.getTabGroupe()){
-            System.out.println(g.getNumero());
-        }
         assertEquals(1,Etablissement.getTabGroupe().size());
         
         // Huit eleves
