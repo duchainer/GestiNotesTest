@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JProgressBar;
 import modele.Etablissement;
 
-public class GestionnaireStatistiquesPanel extends ComplementPanel {
+public class GestionnaireStatistiquesPanel extends UtilePanel /*ComplementPanel*/ {
 
 
     //variable
@@ -43,7 +43,6 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         getLastChamp().setEditable(false);
         addChamp("taux de succes: ");
         getLastChamp().setEditable(false);
-        refreshComboBoxes();
         
         tabComboBox.get(0).addActionListener(new ActionListener() {
             @Override
@@ -56,15 +55,7 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
 
     }
     //Autres Méthodes
-
-    GestionnaireStatistiquesPanel(UtileFrame uneFrame, JProgressBar pBar) {
-        this(uneFrame);
-        this.pBar=pBar;
-    }
-
-
     private void stats() {
-        
         String code = (String) tabComboBox.get(0).getSelectedItem();
         int num = Integer.parseInt(code.substring(7));
         Groupe g = Etablissement.getTabGroupe().get(num);
@@ -107,10 +98,6 @@ public class GestionnaireStatistiquesPanel extends ComplementPanel {
         }
         taux = (taux / g.getTabEleve().size()) * 100;
         return taux;
-    }
-    
-    public void refreshComboBoxes() {
-    super.refreshComboBoxes(Etablissement.getTabGroupe());
     }
 }
 

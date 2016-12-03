@@ -40,7 +40,6 @@ public class GestionnaireListerPanel extends UtilePanel {
         addLabel("Date de naissance");
         addLabel("     Note finale");
         addLabel("Code permanent");
-        refreshComboBoxes();
 
         //Ajoute les divers champs pour les divers informations tout en les protégeant de l'édition
         for (int i = 0; i < Etablissement.ELEVES_PAR_GROUPE; i++) {
@@ -72,10 +71,6 @@ public class GestionnaireListerPanel extends UtilePanel {
 
     GestionnaireListerPanel(UtileFrame frame, JProgressBar pBar) {
         this(frame);
-    }
-    
-    public void refreshComboBoxes() {
-        super.refreshComboBoxes(Etablissement.getTabGroupe());
     }
 
     private void lister() {

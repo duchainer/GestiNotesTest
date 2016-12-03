@@ -32,7 +32,6 @@ public class GestionnaireModifierPanel extends UtilePanel {
         addLabel("Choisissez un élève: ");
         addComboBox();
         
-        refreshComboBoxes();
         tabComboBox.get(0).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,11 +47,6 @@ public class GestionnaireModifierPanel extends UtilePanel {
             }
         });
 
-    }
-    //Autres Méthodes
-
-    public void refreshComboBoxes() {
-        super.refreshComboBoxes(Etablissement.getTabGroupe());
     }
 }
 
