@@ -19,119 +19,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
-public class EleveAfficherPanel extends UtilePanel {
-
-    private UtilePanel gestionPanel;
-
-    //variables
-    final int NBR_NOTES = 4;
-    UtileFrame fenetre;
-    JProgressBar pBar;
-
+public class EleveAfficherPanel extends ElevePanel {
     //Méthodes
     //Constructeur
     public EleveAfficherPanel(UtileFrame fenetre, JProgressBar pBar) {
-        super(fenetre);
-        this.gestionPanel=gestionPanel;
-        this.pBar = pBar;
-        pBar.setStringPainted(true);
-        pBar.setString(pBar.getValue() + "/10");
-        GridLayout gl = new GridLayout(12, 6, 0, 25);	//Cree GridLayout
-        simplePanel.setLayout(gl);
-        addEspace();
-        addChamp("Nom");
-        getLastChamp().setEditable(false);
-        addEspace();
-        addEspace();
-        addChamp("Prenom");
-        getLastChamp().setEditable(false);
-        addEspace();
-        addEspace();
-        addChamp("Date (JJ-MM-AAAA)");
-        getLastChamp().setEditable(false);
-        addEspace();
-        addEspace();
-        addChamp("Code Permanent");
-        addEspace();
-        addEspace();
-        getLastChamp().setEditable(false);
-        for (int i = 0; i < NBR_NOTES; i++) {
-            addChamp("Note" + (i + 1));
-            getLastChamp().setEditable(false);
-            addEspace();
-            addEspace();           
+        super(fenetre,pBar);
+        texteBouton="Afficher un eleve";
+        getBouton(0).setText(texteBouton);
+        for(JTextField c:champs){
+            c.setEditable(false);
         }
-        addBouton("  Afficher un eleve   ");
-        //Un bouton "Clear"
-        addBouton("Vider les champs");
-        addEspace();
-        addEspace();
-        addLabel("Eleve(s) dans le groupe: ");       
-        simplePanel.add(pBar);
     }
     public EleveAfficherPanel(){
         this(null, null);
     }
-    //Get-Set
-    //toString
     //Autres Méthodes
-
     @Override
-    public void actionPerformed(ActionEvent event) {  // Methode recoit evenement
-
-        if (((JButton) event.getSource()).getText() == "  Afficher un eleve   ") {
-            afficherEleve();
-        }
-        //Un bouton qui vide tous les champs
-        if (((JButton) event.getSource()).getText() == "Vider les champs") {
-            viderChamps();
-        }
-       
-        
-    }
-
-    private void afficherEleve(){
-            String codePermanent = JOptionPane.showInputDialog(null,
-                    "Entrer le code permanent de l'eleve:",
-                    "Afficher un Eleve", JOptionPane.QUESTION_MESSAGE);
-            if(afficherEleve(codePermanent))
-                notification("Affichage effectue");
-    }
-    private boolean afficherEleve(String codePermanent) {
-        Eleve eleve;
-        try {
-            eleve = Etablissement.searchEleve(codePermanent);
-            if (eleve.equals(null)) {
-                throw new NullPointerException("Code incorrect");
-            }
-            setChamp(0, eleve.getNom());
-            setChamp(1, eleve.getPrenom());
-            setChamp(2, eleve.getDateNaissance());
-            setChamp(3, codePermanent);
-            for (int i = 0; i < NBR_NOTES; i++) {
-                setChamp(i + 4, eleve.getNote(i));
-            }
-            return true;
-        } catch (NullPointerException e) {
-            messageErreur(new Exception("Eleve introuvable"));
-            return false;
-        }
-        catch (Exception e) {
-            messageErreur(e);
-            return false;
-        }
-    }
-    
-    private void notification(String texte) {
-        JOptionPane.showMessageDialog(null, texte, "Operation Effectué", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    private void viderChamps() {
-        for(JTextField champ :champs)
-            champ.setText("");
-    }
-
-    public void refreshComboBoxes() {
-        gestionPanel.refreshComboBoxes(Etablissement.getTabGroupe());
+    void bouton0Presse() {
+        afficherEleve();
     }
 }
