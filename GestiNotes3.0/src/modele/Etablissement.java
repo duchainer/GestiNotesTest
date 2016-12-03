@@ -13,8 +13,8 @@ public final class Etablissement {
     private static String nomEcole = "Academie de RobberVals";
     public static final int ELEVES_PAR_GROUPE = 10;
     private static ArrayList<Groupe> tabGroupe=new ArrayList<Groupe>();
-    static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "Karato", "K'amon"};
-    static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "Ash", "ToutTemps"};
+    static String[] noms = {"Attentia", "Bonniveau", "Curviligni", "Donagan", "Erzellman", "Frenchmen", "K'amon","Karato"};
+    static String[] prenoms = {"Genghis", "Conan", "Sarmoulu", "Maurice", "Zarah", "Rolphi", "ToutTemps","Ash"};
     static String[] dates = {"01-01-0001", "21-05-1982", "30-04-1213", "21-11-1395", "04-02-0999", "31-12-2012","16-06-0654", "09-07-6000"};
     
     public static void initialise() {
