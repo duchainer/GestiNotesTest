@@ -25,6 +25,7 @@ public class EleveModifierPanel extends ElevePanel {
     //Constructeur
     public EleveModifierPanel(UtileFrame fenetre, JProgressBar pBar) {
         super(fenetre,pBar);
+        updatePbar();
         texteBouton="Modifier un eleve";
         getBouton(0).setText(texteBouton);
     }

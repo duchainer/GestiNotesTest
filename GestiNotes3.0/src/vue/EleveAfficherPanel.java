@@ -24,6 +24,7 @@ public class EleveAfficherPanel extends ElevePanel {
     //Constructeur
     public EleveAfficherPanel(UtileFrame fenetre, JProgressBar pBar) {
         super(fenetre,pBar);
+        updatePbar();
         texteBouton="Afficher un eleve";
         getBouton(0).setText(texteBouton);
         for(JTextField c:champs){

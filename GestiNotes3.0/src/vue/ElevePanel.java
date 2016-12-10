@@ -51,6 +51,7 @@ public abstract class ElevePanel extends UtilePanel {
         addEspace();
         addLabel("Eleve(s) dans le groupe: ");       
         simplePanel.add(pBar);
+        updatePbar();
     }
 
     public ElevePanel() {
@@ -70,6 +71,16 @@ public abstract class ElevePanel extends UtilePanel {
             viderChamps();
         }
 
+    }
+
+    public void updatePbar() throws HeadlessException {
+        try {
+            pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
+            pBar.setString(pBar.getValue() + "/10");
+        } catch (Exception e) {
+            if (!e.getMessage().equals("-1"))
+                messageErreur(e);
+        }
     }
     abstract void bouton0Presse();
     

@@ -38,8 +38,7 @@ public class EleveNouveauPanel extends ElevePanel {
     @Override
     void bouton0Presse() {
         addEleve();
-        pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
-        pBar.setString(pBar.getValue() + "/10");
+        updatePbar();
         if (pBar.getValue() == Etablissement.ELEVES_PAR_GROUPE) {
             JOptionPane.showMessageDialog(fenetre, "Le prochain eleve sera enregistre dans un nouveau groupe", "Notification", JOptionPane.INFORMATION_MESSAGE);
             pBar.setValue(0);
