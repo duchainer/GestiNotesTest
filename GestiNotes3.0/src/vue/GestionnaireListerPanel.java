@@ -11,6 +11,7 @@ import modele.Etablissement;
 import modele.Groupe;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
@@ -30,6 +31,7 @@ public class GestionnaireListerPanel extends UtilePanel {
         addEspace();
         addLabel("Lister: ");
         addComboBox();
+        remplirCombo1();
         addEspace();
         addEspace();
 
@@ -106,14 +108,6 @@ public class GestionnaireListerPanel extends UtilePanel {
         getLastChamp().setEditable(false);
     }
 
-    /*
-    //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
-    public void remplir(JComboBox combo, ArrayList list) {
-        combo.removeAllItems();
-        for (int i = 0; i < list.size(); i++) {
-            combo.addItem("Groupe " + i);
-        }
-    }*/
     @Override
     public void actionPerformed(ActionEvent e) {
         revalidate();

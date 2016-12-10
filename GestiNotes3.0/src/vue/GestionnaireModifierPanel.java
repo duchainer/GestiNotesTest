@@ -29,8 +29,9 @@ public class GestionnaireModifierPanel extends UtilePanel {
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         
-        addLabel("Choisissez un élève: ");
+        addLabel("Choisissez un groupe: ");
         addComboBox();
+        remplirCombo1();
         
         tabComboBox.get(0).addActionListener(new ActionListener() {
             @Override

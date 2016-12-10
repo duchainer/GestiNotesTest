@@ -10,6 +10,7 @@ import javax.swing.*;
 //import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import modele.Etablissement;
 
 public class UtilePanel extends JPanel implements ActionListener{
 
@@ -126,5 +127,14 @@ public class UtilePanel extends JPanel implements ActionListener{
 
     public void messageErreur(Exception e) throws HeadlessException {
         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void remplirCombo1() {
+        //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
+        JComboBox<String> combo = tabComboBox.get(0);
+        combo.removeAllItems();
+        for (int i = 0; i < Etablissement.getTabGroupe().size(); i++) {
+            combo.addItem("Groupe " + i);
+        }
     }
 }
