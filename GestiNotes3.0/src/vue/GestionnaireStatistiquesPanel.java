@@ -31,6 +31,7 @@ public class GestionnaireStatistiquesPanel extends UtilePanel /*ComplementPanel*
         addEspace();
         addLabel("Lister: ");
         addComboBox();
+        remplirCombo1();
         addChamp("moyenne: ");
         getLastChamp().setEditable(false);
         addChamp("variance: ");
