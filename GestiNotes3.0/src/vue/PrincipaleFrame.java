@@ -13,11 +13,17 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import modele.Eleve;
-import modele.Serialise;
+//import modele.Serialise;
 
 /**
  * 28/09/2016
@@ -34,9 +40,10 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     LogoRosemont logoRosemont = new LogoRosemont();
     JProgressBar pBar;
+    boolean retour = true; //Variable qui permet de savoir quand l'utilisateur a l'intention de revenir sur la fenêtre d'explorateur de fichiers
 
     String[] tabGestionnaireOptions = {"Initialiser", "Importer", "Exporter", "Lister", "Modifier", "Statistiques"};
-    
+
     //Réaction losque la fenetre se fait fermé par X
     WindowListener exitListener = new WindowAdapter() {
         @Override
@@ -44,8 +51,7 @@ public class PrincipaleFrame extends UtileFrame {
             quitter();
         }
     };
-    
-    
+
     //Constructeurs
     public PrincipaleFrame() {
         super("GestiNotes_03", 800, 750); // Titre, Dimensions x, y
@@ -96,7 +102,7 @@ public class PrincipaleFrame extends UtileFrame {
         pBar = new JProgressBar();
         pBar.setMinimum(0);
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
-        
+
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
         setIconImage(logoRosemont.logo);
     }
@@ -127,28 +133,141 @@ public class PrincipaleFrame extends UtileFrame {
 
         //Menu Gestionnaire
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[0]) {
+
+            ObjectInputStream entree = null;
+            ArrayList<Groupe> init = new ArrayList<Groupe>();
             try {
-                Serialise.initialiseGroupes();
-                JOptionPane.showMessageDialog(this, "Initialisation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
-                messageErreur(ex);
+                //Pour lire le fichier objet :
+                // Ouverture du flux objet en entree
+                entree = new ObjectInputStream(
+                        new FileInputStream("initialisation.txt"));
+                // Lecture de l'objet contenu dans le fichier
+                init = (ArrayList<Groupe>) entree.readObject();
+                Etablissement.setTabGroupe(init);
+                JOptionPane.showMessageDialog(this, "Initialisation effectue avec succes", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+            } catch (FileNotFoundException ex) {
+                // Exception declenchee si le fichier n'existe pas
+                JOptionPane.showMessageDialog(this, ex.getCause(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            } catch (EOFException ex) {
+                // Exception declenchee si la fin du fichier est atteinte
+                JOptionPane.showMessageDialog(this, "Fin du fichier\nAucun Objet", "Erreur", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                // Exception declenchee si un autre probleme acces fichier
+                JOptionPane.showMessageDialog(this, ex.getCause(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, ex.getCause(), "Erreur", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                try {
+                    entree.close();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, ex.getCause(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex.getCause(), "Erreur", JOptionPane.ERROR_MESSAGE);
+                }
             }
+
         }//Importer
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[1]) {
-            try {
-                Serialise.importeGroupes();
-                JOptionPane.showMessageDialog(this, "Importation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
-                messageErreur(ex);
+
+            ObjectInputStream input = null;
+            while (retour = true) {
+                String chemin = "";
+                JFileChooser importe = new JFileChooser();
+                importe.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                int reponse = importe.showOpenDialog(this);
+                if (reponse == JFileChooser.APPROVE_OPTION) {
+                    File importeur = importe.getSelectedFile();
+                    chemin = importeur.getPath();
+                    try {
+                        input = new ObjectInputStream(new FileInputStream(chemin));
+                        Etablissement.setTabGroupe((ArrayList<Groupe>) input.readObject());
+                        JOptionPane.showMessageDialog(null, "Les eleves ont bien ete chargees depuis la base de donnée selectionnee");
+                        try {
+                            input.close();
+                        } catch (IOException ex) {
+                            JOptionPane.showMessageDialog(null, "Erreur dans la fermeture du fichier");
+                        } finally {
+                            break;
+                        }
+                    } catch (FileNotFoundException ex) {
+                        JOptionPane.showMessageDialog(null, "Fichier introuvable");
+                    } catch (EOFException ex) {
+                        JOptionPane.showMessageDialog(null, "Erreur EOF");
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, "Erreur IO");
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else if (reponse == JFileChooser.CANCEL_OPTION) {
+                    int redirection = JOptionPane.showConfirmDialog(null, "Souhaitez-vous etre redirige vers le menu principal ?");
+                    if (redirection == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Vous allez etre redirige vers la fenetre de selection de fichiers");
+                        retour = true;
+                    } else if (redirection == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Vous allez etre redirige vers le menu principal");
+                        break;
+                    } else if (redirection == JOptionPane.CANCEL_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Vous allez etre redirige vers la fenetre de selection de fichiers");
+                        retour = true;
+                    }
+                }
             }
+            this.revalidate();
+            this.repaint();
+
         }//Exporter
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[2]) {
-            try {
-                Serialise.exporteGroupes(Etablissement.getTabGroupe());
-                JOptionPane.showMessageDialog(this, "Exportation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
-                messageErreur(ex);
-            }
+            JFrame f = this; //permet de mettre le frame dans une variable, et le me ttre dans export.showSaveDialog(f) (car mettre "this" ne marche pas) 
+            Thread exportToFile = new Thread() {
+                @Override
+                public void run() {
+                    while (retour = true) {
+                        String chemin = "";
+                        JFileChooser export = new JFileChooser();
+                        export.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                        int reponse;
+                        reponse = export.showSaveDialog(f);
+                        if (reponse == JFileChooser.APPROVE_OPTION) {
+                            File emplacement = export.getSelectedFile();
+                            chemin = emplacement.getPath();
+                            ObjectOutputStream output = null;
+                            try {
+                                output = new ObjectOutputStream(new FileOutputStream(chemin + File.separator + "dataEtudiants.dat"));
+                            } catch (IOException ex) {
+                                JOptionPane.showMessageDialog(null, "Erreur lors de la creation du OOS");
+                            }
+                            try {
+                                output.writeObject(Etablissement.getTabGroupe());
+                                try {
+                                    output.close();
+                                    JOptionPane.showMessageDialog(null, "Les eleves ont bien ete enregistres avec succes");
+                                    break;
+                                } catch (IOException ex) {
+                                    JOptionPane.showMessageDialog(null, "Erreur lors de la fermeture de output");
+                                }
+                            } catch (IOException ex) {
+                                JOptionPane.showMessageDialog(null, "Erreur lors de la creation du fichier objet.\nVous allez être redirige vers le menu principal");
+                                break;
+                            }
+
+                        } else {
+                            int redirection = JOptionPane.showConfirmDialog(null, "Souhaitez-vous etre redirige vers le menu principal ?");
+                            if (redirection == JOptionPane.NO_OPTION) {
+                                JOptionPane.showMessageDialog(null, "Vous allez etre redirige vers la fenetre de selection de dossiers");
+                                retour = true;
+                            } else if (redirection == JOptionPane.YES_OPTION) {
+                                JOptionPane.showMessageDialog(null, "Vous allez etre redirige vers le menu principal");
+                                break;
+                            } else if (redirection == JOptionPane.CANCEL_OPTION) {
+                                JOptionPane.showMessageDialog(null, "Vous allez etre redirige vers la fenetre de selection de dossiers");
+                                retour = true;
+                            }
+                        }
+                    }
+                }
+            };
+            //Lancement du thread
+            exportToFile.run();
         }
 
         if (((JMenuItem) e.getSource()).getText() == "Lister") {
@@ -233,7 +352,7 @@ public class PrincipaleFrame extends UtileFrame {
         bw.write("Variance du groupe: " + Statistique.calculerVariance(groupe));
         bw.close();
     }
-    
+
     //methodes supplementaires
     public void imprimer() throws HeadlessException {
         String nomBulletin = "";
@@ -245,8 +364,8 @@ public class PrincipaleFrame extends UtileFrame {
         //Objets qui correspondent
         eleve = Etablissement.searchEleve(code);
         groupe = Etablissement.searchGroupeWEleve(code);
-        
-         if (eleve == null) {
+
+        if (eleve == null) {
             messageErreur(new Exception("Code invalide. Veuillez reessayer!"));
             return;
         }
@@ -269,14 +388,12 @@ public class PrincipaleFrame extends UtileFrame {
 
         } catch (IOException ex) {
             messageErreur(new IOException("Échec lors de la création du fichier."));
-            
-        }catch (Exception ex) {
-            messageErreur(new Exception("Erreur inconnue lors de la création du fichier\n Veuillez contacter les développeur!"));
-            
-        }
-        
 
-       
+        } catch (Exception ex) {
+            messageErreur(new Exception("Erreur inconnue lors de la création du fichier\n Veuillez contacter les développeur!"));
+
+        }
+
     }
 
 }
