@@ -14,6 +14,7 @@ public class Eleve implements Serializable{
 
     private String nom, prenom, dateNaissance;
     private ArrayList<Evaluation> evaluations = new ArrayList<Evaluation>();
+    public static final String[] nomsEvaluations ={"Science","Math","Français","Informatique"};
 
 //Constructeur
     Eleve() {
@@ -24,10 +25,10 @@ public class Eleve implements Serializable{
         setNom(nom);
         setPrenom(prenom);
         setDateNaissance(dateNaissance);
-        addEvaluation(new Evaluation("Science", .2f));
-        addEvaluation(new Evaluation("Math", .2f));
-        addEvaluation(new Evaluation("Français", .3f));
-        addEvaluation(new Evaluation("Informatique", .3f));
+        addEvaluation(new Evaluation(nomsEvaluations[0], .2f));
+        addEvaluation(new Evaluation(nomsEvaluations[1], .2f));
+        addEvaluation(new Evaluation(nomsEvaluations[2], .3f));
+        addEvaluation(new Evaluation(nomsEvaluations[3], .3f));
     }
 
 
