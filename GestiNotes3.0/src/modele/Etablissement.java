@@ -1,6 +1,7 @@
 package modele;
 
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.util.*;
 
 /**
@@ -41,6 +42,7 @@ public final class Etablissement {
         tabGroupe = aTabGroupe;
     }
     public static Groupe getLastGroupe() {
+        
         return getTabGroupe().get(getTabGroupe().size()-1);
     }
 
@@ -60,7 +62,13 @@ public final class Etablissement {
     
     //Ajout un eleve dans le dernier
     public static void addEleve(Eleve eleve){
-        Groupe groupe = getLastGroupe();
+        Groupe groupe = null;
+        try {
+            groupe = getLastGroupe();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            groupe = addGroupe();
+        }
+
         groupe.addEleve(eleve);
     }
     //Cherche un eleve dans tous les groupes avec son code permanent
