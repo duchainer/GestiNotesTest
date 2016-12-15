@@ -136,7 +136,7 @@ public class PrincipaleFrame extends UtileFrame {
         }//Importer
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[1]) {
             try {
-                Serialise.importeGroupes();
+                Serialise.importeGroupes("groupes.txt");
                 JOptionPane.showMessageDialog(this, "Importation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex) {
                 messageErreur(ex);
