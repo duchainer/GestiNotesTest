@@ -55,6 +55,8 @@ public class Evaluation implements Serializable {
         return note;
     }
     public void setNote(float note) {
+        if((note >100)||(note<0))
+            throw new ArgumentInvalideException("Une note doit être entre 0 et 100!");
         this.note = note;
     }
     
