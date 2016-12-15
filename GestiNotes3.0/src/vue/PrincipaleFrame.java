@@ -32,7 +32,6 @@ public class PrincipaleFrame extends UtileFrame {
     //JPanel simplePanel;  
     //ArrayList<JButton> boutons = new ArrayList<JButton>();
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
-    LogoRosemont logoRosemont = new LogoRosemont();
     JProgressBar pBar;
 
     String[] tabGestionnaireOptions = {"Initialiser", "Importer", "Exporter", "Lister", "Modifier", "Statistiques"};
@@ -47,7 +46,7 @@ public class PrincipaleFrame extends UtileFrame {
     
     
     //Constructeurs
-    public PrincipaleFrame() {
+    public PrincipaleFrame(Image logo) {
         super("GestiNotes_03", 800, 750); // Titre, Dimensions x, y
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);			// Fenetre centree
@@ -98,7 +97,7 @@ public class PrincipaleFrame extends UtileFrame {
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
         
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
-        setIconImage(logoRosemont.logo);
+        setIconImage(logo);
     }
 
     @Override
