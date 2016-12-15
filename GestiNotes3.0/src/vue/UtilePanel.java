@@ -129,7 +129,7 @@ public class UtilePanel extends JPanel implements ActionListener{
         }
     }
     
-    
+
 
     public void messageErreur(Exception e) throws HeadlessException {
         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);

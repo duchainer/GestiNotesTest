@@ -19,7 +19,7 @@ public class GestiNotesGraphique {
     public static void main(String[] args) throws InterruptedException {
         LogoRosemont logoRosemont = new LogoRosemont();
         Thread.sleep(1 * 1000);
-        PrincipaleFrame frame = new PrincipaleFrame((Image)LogoRosemont.logo); 			 // Creation objet Frame
+        PrincipaleFrame frame = new PrincipaleFrame((Image)logoRosemont.logo); 			 // Creation objet Frame
         frame.setVisible(true);                					 // Visibilite
 
     }
