@@ -2,14 +2,200 @@
 ![diagrammevue](https://cloud.githubusercontent.com/assets/11084784/19949953/fe02e808-a12a-11e6-9919-9517e3500a88.png)
 
 
-GestiNotes_03
-But:
-- L’intégration d’animations au graphisme : pour augmenter l’attractivité et la convivialité des
-interfaces graphiques
-- L’intégration des tests unitaires : pour permettre de tester les classes modèles de l’application
-- L’intégration des fichiers pour permettre la sauvegarde et la récupération des données ainsi
-que la génération de rapports tels que le bulletin des notes
-- L’intégration du multitâche pour éviter tout blocage à cause de traitements longs dus aux
-fichiers
-- L’intégration de la gestion des exceptions : pour éviter tout bugg et améliorer la signalisation
-des erreurs
+GestiNotes_Final
+
+ORGANISATION VISUELLE------------
+
+Dialogue
+1. Présenter les commandes et les données dans l’ordre de leur utilisation
+2. Regrouper les informations relatives à une même activité sur la même fenêtre
+3. Laisser l’initiative du dialogue à l’utilisateur
+4. Guider l’utilisateur pour faciliter la navigation 
+
+Agencement Écran
+1. Organiser les zones de manipulation dans le sens la lecture: Gauche-> Droite   et Haut -> Bas  et en fonction de la fréquence d’utilisation
+2. Les zones de manipulation doivent être les plus compactes possibles
+3. Regrouper les informations en relation entre elles
+4. Rassembler dans la même fenêtre les données nécessaires à l’accomplissement de la même tâche (ou sous-tâche).
+
+
+
+GRAPHISME--------------
+
+Codage couleurs
+1. Associer chaque couleur à un sens précis
+2. Respecter sens couleurs de l’utilisateur
+3. Minimiser le nombre de couleurs: 7+-2
+4. Couleurs doivent être identifiables facilement
+
+Choix couleurs
+1. Bleu recommandé pour les encadrements
+2. Choisir couleur faiblement saturée (pâle) pour afficher l’information 
+3. Choisir couleur très peu saturée pour information de moindre importance (Gris)
+4. Utiliser mélange de jaune-vert pour plus d’effet sensibilité
+5. Utiliser couleurs peu contrastées pour similarité
+6. Utiliser couleurs très contrastées pour différences
+
+Couleurs de fond
+1. Utiliser une couleur neutre et claire pour fond
+2. Éviter le fond gris ou coloré pour petits objets
+3. Éviter les fonds marrons et verts 
+4. Le noir devrait faire ressortir les petits objets (risque de fatigue)
+5. Utiliser les couleurs peu saturées (Pastels) pour les grandes surfaces,  
+
+Icônes
+1. Utiliser icônes pour objets et commandes fréquemment employés
+2. Lien entre icône et référent doit être le plus direct possible
+3. Toujours accompagner icône par nom
+4. Limiter nombre icône : min 12 - max 20
+5. S’assurer que l’utilisateur distingue bien les différentes icônes
+
+Mises en évidence
+1. Utiliser exceptionnellement pour efficacité
+2. Limiter à cinq moyens différents
+3. Éviter plusieurs moyens sur même objet: 
+4. Ne pas entraver perception utilisateur 
+
+Moyens de mise en évidence
+1. Couleur:   c’est le changement de couleur qui attire: saturés
+2. Souligné: À éviter pour texte long
+3. Proximité: Utiliser pour ressortir informations connexes
+4. Gras:  Utiliser pour ressortir chaine dans texte
+5. Taille:   À utiliser pour comparaisons relatives
+6. Police: À utiliser pour ressortir longs textes
+7. Cligment: Est le moyen le plus efficace mais Offrir possibilité d’interrompre
+
+
+
+LANGAGE---------------------
+
+Libellé des commandes
+1. Utiliser un seul et unique libellé par commande
+2. Utiliser une syntaxe homogène
+3. Éviter les formes nominales
+4. Éviter les abréviations
+
+Messages affichés
+1. Utiliser un langage familier à l’utilisateur
+2. Éviter les messages longs lorsque la charge de travail est importante
+3. Produire des messages clairs, concis et adaptés au niveau de connaissance de l’utilisateur
+4. Adopter un vocabulaire homogène
+5. Construire des messages affirmatifs et Employer la forme active
+6. Employer une fenêtre de message lorsque le message doit être lu
+
+
+FENÊTRES----------------------------
+
+Fenêtres
+1. Faciliter activation et ouverture 
+2. Agencer fenêtre pour faciliter mémorisation
+3. Augmenter nombre fenêtres si utilisation peu fréquente / Diminuer si fréquente
+4. Minimiser quantité informations à mémoriser d’une fenêtre à l’autre
+
+
+Fenêtres de dialogue
+1. Présenter composants dans ordre utilisation
+2. Minimiser déplacements souris
+3. Faciliter accès composants fréquemment utilisés
+4. Mettre en évidence éléments importants
+5. Utiliser toujours titres courts et non ambigus
+
+Composant fenêtres+++++++
+
+Boutons
+1. À employer pour commandes fréquemment utilisées
+2. Utiliser libellé explicite et non générique
+
+Champs de saisie
+1. Choisir des libellés les plus courts possibles 
+2. Proposer par défaut la valeur la plus courante
+3. Préciser le format de saisie lorsque possible
+4. Indiquer les champs facultatifs / obligatoires
+5. Aligner les champs de manière à minimiser la charge de travail.
+
+Composants de choix
+1. Utiliser boutons sélection pour choix fréquents et  peu nombreux
+2. Utiliser liste déroulante lorsque place réduite et choix peu fréquents
+3. Utiliser liste simple lorsque le nombre de choix est variable
+4. Présenter toujours verticalement les composants de sélection
+
+
+
+MODES DE DIALOGUE (INTERACTIVITÉ)---------------------
+
+Par boutons
+1. Minimiser leur nombre dans la fenêtre
+2. Utiliser pour les commandes très fréquentes
+3. Bien choisir leur libellé et leur position
+4. Rester cohérent dans libellé et position
+
+Par menus
+1. Ajuster la structure du menu selon l’activité de l’utilisateur
+2. Minimiser la taille des menus
+3. Organiser les menus selon leur utilisation
+4. Isoler les commandes à risque
+5. Faire correspondre le libellé des commandes avec le titre de la fenêtre actionnée
+6. Permettre l’accès rapide et direct aux commandes fréquentes
+
+Par Souris
+1. Maintenir un rôle constant pour les boutons 
+2. Ne pas déclencher les fonctions importantes ou risquées par simple clic
+3. Utiliser le survol souris (ou balayage) pour guider l’utilisateur
+
+
+PRÉVENTION ERREURS ---------------
+
+Erreurs 
+1. Guider utilisateur
+2. Fournir visibilité fonctionnement système
+3. Fournir retour aux actions utilisateur
+4. Rendre possible exploration logiciel
+5. Fournir aide en ligne adaptée à la tâche 
+
+
+Prévention
+1. Signaler message confirmation si risque de perte données ou si commande irréversible
+2. Tester pour identifier erreurs 
+3. Éviter de placer côte à côte les commandes à risque avec les autres
+
+
+CORRECTION/SIGNALEMENT ERREURS-----------
+
+Correction erreurs
+1. Signaler les erreurs immédiatement
+2. Placer message dans la direction du regard utilisateur
+3. Offrir possibilité de modifier facilement les données suite à erreur
+4. Permettre le retour arrière
+5. Permettre en tout temps l’accès à l’aide en ligne
+
+
+Signalement erreurs
+1. Le message doit préciser la nature du problème et offrir des moyens pour y remédier
+2. Le message doit être coopératif
+3. Le message doit fournir une description du problème
+4. Adapter le message au niveau de connaissances de l’utilisateur 
+5. Ne pas dramatiser ni culpabiliser l’utilisateur
+6. Préférer une syntaxe homogène dans le message même
+
+
+AIDE EN LIGNE------------
+
+Aide en ligne
+1. Fournir un accès rapide à l’aide en ligne
+2. Décrire l’utilisation du système en s’appuyant sur le vocabulaire du métier de l’utilisateur
+3. Permettre l’exploration
+4. Utiliser des titres explicites
+5. Illustrer les descriptions avec des exemples
+6. Rédiger clairement
+
+Rédaction aide en ligne
+1. Phrases courtes et simples
+2. Pas de subordonnées ni relatives
+3. Forme active
+4. Vocabulaire familier
+5. Paragraphes courts
+6. Paragraphes séparés par ligne blanche
+7. Lignes de plus de 26 caractères
+8. Pas de coupure de mot
+9. Ne pas justifier à droite
+10. Lignes espacées de la hauteur d’un caractère : double interligne
