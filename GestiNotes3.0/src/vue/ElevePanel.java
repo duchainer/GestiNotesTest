@@ -32,13 +32,13 @@ public abstract class ElevePanel extends UtilePanel {
         pBar.setString(pBar.getValue() + "/10");
         GridLayout gl = new GridLayout(10, 1, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
-        addChamp("Nom");
+        addChamp("Nom","Nom de famille de l'élève");
         addEspace();
-        addChamp("Prenom");
+        addChamp("Prenom","Prénom de l'élève");
         addEspace();
-        addChamp("Date (JJ-MM-AAAA)");
+        addChamp("Date (JJ-MM-AAAA)","<html>Date de naissance de l'élève<p>" +"Écrire en chiffre sous ce format : JJ-MM-AAAA"+"</p>(les tirets inclus)</html>");
         addEspace();
-        addChamp("Code Permanent");
+        addChamp("Code Permanent","<html>Code Permanent de l'élève<p>" +"Est sous ce format :"+"</p>"+"Première lettre du Nom puis du prénom puis l'année de naissance</html>");
         addEspace();
         getLastChamp().setEditable(false);
         for (int i = 0; i < Etablissement.NBR_NOTES; i++) {
@@ -52,6 +52,7 @@ public abstract class ElevePanel extends UtilePanel {
         addLabel("Eleve(s) dans le groupe: ");       
         simplePanel.add(pBar);
         updatePbar();
+        
     }
 
     public ElevePanel() {

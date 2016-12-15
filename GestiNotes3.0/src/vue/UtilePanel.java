@@ -85,10 +85,17 @@ public class UtilePanel extends JPanel implements ActionListener{
     }
     
     public void addChamp(String label) {
-        simplePanel.add(new JLabel(label));
+        addChamp(label,"");
+    }
+    
+    public void addChamp(String label, String tooltipText) {
+        final JLabel jLabel = new JLabel(label);
+        simplePanel.add(jLabel);
         JTextField champ = new JTextField(10);
         simplePanel.add(champ);
         champs.add(champ);
+        jLabel.setToolTipText(tooltipText);
+        champ.setToolTipText(tooltipText);
     }
     
     public JLabel addLabel(String texte) {
