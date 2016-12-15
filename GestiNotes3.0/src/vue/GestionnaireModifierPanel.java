@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import modele.Etablissement;
 import modele.Groupe;
 
-public class GestionnaireModifierPanel extends UtilePanel {
+public class GestionnaireModifierPanel extends GestiNotesPanel {
 
     //variables
     final int NBR_NOTES = 4;

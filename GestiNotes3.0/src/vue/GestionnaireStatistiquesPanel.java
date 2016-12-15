@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JProgressBar;
 import modele.Etablissement;
 
-public class GestionnaireStatistiquesPanel extends UtilePanel /*ComplementPanel*/ {
+public class GestionnaireStatistiquesPanel extends GestiNotesPanel {
 
 
     //variable

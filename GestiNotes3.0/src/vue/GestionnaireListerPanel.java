@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
-public class GestionnaireListerPanel extends UtilePanel {
+public class GestionnaireListerPanel extends GestiNotesPanel {
 
     //variables
 

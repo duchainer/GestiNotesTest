@@ -19,7 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class GestionnaireModifierPanel2 extends UtilePanel {
+public class GestionnaireModifierPanel2 extends GestiNotesPanel {
 
     //variables
     final int NBR_NOTES = 4;
@@ -45,11 +45,9 @@ public class GestionnaireModifierPanel2 extends UtilePanel {
                 modifierEleve();
             }
         });
-
-        addChamp("Note 1: ");
-        addChamp("Note 2: ");
-        addChamp("Note 3: ");
-        addChamp("Note 4: ");
+        
+        //Appel de la méthode créant les champs pour chaque notes selon NBR_NOTES de Etablissement
+        addChampsNote();
 
         addBouton("Enregistrer");
         addBouton("Retour");
