@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
-public abstract class ElevePanel extends UtilePanel {
+public abstract class ElevePanel extends GestiNotesPanel {
     //variables
     JProgressBar pBar;
     
@@ -41,10 +41,8 @@ public abstract class ElevePanel extends UtilePanel {
         addChamp("Code Permanent","<html>Code Permanent de l'élève<p>" +"Est sous ce format :"+"</p>"+"Première lettre du Nom puis du prénom puis l'année de naissance</html>");
         addEspace();
         getLastChamp().setEditable(false);
-        for (int i = 0; i < Etablissement.NBR_NOTES; i++) {
-            addChamp("Note" + (i + 1));
-            addEspace();
-        }
+        //Appel de la méthode créant les champs pour chaque notes selon NBR_NOTES de Etablissement
+        addChampsNote();
         addBouton(texteBouton);
         //Un bouton "Clear"
         addBouton("Vider les champs");
@@ -83,6 +81,7 @@ public abstract class ElevePanel extends UtilePanel {
                 messageErreur(e);
         }
     }
+
     abstract void bouton0Presse();
     
      void afficherEleve(){
