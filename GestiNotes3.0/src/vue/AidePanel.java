@@ -1,5 +1,7 @@
 package vue;
 
+import Réutilisable.UtileFrame;
+import Réutilisable.UtilePanel;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;

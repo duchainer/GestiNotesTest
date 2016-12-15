@@ -8,6 +8,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import Réutilisable.UtileFrame;
 import modele.Evaluation;
 import modele.Groupe;
 import modele.Eleve;

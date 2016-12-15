@@ -7,6 +7,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import Réutilisable.UtileFrame;
 import modele.Etablissement;
 import modele.Groupe;
 import java.awt.GridLayout;

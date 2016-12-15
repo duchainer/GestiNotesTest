@@ -5,6 +5,8 @@
  */
 package vue;
 
+import Réutilisable.UtileFrame;
+import Réutilisable.UtilePanel;
 import javax.swing.JComboBox;
 import modele.Eleve;
 import modele.Etablissement;

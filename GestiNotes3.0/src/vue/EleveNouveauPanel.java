@@ -5,6 +5,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import Réutilisable.UtileFrame;
 import modele.Evaluation;
 import modele.Etablissement;
 import modele.Eleve;

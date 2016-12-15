@@ -1,5 +1,6 @@
 package vue;
 
+import Réutilisable.UtileFrame;
 import java.awt.BorderLayout;
 import modele.Groupe;
 import modele.Statistique;

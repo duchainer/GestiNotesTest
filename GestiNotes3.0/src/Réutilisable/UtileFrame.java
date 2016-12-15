@@ -1,4 +1,4 @@
-package vue;
+package Réutilisable;
 
 /**
  * Crée 2016-10-31,08:11:51
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 public class UtileFrame extends JFrame implements ActionListener {
 
     //variables
-    JPanel simplePanel;
-    ArrayList<JButton> boutons;
-    ArrayList<JTextField> champs;
+    public JPanel simplePanel;
+    public ArrayList<JButton> boutons;
+    public ArrayList<JTextField> champs;
     public JMenuBar menuBar; //tabbedPane;
-    JProgressBar pBar;
+    public JProgressBar pBar;
 
     //Méthodes
     //Constructeur

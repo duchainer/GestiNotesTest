@@ -1,4 +1,4 @@
-package vue;
+package Réutilisable;
 
 /**
  * Crée 2016-10-31,09:53:43
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class UtilePanel extends JPanel implements ActionListener{
 
     //variables
-    ArrayList<JButton> boutons;
-    ArrayList<JTextField> champs;
-    ArrayList<JComboBox> tabComboBox;
+    public ArrayList<JButton> boutons;
+    public ArrayList<JTextField> champs;
+    public ArrayList<JComboBox> tabComboBox;
 
-    JPanel simplePanel = new JPanel();
-    UtileFrame fenetre;
-    JTabbedPane tabbedPane;
+    public JPanel simplePanel = new JPanel();
+    public UtileFrame fenetre;
+    public JTabbedPane tabbedPane;
     
     //Méthodes
     //Constructeur
