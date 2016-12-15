@@ -3,20 +3,16 @@
 
 
 GestiNotes_Final
-ORGANISATION VISUELLE------------
-/5
-Dialogue
 
+ORGANISATION VISUELLE------------
+
+Dialogue
 1. Présenter les commandes et les données dans l’ordre de leur utilisation
 2. Regrouper les informations relatives à une même activité sur la même fenêtre
 3. Laisser l’initiative du dialogue à l’utilisateur
 4. Guider l’utilisateur pour faciliter la navigation 
 
-
-
-
 Agencement Écran
-
 1. Organiser les zones de manipulation dans le sens la lecture: Gauche-> Droite   et Haut -> Bas  et en fonction de la fréquence d’utilisation
 2. Les zones de manipulation doivent être les plus compactes possibles
 3. Regrouper les informations en relation entre elles
@@ -24,12 +20,9 @@ Agencement Écran
 
 
 
-
 GRAPHISME--------------
 
-
 Codage couleurs
-
 1. Associer chaque couleur à un sens précis
 2. Respecter sens couleurs de l’utilisateur
 3. Minimiser le nombre de couleurs: 7+-2
@@ -93,9 +86,7 @@ Messages affichés
 
 FENÊTRES----------------------------
 
-
 Fenêtres
-
 1. Faciliter activation et ouverture 
 2. Agencer fenêtre pour faciliter mémorisation
 3. Augmenter nombre fenêtres si utilisation peu fréquente / Diminuer si fréquente
@@ -103,13 +94,11 @@ Fenêtres
 
 
 Fenêtres de dialogue
-
 1. Présenter composants dans ordre utilisation
 2. Minimiser déplacements souris
 3. Faciliter accès composants fréquemment utilisés
 4. Mettre en évidence éléments importants
 5. Utiliser toujours titres courts et non ambigus
-
 
 Composant fenêtres+++++++
 
