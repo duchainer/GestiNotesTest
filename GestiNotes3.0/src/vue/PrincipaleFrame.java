@@ -156,8 +156,15 @@ public class PrincipaleFrame extends UtileFrame {
         //Menu Gestionnaire
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[0]) {
             try {
-                Serialise.initialiseGroupes();
-                JOptionPane.showMessageDialog(this, "Initialisation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment initialiser?(Cela écrasera vos groupes)",
+                        tabGestionnaireOptions[0], JOptionPane.YES_NO_OPTION);
+                if (reponse == JOptionPane.YES_OPTION) {
+                    Serialise.initialiseGroupes();
+                    JOptionPane.showMessageDialog(this, "Initialisation terminé avec succès", "Succès", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Aucune Initialisation effectué", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+                }
+
             } catch (Exception ex) {
                 messageErreur(ex);
             }
