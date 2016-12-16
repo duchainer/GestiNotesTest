@@ -29,7 +29,7 @@ public class GestionnaireStatistiquesPanel extends GestiNotesPanel {
         "Moyenne des écart entre notes et moyenne du groupe",//ecart type
         "Meilleure note finale du groupe",//meilleure note
         "Pire note finale du groupe",//pire note
-        "Taux des notes au-dessus de 60%",};//taux de succes
+        "Taux des notes au-dessus de 60%"};//taux de succes
     //Méthodes
     //Constructeur
     public GestionnaireStatistiquesPanel(UtileFrame frame) {
