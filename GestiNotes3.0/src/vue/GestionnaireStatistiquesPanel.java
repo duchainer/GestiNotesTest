@@ -21,6 +21,15 @@ public class GestionnaireStatistiquesPanel extends GestiNotesPanel {
 
 
     //variable
+    String[] tooltips = {
+        "Statistiques diverse sur le groupe selectionné",//Stats
+        "Selectionner un groupe pour en avoir les statistiques",//Lister
+        "Moyenne du groupe",//moyenne
+        "Écart type au carré",//variance
+        "Moyenne des écart entre notes et moyenne du groupe",//ecart type
+        "Meilleure note finale du groupe",//meilleure note
+        "Pire note finale du groupe",//pire note
+        "Taux des notes au-dessus de 60%",};//taux de succes
     //Méthodes
     //Constructeur
     public GestionnaireStatistiquesPanel(UtileFrame frame) {
@@ -28,22 +37,23 @@ public class GestionnaireStatistiquesPanel extends GestiNotesPanel {
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
 
-        addLabel("Statistiques");
+        addLabel("Statistiques",tooltips[0]);
         addEspace();
-        addLabel("Lister: ");
+        addLabel("Lister: ",tooltips[1]);
         addComboBox();
         remplirCombo1();
-        addChamp("moyenne: ");
+        tabComboBox.get(0).setToolTipText(tooltips[1]);
+        addChamp("moyenne: ",tooltips[2]);
         getLastChamp().setEditable(false);
-        addChamp("variance: ");
+        addChamp("variance: ",tooltips[3]);
         getLastChamp().setEditable(false);
-        addChamp("ecart type: ");
+        addChamp("ecart type: ",tooltips[4]);
         getLastChamp().setEditable(false);
-        addChamp("meilleure note: ");
+        addChamp("meilleure note: ",tooltips[5]);
         getLastChamp().setEditable(false);
-        addChamp("pire note: ");
+        addChamp("pire note: ",tooltips[6]);
         getLastChamp().setEditable(false);
-        addChamp("taux de succes: ");
+        addChamp("taux de succes: ",tooltips[7]);
         getLastChamp().setEditable(false);
         
         tabComboBox.get(0).addActionListener(new ActionListener() {

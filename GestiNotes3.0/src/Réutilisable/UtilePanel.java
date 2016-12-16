@@ -98,11 +98,16 @@ public class UtilePanel extends JPanel implements ActionListener{
     }
     
     public JLabel addLabel(String texte) {
+        return addLabel(texte,"");
+    }
+
+    public JLabel addLabel(String texte,String tooltipText) {
         JLabel label = new JLabel(texte);
         simplePanel.add(label);
+        label.setToolTipText(tooltipText);
         return label;
     }
-    
+
     public void addEspace() {
         simplePanel.add(new JLabel(""));
     }
