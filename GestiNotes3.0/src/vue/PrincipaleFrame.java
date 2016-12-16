@@ -35,8 +35,33 @@ public class PrincipaleFrame extends UtileFrame {
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
     JProgressBar pBar;
 
+     String[] tooltipsMenus ={
+         "Options liées aux élèves individuellement",
+         "Options liées aux groupes contenant les élèves",
+         "Options d'aide et autres"};
+    String[] tooltipsOptions = {
+        //Menu Eleve
+        "Permet d'enregistrer un élève",//"Nouveau"
+        "Permet d'afficher les informations d'un élève",//"Afficher"
+        "Permet de modifier les informations d'un élève",//"Modifier"
+        "Permet d'imprimer les informations d'un élève",//"Imprimer"
+        
+        //Menu Gestionnaire
+        "Permet d'initialiser les groupes d'élèves",//"Initialiser"
+        "Permet d'importer les groupes d'élèves",//"Importer"
+        "Permet d'exporter les groupes d'élèves",//"Exporter"
+        "Permet de lister les informations des élèves d'un groupe",//"Lister"
+        "Permet de modifier les informations des élèves d'un groupe",//"Modifier"
+        "Permet d'afficher les statistiques d'un groupe",//"Statistiques"
+        
+        //Menu Aide
+        "Informations générale sur le programme",//À Propos
+        "Aide générale sur le programme",//?
+        "Retour à l'écran titre",//Annuler
+        "Quitter l'application"};//Quitter
+
     String[] tabGestionnaireOptions = {"Initialiser", "Importer", "Exporter", "Lister", "Modifier", "Statistiques"};
-    
+
     //Réaction losque la fenetre se fait fermé par X
     WindowListener exitListener = new WindowAdapter() {
         @Override
@@ -44,8 +69,7 @@ public class PrincipaleFrame extends UtileFrame {
             quitter();
         }
     };
-    
-    
+
     //Constructeurs
     public PrincipaleFrame(Image logo) {
         super("GestiNotes_03", 800, 750); // Titre, Dimensions x, y
@@ -69,34 +93,38 @@ public class PrincipaleFrame extends UtileFrame {
         setJMenuBar(menuBar);
 
         JMenu menuEleve = new JMenu("Eleve"); // création menu client
+        menuEleve.setToolTipText(tooltipsMenus[0]);
         menuBar.add(menuEleve); // ajout du menu à la barre des menus
 
-        addMenuItem("Nouveau", menuEleve);
-        addMenuItem("Afficher", menuEleve);
-        addMenuItem("Modifier ", menuEleve);
-        addMenuItem("Imprimer", menuEleve);
+        addMenuItem("Nouveau", menuEleve,tooltipsOptions[0]);
+        addMenuItem("Afficher", menuEleve,tooltipsOptions[1]);
+        addMenuItem("Modifier ", menuEleve,tooltipsOptions[2]);
+        addMenuItem("Imprimer", menuEleve,tooltipsOptions[3]);
 
         JMenu menuGestionnaire = new JMenu("Gestionnaire"); // création menu client
+        menuGestionnaire.setToolTipText(tooltipsMenus[1]);
         menuBar.add(menuGestionnaire); // ajout du menu à la barre des menus
-
+        int i =4;
         for (String s : tabGestionnaireOptions) {
-            addMenuItem(s, menuGestionnaire);
+            addMenuItem(s, menuGestionnaire,tooltipsOptions[i]);
+            i++;
         }
 
         JMenu menuAide = new JMenu("Aide"); // création menu client
+        menuAide.setToolTipText(tooltipsMenus[2]);
         menuBar.add(menuAide); // ajout du menu à la barre des menus
 
-        addMenuItem("A propos", menuAide);
-        addMenuItem("?", menuAide);
-        addMenuItem("Annuler", menuAide);
-        addMenuItem("Quitter", menuAide);
+        addMenuItem("A propos", menuAide,tooltipsOptions[i]);
+        addMenuItem("?", menuAide,tooltipsOptions[i+1]);
+        addMenuItem("Annuler", menuAide,tooltipsOptions[i+2]);
+        addMenuItem("Quitter", menuAide,tooltipsOptions[i+3]);
 
         add(new AccueilPanel(this));
 
         pBar = new JProgressBar();
         pBar.setMinimum(0);
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
-        
+
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
         setIconImage(logo);
     }
@@ -233,7 +261,7 @@ public class PrincipaleFrame extends UtileFrame {
         bw.write("Variance du groupe: " + Statistique.calculerVariance(groupe));
         bw.close();
     }
-    
+
     //methodes supplementaires
     public void imprimer() throws HeadlessException {
         String nomBulletin = "";
@@ -245,8 +273,8 @@ public class PrincipaleFrame extends UtileFrame {
         //Objets qui correspondent
         eleve = Etablissement.searchEleve(code);
         groupe = Etablissement.searchGroupeWEleve(code);
-        
-         if (eleve == null) {
+
+        if (eleve == null) {
             messageErreur(new Exception("Code invalide. Veuillez reessayer!"));
             return;
         }
@@ -269,14 +297,12 @@ public class PrincipaleFrame extends UtileFrame {
 
         } catch (IOException ex) {
             messageErreur(new IOException("Échec lors de la création du fichier."));
-            
-        }catch (Exception ex) {
-            messageErreur(new Exception("Erreur inconnue lors de la création du fichier\n Veuillez contacter les développeur!"));
-            
-        }
-        
 
-       
+        } catch (Exception ex) {
+            messageErreur(new Exception("Erreur inconnue lors de la création du fichier\n Veuillez contacter les développeur!"));
+
+        }
+
     }
 
 }

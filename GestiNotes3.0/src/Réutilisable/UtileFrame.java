@@ -66,10 +66,14 @@ public class UtileFrame extends JFrame implements ActionListener {
     }
     
     public JMenu addMenuItem (String texte, JMenu menu) {
+        return addMenuItem (texte,menu,"");
+    }
+    public JMenu addMenuItem (String texte, JMenu menu,String toolTipText) {
         JMenuItem item = new JMenuItem(texte);
         item.addActionListener(this);
         menu.add(item);
         menu.addSeparator();
+        item.setToolTipText(toolTipText);
         return menu;
     }
 
