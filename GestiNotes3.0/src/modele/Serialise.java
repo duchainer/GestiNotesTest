@@ -10,11 +10,11 @@ public class Serialise {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         // Pour ecrire dans le fichier objet:
-        /*Etablissement.initialise();
+        Etablissement.initialise();
         ArrayList<Groupe> groupes = Etablissement.getTabGroupe();
-        exporteGroupes(groupes);*/
+        exporteGroupes(groupes,"initialisation.txt");
         
-        initialiseGroupes();
+        //initialiseGroupes();
         
         for (Groupe groupe : Etablissement.getTabGroupe()) {
             //affichage de ses attributs
