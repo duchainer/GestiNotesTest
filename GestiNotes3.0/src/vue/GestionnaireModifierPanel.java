@@ -30,9 +30,10 @@ public class GestionnaireModifierPanel extends GestiNotesPanel {
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         
-        addLabel("Choisissez un groupe: ");
+        addLabel("Choisissez un groupe: ","Choisir le groupe contenant l'élève");
         addComboBox();
         remplirCombo1();
+        tabComboBox.get(0).setToolTipText("Choisir le groupe contenant l'élève");
         
         tabComboBox.get(0).addActionListener(new ActionListener() {
             @Override
