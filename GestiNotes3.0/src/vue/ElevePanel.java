@@ -43,7 +43,7 @@ public abstract class ElevePanel extends GestiNotesPanel {
         addEspace();
         getLastChamp().setEditable(false);
         //Appel de la méthode créant les champs pour chaque notes selon NBR_NOTES de Etablissement
-        addChampsNote();
+        addChampsNote(true);
         addBouton(texteBouton);
         //Un bouton "Clear"
         addBouton("Vider les champs");

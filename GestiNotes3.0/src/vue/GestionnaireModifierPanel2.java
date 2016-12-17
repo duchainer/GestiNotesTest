@@ -48,7 +48,7 @@ public class GestionnaireModifierPanel2 extends GestiNotesPanel {
         });
         
         //Appel de la méthode créant les champs pour chaque notes selon NBR_NOTES de Etablissement
-        addChampsNote();
+        addChampsNote(false);
 
         addBouton("Enregistrer");
         addBouton("Retour");

@@ -40,10 +40,11 @@ public class GestiNotesPanel extends UtilePanel {
         }
     }
 
-    public void addChampsNote() {
+    public void addChampsNote(boolean withSpace) {
         for (int i = 0; i < Etablissement.NBR_NOTES; i++) {
             addChamp("Note" + (i + 1), Eleve.nomsEvaluations[i]);
-            addEspace();
+            if(withSpace)
+                addEspace();
         }
     }
 
