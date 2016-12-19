@@ -38,12 +38,6 @@ public class PrincipaleFrame extends UtileFrame {
     //Attributs
     //Attributs graphiques
     
-    //Old fileSectText
-    /*private final String quitterFileSelection = "Souhaitez-vous etre redirige vers le menu principal ?",
-            titreQuitterFileSelection = "Retourner au programme principal",
-            responseNoQuitterFileSelection = "Vous allez etre redirige vers la fenetre de selection de fichiers",
-            responseYesQuitterFileSelection = "Vous allez etre redirige vers le menu principal";*/
-    
     private final String quitterFileSelection = "Souhaitez-vous abandonner la selection de fichier?",
             titreQuitterFileSelection = "Abandonner la Selection",
             responseNoQuitterFileSelection = "Vous allez être redirigé vers la fenêtre de sélection de fichiers",
@@ -146,6 +140,7 @@ public class PrincipaleFrame extends UtileFrame {
         pBar.setMinimum(0);
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
 
+        //ForTesting : uncomment
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
         setIconImage(logo);
     }
@@ -204,6 +199,7 @@ public class PrincipaleFrame extends UtileFrame {
         if (((JMenuItem) e.getSource()).getText() == "A propos") {
             JOptionPane.showMessageDialog(this, "GestiNotes par Patrick Dominguès et Raphaël Duchaîne de InnovTech"
                     + "\nMontréal,Québec"
+                    + "\nVersion 4 (19/12/2016)"
                     + "\nVersion 3 (02/12/2016)"
                     + "\nVersion 2 (04/11/2016)"
                     + "\nVersion 1 (12/10/2016)"
@@ -220,7 +216,7 @@ public class PrincipaleFrame extends UtileFrame {
                     + "\n-Qu'un eleve doit être initialisé avec nom, prenom et date "
                     + "\n-Que l'on ne peut pas enlever d'eleve dans cette version"
                     + "\n-Que l'aide se trouve ici"
-                    + "\n-Que 2 et 2 font 4", "Instructions", JOptionPane.INFORMATION_MESSAGE);
+                    + "\n-Qu'en cas de doute, il suffit de survoler", "Instructions", JOptionPane.INFORMATION_MESSAGE);
         }
         if (((JMenuItem) e.getSource()).getText() == "Annuler") {
             this.getContentPane().removeAll();
