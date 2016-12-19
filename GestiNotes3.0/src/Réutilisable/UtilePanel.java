@@ -1,4 +1,4 @@
-package vue;
+package Réutilisable;
 
 /**
  * Crée 2016-10-31,09:53:43
@@ -10,18 +10,17 @@ import javax.swing.*;
 //import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import modele.Etablissement;
 
 public class UtilePanel extends JPanel implements ActionListener{
 
     //variables
-    ArrayList<JButton> boutons;
-    ArrayList<JTextField> champs;
-    ArrayList<JComboBox> tabComboBox;
+    public ArrayList<JButton> boutons;
+    public ArrayList<JTextField> champs;
+    public ArrayList<JComboBox> tabComboBox;
 
-    JPanel simplePanel = new JPanel();
-    UtileFrame fenetre;
-    JTabbedPane tabbedPane;
+    public JPanel simplePanel = new JPanel();
+    public UtileFrame fenetre;
+    public JTabbedPane tabbedPane;
     
     //Méthodes
     //Constructeur
@@ -85,18 +84,30 @@ public class UtilePanel extends JPanel implements ActionListener{
     }
     
     public void addChamp(String label) {
-        simplePanel.add(new JLabel(label));
+        addChamp(label,"");
+    }
+    
+    public void addChamp(String label, String tooltipText) {
+        final JLabel jLabel = new JLabel(label);
+        simplePanel.add(jLabel);
         JTextField champ = new JTextField(10);
         simplePanel.add(champ);
         champs.add(champ);
+        jLabel.setToolTipText(tooltipText);
+        champ.setToolTipText(tooltipText);
     }
     
     public JLabel addLabel(String texte) {
+        return addLabel(texte,"");
+    }
+
+    public JLabel addLabel(String texte,String tooltipText) {
         JLabel label = new JLabel(texte);
         simplePanel.add(label);
+        label.setToolTipText(tooltipText);
         return label;
     }
-    
+
     public void addEspace() {
         simplePanel.add(new JLabel(""));
     }
@@ -123,18 +134,9 @@ public class UtilePanel extends JPanel implements ActionListener{
         }
     }
     
-    
+
 
     public void messageErreur(Exception e) throws HeadlessException {
         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-    }
-
-    public void remplirCombo1() {
-        //Méthodes qui permet d'ajouter les groupes à la liste des JComboBox
-        JComboBox<String> combo = tabComboBox.get(0);
-        combo.removeAllItems();
-        for (int i = 0; i < Etablissement.getTabGroupe().size(); i++) {
-            combo.addItem("Groupe " + i);
-        }
     }
 }

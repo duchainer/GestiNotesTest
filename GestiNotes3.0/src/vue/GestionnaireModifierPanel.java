@@ -8,6 +8,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import Réutilisable.UtileFrame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +16,7 @@ import javax.swing.JFrame;
 import modele.Etablissement;
 import modele.Groupe;
 
-public class GestionnaireModifierPanel extends UtilePanel {
+public class GestionnaireModifierPanel extends GestiNotesPanel {
 
     //variables
     final int NBR_NOTES = 4;
@@ -29,9 +30,10 @@ public class GestionnaireModifierPanel extends UtilePanel {
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         
-        addLabel("Choisissez un groupe: ");
+        addLabel("Choisissez un groupe: ","Choisir le groupe contenant l'élève");
         addComboBox();
         remplirCombo1();
+        tabComboBox.get(0).setToolTipText("Choisir le groupe contenant l'élève");
         
         tabComboBox.get(0).addActionListener(new ActionListener() {
             @Override

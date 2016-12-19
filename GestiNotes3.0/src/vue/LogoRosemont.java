@@ -19,7 +19,7 @@ public class LogoRosemont extends JFrame {
 
     BufferedImage imageTampon3 = new BufferedImage(250, 500, BufferedImage.TYPE_INT_RGB);
 
-    BufferedImage logo = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
+    static public BufferedImage logo = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
 
     BufferedImage imageTampon2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB), imageTampon = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
     // Définir la chaîne de la barre de titre et ses dimensions.

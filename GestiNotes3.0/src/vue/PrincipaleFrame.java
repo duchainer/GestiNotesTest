@@ -1,5 +1,6 @@
 package vue;
 
+import Réutilisable.UtileFrame;
 import java.awt.BorderLayout;
 import modele.Groupe;
 import modele.Statistique;
@@ -38,9 +39,33 @@ public class PrincipaleFrame extends UtileFrame {
     //JPanel simplePanel;  
     //ArrayList<JButton> boutons = new ArrayList<JButton>();
     //ArrayList<JTextField> champs = new ArrayList<JTextField>();
-    LogoRosemont logoRosemont = new LogoRosemont();
     JProgressBar pBar;
     boolean retour = true; //Variable qui permet de savoir quand l'utilisateur a l'intention de revenir sur la fenêtre d'explorateur de fichiers
+
+     String[] tooltipsMenus ={
+         "Options liées aux élèves individuellement",
+         "Options liées aux groupes contenant les élèves",
+         "Options d'aide et autres"};
+    String[] tooltipsOptions = {
+        //Menu Eleve
+        "Permet d'enregistrer un élève",//"Nouveau"
+        "Permet d'afficher les informations d'un élève",//"Afficher"
+        "Permet de modifier les informations d'un élève",//"Modifier"
+        "Permet d'imprimer les informations d'un élève",//"Imprimer"
+        
+        //Menu Gestionnaire
+        "Permet d'initialiser les groupes d'élèves",//"Initialiser"
+        "Permet d'importer les groupes d'élèves",//"Importer"
+        "Permet d'exporter les groupes d'élèves",//"Exporter"
+        "Permet de lister les informations des élèves d'un groupe",//"Lister"
+        "Permet de modifier les informations des élèves d'un groupe",//"Modifier"
+        "Permet d'afficher les statistiques d'un groupe",//"Statistiques"
+        
+        //Menu Aide
+        "Informations générale sur le programme",//À Propos
+        "Aide générale sur le programme",//?
+        "Retour à l'écran titre",//Annuler
+        "Quitter l'application"};//Quitter
 
     String[] tabGestionnaireOptions = {"Initialiser", "Importer", "Exporter", "Lister", "Modifier", "Statistiques"};
 
@@ -53,7 +78,7 @@ public class PrincipaleFrame extends UtileFrame {
     };
 
     //Constructeurs
-    public PrincipaleFrame() {
+    public PrincipaleFrame(Image logo) {
         super("GestiNotes_03", 800, 750); // Titre, Dimensions x, y
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Fermeture par x
         setLocationRelativeTo(null);			// Fenetre centree
@@ -75,27 +100,31 @@ public class PrincipaleFrame extends UtileFrame {
         setJMenuBar(menuBar);
 
         JMenu menuEleve = new JMenu("Eleve"); // création menu client
+        menuEleve.setToolTipText(tooltipsMenus[0]);
         menuBar.add(menuEleve); // ajout du menu à la barre des menus
 
-        addMenuItem("Nouveau", menuEleve);
-        addMenuItem("Afficher", menuEleve);
-        addMenuItem("Modifier ", menuEleve);
-        addMenuItem("Imprimer", menuEleve);
+        addMenuItem("Nouveau", menuEleve,tooltipsOptions[0]);
+        addMenuItem("Afficher", menuEleve,tooltipsOptions[1]);
+        addMenuItem("Modifier ", menuEleve,tooltipsOptions[2]);
+        addMenuItem("Imprimer", menuEleve,tooltipsOptions[3]);
 
         JMenu menuGestionnaire = new JMenu("Gestionnaire"); // création menu client
+        menuGestionnaire.setToolTipText(tooltipsMenus[1]);
         menuBar.add(menuGestionnaire); // ajout du menu à la barre des menus
-
+        int i =4;
         for (String s : tabGestionnaireOptions) {
-            addMenuItem(s, menuGestionnaire);
+            addMenuItem(s, menuGestionnaire,tooltipsOptions[i]);
+            i++;
         }
 
         JMenu menuAide = new JMenu("Aide"); // création menu client
+        menuAide.setToolTipText(tooltipsMenus[2]);
         menuBar.add(menuAide); // ajout du menu à la barre des menus
 
-        addMenuItem("A propos", menuAide);
-        addMenuItem("?", menuAide);
-        addMenuItem("Annuler", menuAide);
-        addMenuItem("Quitter", menuAide);
+        addMenuItem("A propos", menuAide,tooltipsOptions[i]);
+        addMenuItem("?", menuAide,tooltipsOptions[i+1]);
+        addMenuItem("Annuler", menuAide,tooltipsOptions[i+2]);
+        addMenuItem("Quitter", menuAide,tooltipsOptions[i+3]);
 
         add(new AccueilPanel(this));
 
@@ -104,7 +133,7 @@ public class PrincipaleFrame extends UtileFrame {
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
 
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
-        setIconImage(logoRosemont.logo);
+        setIconImage(logo);
     }
 
     @Override
@@ -133,9 +162,14 @@ public class PrincipaleFrame extends UtileFrame {
 
         //Menu Gestionnaire
         if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[0]) {
-
+      
             ObjectInputStream entree = null;
             ArrayList<Groupe> init = new ArrayList<Groupe>();
+            int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment initialiser?(Cela écrasera vos groupes)",
+                        tabGestionnaireOptions[0], JOptionPane.YES_NO_OPTION);
+            if (reponse == JOptionPane.NO_OPTION) {
+                  break;
+            }
             try {
                 //Pour lire le fichier objet :
                 // Ouverture du flux objet en entree
@@ -167,8 +201,7 @@ public class PrincipaleFrame extends UtileFrame {
             }
 
         }//Importer
-        if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[1]) {
-
+        if (((JMenuItem) e.getSource()).getText() == tabGestionnaireOptions[1]){
             ObjectInputStream input = null;
             while (retour = true) {
                 String chemin = "";
@@ -211,6 +244,7 @@ public class PrincipaleFrame extends UtileFrame {
                         retour = true;
                     }
                 }
+
             }
             this.revalidate();
             this.repaint();

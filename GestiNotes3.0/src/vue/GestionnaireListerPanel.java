@@ -7,6 +7,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import Réutilisable.UtileFrame;
 import modele.Etablissement;
 import modele.Groupe;
 import java.awt.GridLayout;
@@ -15,7 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
-public class GestionnaireListerPanel extends UtilePanel {
+public class GestionnaireListerPanel extends GestiNotesPanel {
 
     //variables
 
@@ -29,19 +30,20 @@ public class GestionnaireListerPanel extends UtilePanel {
         //Liste des groupe existants
         addEspace();
         addEspace();
-        addLabel("Lister: ");
+        addLabel("Lister: ","Selectionner un groupe pour en avoir les informations des élèves");
         addComboBox();
         remplirCombo1();
+        tabComboBox.get(0).setToolTipText("Selectionner un groupe pour en avoir les informations des élèves");
         addEspace();
         addEspace();
 
         //Ajoute les divers label pour les divers informations
         addLabel("");
-        addLabel("Prenom");
-        addLabel("Nom");
-        addLabel("Date de naissance");
-        addLabel("     Note finale");
-        addLabel("Code permanent");
+        addLabel("Nom","Nom de famille de l'élève");
+        addLabel("Prenom","Prénom de l'élève");
+        addLabel("Date de naissance","<html>Date de naissance de l'élève<p>" +"Écrit en chiffre sous ce format : JJ-MM-AAAA");
+        addLabel("     Note finale","Note finale après pondération");
+        addLabel("Code Permanent","<html>Code Permanent de l'élève<p>" +"Est sous ce format :"+"</p>"+"Première lettre du Nom puis du prénom puis l'année de naissance</html>");
 
         //Ajoute les divers champs pour les divers informations tout en les protégeant de l'édition
         for (int i = 0; i < Etablissement.ELEVES_PAR_GROUPE; i++) {

@@ -5,6 +5,7 @@ package vue;
  *
  * @author Raphael Duchaine
  */
+import Réutilisable.UtileFrame;
 import modele.Evaluation;
 import modele.Etablissement;
 import modele.Eleve;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
-public abstract class ElevePanel extends UtilePanel {
+public abstract class ElevePanel extends GestiNotesPanel {
     //variables
     JProgressBar pBar;
     
@@ -32,19 +33,17 @@ public abstract class ElevePanel extends UtilePanel {
         pBar.setString(pBar.getValue() + "/10");
         GridLayout gl = new GridLayout(10, 1, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
-        addChamp("Nom");
+        addChamp("Nom","Nom de famille de l'élève");
         addEspace();
-        addChamp("Prenom");
+        addChamp("Prenom","Prénom de l'élève");
         addEspace();
-        addChamp("Date (JJ-MM-AAAA)");
+        addChamp("Date (JJ-MM-AAAA)","<html>Date de naissance de l'élève<p>" +"Écrire en chiffre sous ce format : JJ-MM-AAAA"+"</p>(les tirets inclus)</html>");
         addEspace();
-        addChamp("Code Permanent");
+        addChamp("Code Permanent","<html>Code Permanent de l'élève<p>" +"Est sous ce format :"+"</p>"+"Première lettre du Nom puis du prénom puis l'année de naissance</html>");
         addEspace();
         getLastChamp().setEditable(false);
-        for (int i = 0; i < Etablissement.NBR_NOTES; i++) {
-            addChamp("Note" + (i + 1));
-            addEspace();
-        }
+        //Appel de la méthode créant les champs pour chaque notes selon NBR_NOTES de Etablissement
+        addChampsNote(true);
         addBouton(texteBouton);
         //Un bouton "Clear"
         addBouton("Vider les champs");
@@ -52,6 +51,7 @@ public abstract class ElevePanel extends UtilePanel {
         addLabel("Eleve(s) dans le groupe: ");       
         simplePanel.add(pBar);
         updatePbar();
+        
     }
 
     public ElevePanel() {
@@ -82,6 +82,7 @@ public abstract class ElevePanel extends UtilePanel {
                 messageErreur(e);
         }
     }
+
     abstract void bouton0Presse();
     
      void afficherEleve(){

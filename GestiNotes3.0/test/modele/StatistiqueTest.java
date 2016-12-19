@@ -179,6 +179,22 @@ public class StatistiqueTest {
         float result = Statistique.calculerVariance(groupe);
         assertEquals(expResult, result, 0.0);
     }
+    @Test
+    public void testCalculerVarianceAvecDeuxNotes100et0() {
+        System.out.println("CalculerVarianceAvecDeuxNotes100et0");
+        groupe.addEleve(new Eleve ("11","11","11-11-1111"));
+        groupe.addEleve(new Eleve ("22","22","22-22-2222"));
+        for (int i = 0; i < 2; i++) {
+            final int note = i*100;
+            groupe.getTabEleve().get(i).setNote(0, note);
+            groupe.getTabEleve().get(i).setNote(1, note);
+            groupe.getTabEleve().get(i).setNote(2, note);
+            groupe.getTabEleve().get(i).setNote(3, note);
+        }
+        float expResult = 2500F;
+        float result = Statistique.calculerVariance(groupe);
+        assertEquals(expResult, result, 0.0);
+    }
     
     /*
     *Le 7e eleve ne se faisait pas donner de note puisque en ajoutant un eleve on trie juste apres

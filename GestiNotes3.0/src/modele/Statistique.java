@@ -32,9 +32,9 @@ public class Statistique {
         for(int count=0;count<groupe.getTabEleve().size();count++){
             final float calculNoteFinale = tab.get(count).calculerNoteFinale();
             if(calculNoteFinale!=-1)
-                variance += Math.pow((calculNoteFinale)-(Statistique.calculerMoyenne(groupe)),2.) / tab.size();
+                variance += Math.pow((calculNoteFinale)-(Statistique.calculerMoyenne(groupe)),2.);
         }
-        return (float) (Math.round(variance*100.0)/100.0);
+        return (float) (Math.round((variance/ tab.size())*100.0)/100.0);
     }
     
 }

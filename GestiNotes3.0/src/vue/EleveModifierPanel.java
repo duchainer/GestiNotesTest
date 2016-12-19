@@ -6,6 +6,7 @@ package vue;
  *
  * @author Patrick Domingues
  */
+import Réutilisable.UtileFrame;
 import modele.Evaluation;
 import modele.Etablissement;
 import modele.Eleve;
@@ -18,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
+import modele.ArgumentInvalideException;
 
 public class EleveModifierPanel extends ElevePanel {
 
@@ -56,7 +58,9 @@ public class EleveModifierPanel extends ElevePanel {
             }
             notification("Modification effectue");
             
-        } catch (NullPointerException e) {
+        } catch (ArgumentInvalideException e) {
+            messageErreur(e);
+        }catch (NullPointerException e) {
             messageErreur(e);
         }
 

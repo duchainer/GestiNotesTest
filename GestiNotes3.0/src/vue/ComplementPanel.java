@@ -5,6 +5,8 @@
  */
 package vue;
 
+import Réutilisable.UtileFrame;
+import Réutilisable.UtilePanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;

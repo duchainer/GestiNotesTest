@@ -1,5 +1,7 @@
 package vue;
 
+import Réutilisable.UtileFrame;
+import Réutilisable.UtilePanel;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
