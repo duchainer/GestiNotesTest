@@ -88,7 +88,7 @@ public class UtileFrame extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
     public void messageErreur(String fr,Exception ex) throws HeadlessException {
-        messageErreur(new Exception(fr+"\nSi cela se reproduit, voici le rapport d'erreur:\n"+ex.toString()));
+        messageErreur(new Exception(fr+"\nSi cela se produit à nouveau,\n voici le rapport d'erreur que vous pouvez donner au support technique:\n"+ex.toString()));
     }
 
     public void quitter() throws HeadlessException {

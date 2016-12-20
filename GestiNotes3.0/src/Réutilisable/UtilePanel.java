@@ -140,6 +140,6 @@ public class UtilePanel extends JPanel implements ActionListener{
         JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
     public void messageErreur(String fr,Exception ex) throws HeadlessException {
-        messageErreur(new Exception(fr+"\nSi cela se reproduit, voici le rapport d'erreur:\n"+ex.toString()));
+        messageErreur(new Exception(fr+"\nSi cela se produit à nouveau,\n voici le rapport d'erreur que vous pouvez donner au support technique:"+ex.toString()));
     }
 }
