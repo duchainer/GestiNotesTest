@@ -46,6 +46,7 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         pBar.setString(pBar.getValue() + "/10");
         //pBar.setSize(0, 340);
         //pBar.setBounds(0, 340, pBar.getWidth(), pBar.getHeight());
+        addLabel("Nombre d'élèves dans le dernier groupe:");
         simplePanel.add(pBar);
         updatePbar();
 
