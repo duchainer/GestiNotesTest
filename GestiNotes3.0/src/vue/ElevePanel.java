@@ -80,6 +80,10 @@ public abstract class ElevePanel extends GestiNotesPanel {
         } catch (Exception e) {
             if (!e.getMessage().equals("-1"))
                 messageErreur(e);
+            else{
+                pBar.setValue(0);
+                Etablissement.addGroupe();
+            }
         }
     }
 
