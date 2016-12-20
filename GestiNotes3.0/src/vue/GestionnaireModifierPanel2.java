@@ -65,9 +65,9 @@ public class GestionnaireModifierPanel2 extends GestiNotesPanel {
                 }
                 uneFrame.getContentPane().removeAll();
                 JOptionPane.showMessageDialog(uneFrame, "Les notes ont ete modifies", "Modification des notes", JOptionPane.INFORMATION_MESSAGE);
-                uneFrame.add(new AccueilPanel(uneFrame));
-                uneFrame.revalidate();
-                uneFrame.repaint();
+//                uneFrame.add(new AccueilPanel((PrincipaleFrame) uneFrame));
+//                uneFrame.revalidate();
+//                uneFrame.repaint();
                 } catch (NumberFormatException f) {
                     messageErreur(new Exception("Format des notes incorrect"));
                 }
