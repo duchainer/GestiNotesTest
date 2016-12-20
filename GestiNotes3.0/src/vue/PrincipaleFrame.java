@@ -138,12 +138,12 @@ public class PrincipaleFrame extends UtileFrame {
         addMenuItem("Annuler", menuAide, tooltipsOptions[i + 2]);
         addMenuItem("Quitter", menuAide, tooltipsOptions[i + 3]);
 
-        add(new AccueilPanel(this));
-
+        
         pBar = new JProgressBar();
         pBar.setMinimum(0);
         pBar.setMaximum(Etablissement.ELEVES_PAR_GROUPE);
-
+        
+        add(new AccueilPanel(this, pBar));
         //ForTesting : uncomment
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
         
@@ -201,7 +201,7 @@ public class PrincipaleFrame extends UtileFrame {
         }
         if (((JMenuItem) e.getSource()).getText() == "Modifier") {
             this.getContentPane().removeAll();
-            this.add(new GestionnaireModifierPanel(this));
+            this.add(new GestionnaireModifierPanel(this, pBar));
             repaint2();
         }
         if (((JMenuItem) e.getSource()).getText() == "Statistiques") {
@@ -233,7 +233,7 @@ public class PrincipaleFrame extends UtileFrame {
         }
         if (((JMenuItem) e.getSource()).getText() == "Annuler") {
             this.getContentPane().removeAll();
-            this.add(new AccueilPanel(this));
+            this.add(new AccueilPanel(this, pBar));
             repaint2();
         }
         if (((JMenuItem) e.getSource()).getText() == "Quitter") {

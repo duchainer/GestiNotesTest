@@ -13,6 +13,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JProgressBar;
 import modele.Etablissement;
 import modele.Groupe;
 
@@ -21,12 +22,14 @@ public class GestionnaireModifierPanel extends GestiNotesPanel {
     //variables
     final int NBR_NOTES = 4;
     JFrame uneFrame;
+    JProgressBar pBar;
 
     //Méthodes
     //Constructeur
-    public GestionnaireModifierPanel(UtileFrame frame) {
+    public GestionnaireModifierPanel(UtileFrame frame,JProgressBar p_pBar) {
         super();
         this.uneFrame = frame;
+        this.pBar = p_pBar;
         GridLayout gl = new GridLayout(10, 2, 0, 25);	//Cree GridLayout
         simplePanel.setLayout(gl);
         
@@ -44,7 +47,7 @@ public class GestionnaireModifierPanel extends GestiNotesPanel {
                 Groupe groupe = Etablissement.getTabGroupe().get(num);
                 
                 frame.getContentPane().removeAll();
-                frame.add(new GestionnaireModifierPanel2(frame, groupe));
+                frame.add(new GestionnaireModifierPanel2(frame, groupe, pBar));
                 frame.revalidate();
                 frame.repaint(); 
             }

@@ -6,15 +6,23 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Raphael
+ */
 public class Serialise {
 
+    /**
+     *
+     * @param args .
+     * @throws IOException L'erreur a remonter
+     * @throws ClassNotFoundException L'erreur a remonter
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         // Pour ecrire dans le fichier objet:
         Etablissement.initialise();
         ArrayList<Groupe> groupes = Etablissement.getTabGroupe();
         exporteGroupes(groupes,"initialisation.txt");
-        
-        //initialiseGroupes();
         
         for (Groupe groupe : Etablissement.getTabGroupe()) {
             //affichage de ses attributs
@@ -35,19 +43,19 @@ public class Serialise {
     }
     
     /**
-     *
-     * @param groupes
-     * @throws IOException
+     * Methode qui permet l'exportation d'un groupe dans un fichier texte nommee "groupes.txt"
+     * @param groupes Le groupe a exporter
+     * @throws IOException L'erreur a remonter
      */
     public static void exporteGroupes(ArrayList<Groupe> groupes) throws IOException {
         exporteGroupes(groupes,"groupes.txt");
     }
     
     /**
-     *
-     * @param groupes 
-     * @param filepath
-     * @throws IOException
+     * Methode qui permet l'exportation d'un groupe dans un fichier texte dans la destination voulue
+     * @param groupes  Le groupe a exporter
+     * @param filepath L'emplacement du fichier a exporter
+     * @throws IOException L'erreur a remonter
      */
     public static void exporteGroupes(ArrayList<Groupe> groupes,String filepath) throws IOException {
         // Ouverture du flux objet en sortie
@@ -63,9 +71,10 @@ public class Serialise {
     /**
      * Lit un objet serialisé dans un fichier 
      * @param filepath the value of filename
-     * @throws IOException
-     * @throws ClassNotFoundException
-     * @throws FileNotFoundException
+     * @return Le groupe lue
+     * @throws IOException L'erreur a remonter
+     * @throws ClassNotFoundException L'erreur a remonter
+     * @throws FileNotFoundException L'erreur a remonter
      */
     public static ArrayList<Groupe> ReadTabGroupe(final String filepath) throws IOException,ClassNotFoundException,FileNotFoundException {
         ObjectInputStream entree = null;
@@ -101,14 +110,28 @@ public class Serialise {
         return retour;
     }
 
+    /**
+     * Methode qui permet l'importation d'un groupe a partir d'un fichier texte
+     * @param filepath L'emplacement du fichier texte
+     * @throws IOException L'erreur a remonter
+     * @throws ClassNotFoundException L'erreur a remonter
+     */
     public static void importeGroupes(String filepath) throws IOException, ClassNotFoundException {
             Etablissement.setTabGroupe(ReadTabGroupe(filepath));
     }
     
+    /**
+     * Methode qui permet l'importation d'un groupe a partir du fichier texte "initialisation.txt"
+     * @throws IOException L'erreur a remonter
+     * @throws ClassNotFoundException L'erreur a remonter
+     */
     public static void initialiseGroupes() throws IOException, ClassNotFoundException {
             Etablissement.setTabGroupe(ReadTabGroupe("initialisation.txt"));
     }
-
+    /**
+     * Methode qui ecrit dans la console le message d'erreur
+     * @param e L'exception intercepte
+     */
     private static void printError(Exception e) {
         System.err.println(e.getCause());
     }
