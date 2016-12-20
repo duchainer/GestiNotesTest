@@ -21,8 +21,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modele.Eleve;
 //import modele.Serialise;
 
@@ -42,6 +46,10 @@ public class PrincipaleFrame extends UtileFrame {
             titreQuitterFileSelection = "Abandonner la Selection",
             responseNoQuitterFileSelection = "Vous allez être redirigé vers la fenêtre de sélection de fichiers",
             responseYesQuitterFileSelection = "Vous allez être redirigé vers la fenêtre principale";
+    
+    InputStream is;
+    InputStreamReader reader;
+    public JTextArea aideEnLigne = new JTextArea();
     
     //VENANT DE UTILEFRAME:
     //JPanel simplePanel;  
@@ -103,7 +111,7 @@ public class PrincipaleFrame extends UtileFrame {
             System.err.println("Erreur de Look and feel: " + e.toString());
         }
         //Création MenuBar
-
+        
         Container contentPane = getContentPane();
         setJMenuBar(menuBar);
 
@@ -142,7 +150,16 @@ public class PrincipaleFrame extends UtileFrame {
 
         //ForTesting : uncomment
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
-        setIconImage(logo);
+        
+        //Aide en ligne 
+        try {
+        is = getClass().getResourceAsStream("aide.txt");
+        reader = new InputStreamReader(is);
+        aideEnLigne.read(reader, "");
+        JOptionPane.showMessageDialog(this, aideEnLigne.getText(),"Aide en ligne", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            messageErreur("Erreur lors de la lecture de l'aide en ligne", ex);
+        }
     }
 
     @Override
