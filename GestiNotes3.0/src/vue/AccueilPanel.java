@@ -11,7 +11,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import sun.applet.Main;
 
 public class AccueilPanel extends UtilePanel implements Runnable {
 
@@ -23,10 +29,18 @@ public class AccueilPanel extends UtilePanel implements Runnable {
     int y = 0;
 
     boolean v = true;
+    
+    Image image=null;
 
     // Controleur
     public AccueilPanel(UtileFrame fenetre) {
         super(fenetre);
+        
+        try {
+            image = getImage(); // chercher fichier image
+        } catch (IOException ex) {
+            messageErreur("L'image n'existe pas",ex);
+        }
 
         Thread t = new Thread(this);
         t.start();
@@ -38,7 +52,8 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         super.paint(g);
         // Creer le contexte graphique 2D
         Graphics2D g2d = (Graphics2D) g;
-        Image image = getToolkit().getImage("images/bille.png");    // chercher fichier image
+       
+        
         g2d.drawImage(image, x, y, 285, 285, this);
         g2d.drawImage(image, 500 - x, 375 - y, 285, 285, this);
         g2d.drawImage(image, x, 375 - y, 285, 285, this);
@@ -90,5 +105,17 @@ public class AccueilPanel extends UtilePanel implements Runnable {
                 }
             }
         }
+    }
+
+    private Image getImage() throws IOException {
+        // find the file in the file system.. probably not a good idea
+        File f = new File("images/bille.png");
+        System.out.println(f.getCanonicalPath() + " " + f.exists());
+        URL url = Main.class.getResource("/bille.png");
+        System.out.println(url);
+//        Image r_image = getToolkit().getImage("images/bille.png");   
+        Image  r_image = getToolkit().getImage(url);
+        
+        return r_image;
     }
 }
