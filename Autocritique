@@ -1,13 +1,4 @@
-
 Ce qui sera fait différemment :
--Meilleur communication interne-
--Meilleurs (et plus nombreux) tests automatique grâce à une approche «Test Driven»
--Meilleurs analyse et conception pour permettre une implémentation plus rapide et une meilleure installation/maintenance.
--Utiliser JavaFx pour une interface graphique plus facilement modifiable
--
-
-Ce qui sera garder pour les projets futurs:
--Utiliser un service de contrôle de version(i.e Github)
--Découpler souvent avec MVC et refactoring
--Garder Netbeans (efficace, déjà connu et a un module git)
--
+Meilleur communication interne
+Meilleur (et plus nombreux) tests automatique grâce à une approche «Test Driven»
+Meilleur analyse et conception pour permettre une implémentation plus rapide et une meilleure installation/maintenance.
