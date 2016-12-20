@@ -2,17 +2,19 @@ package vue;
 
 import Réutilisable.UtileFrame;
 import Réutilisable.UtilePanel;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.lang.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
 import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import modele.Etablissement;
+import sun.applet.Main;
 
 public class AccueilPanel extends UtilePanel implements Runnable {
 
@@ -20,16 +22,24 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         UtileFrame f = new UtileFrame("lol",800,750);
     	new AccueilPanel(f);
     }*/
-    
     int x = 0;
     int y = 0;
 
     boolean v = true;
+
+    Image image = null;
     JProgressBar pBar;
 
     // Controleur
-    public AccueilPanel(UtileFrame fenetre,JProgressBar p_pBar) {
+    public AccueilPanel(UtileFrame fenetre, JProgressBar p_pBar) {
         super(fenetre);
+
+        try {
+            image = getImage(); // chercher fichier image
+        } catch (IOException ex) {
+            messageErreur("L'image n'existe pas", ex);
+        }
+
         //simplePanel.setLayout(null);
         this.pBar = p_pBar;
         pBar.setStringPainted(true);
@@ -38,7 +48,7 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         //pBar.setBounds(0, 340, pBar.getWidth(), pBar.getHeight());
         simplePanel.add(pBar);
         updatePbar();
-        
+
         Thread t = new Thread(this);
         t.start();
     }
@@ -49,11 +59,10 @@ public class AccueilPanel extends UtilePanel implements Runnable {
         super.paint(g);
         // Creer le contexte graphique 2D
         Graphics2D g2d = (Graphics2D) g;
-        Image image = getToolkit().getImage("images/bille.png");    // chercher fichier image
-        g2d.drawImage(image, x, 30+y, 275, 275, this);
+        g2d.drawImage(image, x, 30 + y, 275, 275, this);
         g2d.drawImage(image, 500 - x, 375 - y, 275, 275, this);
         g2d.drawImage(image, x, 375 - y, 275, 275, this);
-        g2d.drawImage(image, 500 - x, 30+y, 275, 275, this);
+        g2d.drawImage(image, 500 - x, 30 + y, 275, 275, this);
         g2d.setFont(new Font("Algerian", Font.BOLD, 17));
         g2d.drawString("Bienvenue dans", 325, 330);
         g2d.drawString("GestiNotes!", 340, 350);
@@ -102,14 +111,24 @@ public class AccueilPanel extends UtilePanel implements Runnable {
             }
         }
     }
-    
-        public void updatePbar() throws HeadlessException {
+
+    private Image getImage() throws IOException {
+        // find the file in the file system.. probably not a good idea
+        URL url = Main.class.getResource("/bille.png");
+//        Image r_image = getToolkit().getImage("images/bille.png");   
+        Image r_image = getToolkit().getImage(url);
+
+        return r_image;
+    }
+
+    public void updatePbar() throws HeadlessException {
         try {
             pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
             pBar.setString(pBar.getValue() + "/10");
         } catch (Exception e) {
-            if (!e.getMessage().equals("-1"))
+            if (!e.getMessage().equals("-1")) {
                 messageErreur(e);
+            }
         }
     }
 }

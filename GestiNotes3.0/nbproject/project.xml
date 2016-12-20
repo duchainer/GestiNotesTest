@@ -5,7 +5,9 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>GestiNotes3.0</name>
             <source-roots>
-                <root id="src.dir"/>
+                <root id="src.AideEnLigne.dir"/>
+                <root id="src.images.dir"/>
+                <root id="src.src.dir" name="Source Packages"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>

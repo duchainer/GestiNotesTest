@@ -6,11 +6,9 @@ import modele.Groupe;
 import modele.Statistique;
 import modele.Etablissement;
 import javax.swing.*;
-import java.awt.GridLayout;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.BufferedWriter;
@@ -21,6 +19,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import modele.Eleve;
@@ -42,6 +42,10 @@ public class PrincipaleFrame extends UtileFrame {
             titreQuitterFileSelection = "Abandonner la Selection",
             responseNoQuitterFileSelection = "Vous allez être redirigé vers la fenêtre de sélection de fichiers",
             responseYesQuitterFileSelection = "Vous allez être redirigé vers la fenêtre principale";
+    
+    InputStream is;
+    InputStreamReader reader;
+    public JTextArea aideEnLigne = new JTextArea();
     
     //VENANT DE UTILEFRAME:
     //JPanel simplePanel;  
@@ -103,7 +107,7 @@ public class PrincipaleFrame extends UtileFrame {
             System.err.println("Erreur de Look and feel: " + e.toString());
         }
         //Création MenuBar
-
+        
         Container contentPane = getContentPane();
         setJMenuBar(menuBar);
 
@@ -142,11 +146,20 @@ public class PrincipaleFrame extends UtileFrame {
         add(new AccueilPanel(this, pBar));
         //ForTesting : uncomment
         //pBar.setValue(Etablissement.getLastGroupe().getTabEleve().size());
-        setIconImage(logo);
+        
+        //Aide en ligne 
+        try {
+        is = getClass().getResourceAsStream("/aide.txt");
+        reader = new InputStreamReader(is);
+        aideEnLigne.read(reader, "");
+        JOptionPane.showMessageDialog(this, aideEnLigne.getText(),"Aide en ligne", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            messageErreur("Erreur lors de la lecture de l'aide en ligne", ex);
+        }
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) // Afficher DOS le texte de l’élément de menu actionné.
+    public void actionPerformed(ActionEvent e) //Fait l'action lié à l’élément de menu actionné (en utilisant son texte).
     {
         //Menu Étudiant
         if (((JMenuItem) e.getSource()).getText() == "Nouveau") {

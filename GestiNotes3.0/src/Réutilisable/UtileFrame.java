@@ -147,21 +147,21 @@ public class UtileFrame extends JFrame implements ActionListener {
     
     /**
      * Methode qui permet d'afficher le message d'erreur
-     * @param e l'erreur a intercepter
+     * @param ex l'erreur a intercepter
      * @throws HeadlessException l'erreur a remonter
      */
-    public void messageErreur(Exception e) throws HeadlessException {
-        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+    public void messageErreur(Exception ex) throws HeadlessException {
+        JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 
     /**
      * Methode qui permet d'afficher le message d'erreur
-     * @param fr Le texte a ajouter dans l'erreur
-     * @param e l'erreur a intercepter
+     * @param fr Le message d'erreur en français compréhensible
+     * @param ex l'erreur a intercepter
      * @throws HeadlessException l'erreur a remonter
      */
-    public void messageErreur(String fr,Exception e) throws HeadlessException {
-        messageErreur(new Exception(fr+"\nSi cela se reproduit, voici le rapport d'erreur:\n"+e.toString()));
+    public void messageErreur(String fr,Exception ex) throws HeadlessException {
+        messageErreur(new Exception(fr+"\nSi cela se produit à nouveau,\n voici le rapport d'erreur que vous pouvez donner au support technique:\n"+ex.toString()));
     }
 
     /**
