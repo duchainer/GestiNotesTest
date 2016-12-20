@@ -6,11 +6,9 @@ import modele.Groupe;
 import modele.Statistique;
 import modele.Etablissement;
 import javax.swing.*;
-import java.awt.GridLayout;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.BufferedWriter;
@@ -25,8 +23,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modele.Eleve;
 //import modele.Serialise;
 
@@ -153,7 +149,7 @@ public class PrincipaleFrame extends UtileFrame {
         
         //Aide en ligne 
         try {
-        is = getClass().getResourceAsStream("aide.txt");
+        is = getClass().getResourceAsStream("/aide.txt");
         reader = new InputStreamReader(is);
         aideEnLigne.read(reader, "");
         JOptionPane.showMessageDialog(this, aideEnLigne.getText(),"Aide en ligne", JOptionPane.INFORMATION_MESSAGE);
@@ -163,7 +159,7 @@ public class PrincipaleFrame extends UtileFrame {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) // Afficher DOS le texte de l’élément de menu actionné.
+    public void actionPerformed(ActionEvent e) //Fait l'action lié à l’élément de menu actionné (en utilisant son texte).
     {
         //Menu Étudiant
         if (((JMenuItem) e.getSource()).getText() == "Nouveau") {

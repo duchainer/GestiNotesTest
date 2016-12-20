@@ -2,9 +2,6 @@ package vue;
 
 import Réutilisable.UtileFrame;
 import Réutilisable.UtilePanel;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.lang.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,9 +11,6 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JPanel;
 import sun.applet.Main;
 
 public class AccueilPanel extends UtilePanel implements Runnable {
