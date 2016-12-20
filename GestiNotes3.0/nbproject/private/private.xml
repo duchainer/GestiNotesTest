@@ -13,7 +13,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/vue/AccueilPanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/vue/EleveNouveauPanel.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/vue/PrincipaleFrame.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/modele/ArgumentInvalideException.java</file>
+            <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/vue/ElevePanel.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/Réutilisable/UtileFrame.java</file>
             <file>file:/home/raphael/NetBeansProjects/GestiNotes3.0/GestiNotesTest/GestiNotes3.0/src/Réutilisable/UtilePanel.java</file>
         </group>
