@@ -1,25 +1,25 @@
 Bienvenue dans GestiNotes
 
-Pour tester avec un jeu de huit élèves:
+Pour tester avec un jeu de huit eleves:
 Aller dans Gestionnaire-Initialiser
 
 Pour commencer avec vos classes:
-Aller dans Élève-Nouveau et ajouter les élèves l'un après l'autre
+Aller dans Eleve-Nouveau et ajouter les eleves l'un apres l'autre
 (ils seront par groupe de 10)
 
-Pour modifier les notes d'un élève :
+Pour modifier les notes d'un eleve :
 (requiert code permanent de celui-ci)
-Aller dans Élève-Modifier
-Cliquer "Modifier un élève" 
-Entrer le code permanent de l'élève
-Après avoir modifié les notes, 
-Cliquer "Modifier un élève" pour confirmer
+Aller dans Eleve-Modifier
+Cliquer "Modifier un eleve" 
+Entrer le code permanent de l'eleve
+Apres avoir modifie les notes, 
+Cliquer "Modifier un eleve" pour confirmer
 
-Pour modifier les notes de plusieurs élèves:
+Pour modifier les notes de plusieurs eleves:
 Aller dans Gestionnaire-Modifier
-Choisir le groupe puis l'élève dans les listes déroulante
+Choisir le groupe puis l'eleve dans les listes deroulante
 
-Pour lister les élèves d'un groupe:
+Pour lister les eleves d'un groupe:
 Aller dans Gestionnaire-Lister
-Sélectionner le groupe voulu dans la liste déroulante
+Selectionner le groupe voulu dans la liste deroulante
 
