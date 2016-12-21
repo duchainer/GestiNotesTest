@@ -20,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
+import modele.ArgumentInvalideException;
 
 public class GestionnaireModifierPanel2 extends GestiNotesPanel {
 
@@ -71,8 +72,13 @@ public class GestionnaireModifierPanel2 extends GestiNotesPanel {
 //                uneFrame.add(new AccueilPanel((PrincipaleFrame) uneFrame));
 //                uneFrame.revalidate();
 //                uneFrame.repaint();
-                } catch (NumberFormatException f) {
+                } catch (NumberFormatException ex) {
                     messageErreur(new Exception("Format des notes incorrect"));
+                }
+                catch (ArgumentInvalideException ex) {
+                    messageErreur(ex);
+                }catch (Exception ex) {
+                    messageErreur(ex);
                 }
             }
         });
