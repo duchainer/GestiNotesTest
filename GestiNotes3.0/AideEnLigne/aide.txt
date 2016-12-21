@@ -1,5 +1,8 @@
 Bienvenue dans GestiNotes
 
+REGLE D'OR:
+En cas de doute, il suffit de survoler les étiquettes et les menus
+
 Pour tester avec un jeu de huit eleves:
 Aller dans Gestionnaire-Initialiser
 

@@ -223,13 +223,7 @@ public class PrincipaleFrame extends UtileFrame {
         }
 
         if (((JMenuItem) e.getSource()).getText() == "?") {
-            JOptionPane.showMessageDialog(this, "Pour utiliser ce bijou d'innovation, il faut savoir:"
-                    + "\n-Qu'il faut initialiser/importer dans le menu Gestionnaire"
-                    + "\n-Que chaque groupe ne peut comprendre que 10 eleves"
-                    + "\n-Qu'un eleve doit être initialisé avec nom, prenom et date "
-                    + "\n-Que l'on ne peut pas enlever d'eleve dans cette version"
-                    + "\n-Que l'aide se trouve ici"
-                    + "\n-Qu'en cas de doute, il suffit de survoler", "Instructions", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, aideEnLigne.toString(), "Instructions", JOptionPane.INFORMATION_MESSAGE);
         }
         if (((JMenuItem) e.getSource()).getText() == "Annuler") {
             this.getContentPane().removeAll();
