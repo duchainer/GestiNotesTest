@@ -78,7 +78,7 @@ public class GestionnaireModifierPanel2 extends GestiNotesPanel {
                 catch (ArgumentInvalideException ex) {
                     messageErreur(ex);
                 }catch (Exception ex) {
-                    messageErreur(ex);
+                    messageErreur("",ex);
                 }
             }
         });
